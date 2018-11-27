@@ -1,0 +1,80 @@
+README for source code distribution of examples in "Professional C++"
+by Nicholas A. Solter and Scott J. Kleper.
+
+Unless otherwise noted, examples adhere to the C++ standard, so they should run
+with any standards-conforming compiler on any platform.
+
+All examples except those that use third-party libraries have been tested with
+g++ (GCC) 3.2.2 on Red Hat Linux 3.2.2-5, g++ (GCC) 3.4.1 on Solaris 9, and
+Microsoft Visual Studio .NET on Windows XP. Failures on one or more of these
+platforms due to compiler non-conformance are noted in the README in the
+relevent source directory. Examples using third-party libraries have been
+tested on a subset of the above platforms.
+
+Compiling with g++ on Linux/Solaris:
+
+You can compile the examples that do not use third-party libraries with
+a simple command line:
+
+$ g++ -o <executable_name> <source1.cpp> [source2.cpp ...]
+
+For example, you can compile the AirlineTicket example from chapter one by
+changing to its directory and running:
+
+$ g++ -o AirlineTicket AirlineTicket.cpp AirlineTicketTest.cpp 
+
+Now you can run the AirlineTicket program:
+
+$ ./AirlineTicket
+
+
+Compiling with Visual Studio .NET:
+
+Create a new project using the Visual C++ Win32 Console Project template.
+Enter a name and accept the defaults for each step of the wizard. Remove the
+files under "Source Files" and add the example files by dragging them onto
+"Source Files."
+
+Select "Start without Debugging" from the "Debug" menu to build and run the
+program.
+
+If you get an error similar to:
+
+"Unexpected end of file while looking for precompiled header directive"
+
+You need to turn off precompiled headers. Right click on the project in the
+Solution Explorer and select "Properties". Go to C/C++ Precompiled Headers and
+set the Create/Use Precompiled Header option to "Not Using Precompiled
+Headers".
+
+If your program exits before you have a chance to view the output, use the
+"Start without Debugging" menu item instead of the "Start" menu item. It will
+add a pause to the end of the program so you can view the output.
+
+
+Using Third-Party Libraries:
+
+Several examples make use of third-party libraries discussed in the associated
+chapter, such as xerces and cppunit. To use those libraries, download them
+from the web site given in the text and build them according to the
+accompanying instructions. The README file with the library will usually
+describe how to use it. In most cases, you simply need to link the library or
+libraries when compiling. In g++, the command would look similar to this:
+
+g++ source.cpp -L thirdparty/lib -I thirdparty/include -lthirdparty
+
+The -L flag gives g++ a directory to search for additional libraries. The -I
+flag gives g++ a directory to look for user-defined headers, and the -l flag
+gives g++ the name of a library to link with. If the library file is
+libxerces-c.so, for example, specify -lxerces
+
+To run the program, you will need to put the compiled library in a system
+directory, or add it to the current user's dynamic library path as follows
+(assuming the bash shell):
+
+$ export LD_LIBRARY_PATH=thirdparty/lib
+
+Then you will be able to run the program normally:
+
+$ ./a.out
+
