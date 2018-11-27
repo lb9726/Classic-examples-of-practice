@@ -1,0 +1,79 @@
+通讯录管理系统 == Address book management system
+
+分三层架构实现：数据层，逻辑层，UI层层层递进
+三层架构的思想是：主函数调用UI，UI层调用logic层，logic层调用data层的函数如此形成三层架构
+
+
+实现功能：管理员登录，密码隐藏，增删改查，表格式打印信息（类似与mysql数据库的打印格式）
+
+结构体：
+typedef struct PERSONINFO
+{
+    int id;                //编号
+    char name[30];		   //姓名
+    char sex[10];          //性别
+    char age[10];          //年龄
+    char telephone[20];    //联系电话
+    char address[60];      //家庭住址
+    char group[40];        //群组
+    char mails[60];        //邮箱
+    char time[50];         //添加日期
+}PERSONINFO;
+
+UI层的函数有：登录界面，增加信息界面，删除信息界面，修改信息界面，查询信息界面
+
+logic层的函数：对性别进行排错，对联系电话进行排错，对邮箱格式进行排错，对群组的输入进行排错
+
+data层的函数：太多了，不一一列举了
+
+按编号显示，按姓名显示，按群组显示
+
+排序：按编号从大到小，从小到大
+
+编号重新利用，即是从没有使用的编号中优先使用最小编号
+
+表格式打印信息（类似与mysql数据库的打印格式）
+
+/****************************************************
+功能:能够实现读取文件的内容到动态链表中
+使用:在管理员登录成功后调用，用来获取通讯录的信息
+传入参数:char filename[30],要读取的文件名
+返回值:返回STNODE * 的头指针,避免使用全局的头指针
+*****************************************************/
+/*
+STNODE * readfiletolist(char filename[30])
+{
+	STNODE *head=(STNODE *)malloc(sizeof(STNODE));
+	head->next==NULL;
+	PERSONINFO people;
+	//FILE *file=fopen(filename,"rb");
+    if(file==NULL)
+    {
+        printf("\033[;31m 文件打开错误!!\033[0m\n");
+        return NULL;
+    }
+    else
+    {
+        while(!feof(file))
+        {
+        	fscanf(file,"%d %s %s %s %s %s %s %s %s\n",
+        		   &people.id,
+        		   people.name,
+        		   people.sex,
+        		   people.age,
+        		   people.telephone,
+        		   people.address,
+        		   people.group,
+        		   people.mails,
+        		   people.addtime);//从文件读入记录
+            generate_node(people,head);//利用尾插法将文件中读取的信息临时存储在链表中
+        }//end of while   
+    }// end of else
+    fclose(file);
+    return head;
+}//end of function
+
+*/
+
+
+

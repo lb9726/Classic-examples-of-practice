@@ -1,0 +1,63 @@
+shell脚本中，不能随意添加空格，否则出错：
+(1) =等号两边必须无空格。否则出错。如i =$1和i= $1都是错的。但是在（）内部不限制如for ((i= 1;i < 3;i= i+1))是正确的。
+(2) (())内外部括号之间无空格，( () )这样报错。但内部括号内不限制，随便如s=$(( $i+1 ))可以
+(3) []是条件判断式，所以前后内部都必须空格。其内部元素之间必须有空格才能识别，否则一律报错，如“while [ $i -lt 6 ]”少一个空格都报错。总之，[]所在行每个独立元素前后都必须有空格（不是一起的就必须空格）。-gt，-lt，-ge，-le，-ne
+另外，单引号是字符串限定符，将内部内容作为字符串。而双引号和{}是变量限定符，内部作为变量处理
+
+例子：
+#!/bin/bash
+for ((i= 1;i < 3;i= i+1))
+do
+    echo $i;
+    echo '$i';
+    echo "$i";
+done
+
+
+while [ $i -lt 6 ]
+do
+     i=$(( $i+1 ))
+     echo $i
+done
+s=$(( $i+1 ))
+echo $s
+输出为：
+1
+$i
+1
+2
+$i
+2
+4
+5
+6
+7
+
+再如： bin=`dirname "$0"`  如果写成bin =`dirname "$0"`就报错
+#!/usr/bin/bash
+source /etc/profile
+bin=`dirname "$0"`
+echo $bin
+echo "$bin"
+echo '$bin'
+echo ${bin}
+echo "${bin}"
+#inputfile="/home/deve_test_user/liu/observer_report_20130915155111"
+inputfile="$bin/observer_report_20130915155111"
+echo $inputfile
+echo ${inputfile}
+echo "$inputfile"
+echo "${inputfile}"
+输出：
+.
+.
+$bin
+.
+.
+./observer_report_20130915155111
+./observer_report_20130915155111
+./observer_report_20130915155111
+./observer_report_20130915155111
+从例子中可以看出：
+1.{}和“”对于变量没有影响。有没有一样
+2.单引号''是变量成为字符串，echo '$bin'输出为$bin

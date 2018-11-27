@@ -1,0 +1,103 @@
+容器概述：
+顺序容器：vector，deque和list
+容器适配器：queue，priority_queue和stack
+关联容器：pair工具类，map，multimap，set和multiset。
+其他容器：数组，string，流和bitset
+
+应该记得，第4章谈到，STL中的容器是一些用于存储数据集合的通用数据结构。如果使用STL，很少需要使用C风格
+的数组，也不需要自己来编写一个链表，或者设计一个栈。这些容器已经实现为模板，可以针对任何满足以下基本条件的类型对比模板实例化。
+
+STL提供了11个容器，可划分为4类。顺序容器（sequential container）：vector（动态数组），deque和list。
+关联容器（associative container）包括map，mulitimap，set和multiset。容器适配器（container adapter）包括queue，priority_queue 和stack。 最后一个容器bitset本身作为一个类。另外，C风格的数组，C++ String和流都可以在一定程度上用作为STL容器。
+
+
+STL中的所有内容都在std的命名空间中。这本书中的例子总是会在源文件中使用这么一条语句：using namespace std; 不过，在自己的程序中，对于使用std中的哪些符号，可以有自己的更多选择。
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  vector<double> doubleVector; // create a vector with zero elements
+  double max, temp;
+  size_t i;
+
+  // Read the first score before the loop in order to initialize max
+  cout << "Enter score 1: ";
+  cin >> max;
+  doubleVector.push_back(max);
+
+  for (i = 1; true; i++) {
+    cout << "Enter score " << i + 1 << " (-1 to stop): ";
+    cin >> temp;
+    if (temp == -1) {
+      break;
+    }
+    doubleVector.push_back(temp);
+    if (temp > max) {
+      max = temp;
+    }
+  }
+
+  max /= 100;
+  for (i = 0; i < doubleVector.size(); i++) { 
+    doubleVector[i] /= max;
+    cout << doubleVector[i] << " ";
+  }
+  cout << endl;
+  return (0);
+}
+/*
+从这个例子能够看出，可以像使用数组一样地使用向量
+*/
+
+其他向量元素访问方法
+除了使用operator[]外，还可以通过at(),front()和back()等方法访问vector元素。at() 几乎与operator[]等同，只不过他会完成越界检查，如果索引越界，他会抛出一个out_of_range异常。front()和back()分别返回vector中第一个和最后一个元素的引用。
+访问任何vector元素的时间复杂性都是常量函数 O(1)。
+
+
+不定长向量
+vector真正的强大之处在于它能够动态增长。例如：还是考虑前面的检测分数“规范化”程序，不过现在有一个新的需求，它要处理多个测验分数。以下是这个新版本的程序。
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  vector<double> doubleVector; // create a vector with zero elements
+  double max, temp;
+  size_t i;
+
+  // Read the first score before the loop in order to initialize max
+  cout << "Enter score 1: ";
+  cin >> max;
+  doubleVector.push_back(max);
+
+  for (i = 1; true; i++) {
+    cout << "Enter score " << i + 1 << " (-1 to stop): ";
+    cin >> temp;
+    if (temp == -1) {
+      break;
+    }
+    doubleVector.push_back(temp);
+    if (temp > max) {
+      max = temp;
+    }
+  }
+
+  max /= 100;
+  for (i = 0; i < doubleVector.size(); i++) { 
+    doubleVector[i] /= max;
+    cout << doubleVector[i] << " ";
+  }
+  cout << endl;
+  return (0);
+}
+
+/*
+这个版本的程序使用了默认构造函数来创建一个包含0个元素的vector。读入每个分数后，它会通过push_back()方法增加到vector中。push_back()会负责为这个新元素分配空间。需要注意，最后一个for循环对vector使用了size()方法来确定容器中元素的个数。size()返回一个无符号整数，所以为了做到兼容，i的类型改为size_t。
+*/
+
+

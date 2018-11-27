@@ -1,0 +1,74 @@
+1. IPv4对多播的支持是可选的，而IPv6则是必须的
+2. IPv6没有提供对广播的支持，当使用广播的IPv4应用程序移植到IPv6时，
+必须使用IPv6的多播方式进行重新编码
+3. 广播和多播是使用UDP，二者都不能使用TCP。
+简单地说，单播是一台主机向另一台主机发送数据报;广播是一台主机向本子网内的所有主机发送数据报;
+多播是在单播和广播之间提供一种折衷方案，数据报只发往网络中的部分主机。
+
+
+多播的概念
+单播地址标识单个接口。广播地址标识子网上所有接口，多播地址标识一组几口。
+单播和广播是编址方案的两个极端(要么一个，要么全部)，多播的目的就在于提供
+一种折衷的方案。多播数据报仅对该数据报感兴趣的接口接收，也就是说，由运行希望
+参加多播会话应用系统的主机上的接口接收。广播一般局限于局域网，而多播即可用于局域网也
+可跨越广域网。
+多播是通过D类地址进行的，D类地址的前4位为1110,后面28位为多播的组标识。
+地址范围是224.0.0.0 ～ 239.255.255.255。下面是几个特殊的IPv4多播地址：
+224.0.0.0: 保留
+224.0.0.1: 本子网上的所有主机
+224.0.0.2: 本子网上的所有网关
+224.0.0.1: NTP(网络时间协议)组。
+介于224.0.0.0 ～ 224.0.0.255间的地址(也将它写成224.0.0.0/24)称为链路局部(link local)
+地址。这些地址被保留用于低级拓扑发现和维护协议。以这些地址为目的的数据报不能被多播路由器转发。
+
+多播套接口选项
+多播的API支持仅需要5个新的套接口选项。如下表所示，展示了5个套接口选项在IPv4和IPv6中调用
+getsockopt()与setsockopt()时所期望参数的数据类型。指向所给出数据类型变量的指针是getsockopt()
+和setsockopt()的第4个参数。所有10个(5对)选项对setsockopt()都是合法的，但加入和离开多播组的
+4个(2对)选项在getsockopt()中是不允许的。
+
+选项名                        数据类型                      说明
+IP_ADD_MEMBERSHIP            Struct ip_mreq                加入一个多播组
+IP_DROP_MEMBERSHIP           Struct ip_mreq                离开一个多播组
+IP_MULTICASE_IF              Struct ip_addr                指定外出多播数据报的外出接口
+IP_MULCAST_TTL               U_char                        指定外出多播数据报的TTL
+IP_MULCAST_LOOP              U_char                        使能或禁止外出多播数据报的回馈
+IPV6_ADD_MEMBERSHIP          Struct ipv6_mreq              加入一个多播组
+IPV6_DROP_MEMBERSHIP         Struct ipv6_mreq              离开一个多播组
+IP6_MULTICASE_IF             U_int                         指定外出多播数据报的外出接口
+IP6_MULTICAST_HOPS           Int                           指定外出多播数据报的跳限
+IP6_MULTICAST_LOOP           U_int                         使能或禁止外出多播数据报的回馈
+
+
+注意：IPv4和IPv6的各自5个选项在概念上是相同的，只是名字和参数类型不同。
+IP_ADD_MEMBERSHIP 和 IPV6_ADD_MEMBERSHIP在一个指定的地址接口上加入一个多播组。用IPV4中的单播地址
+或IPV6中的接口索引去指定本地接口。当加入或离开一个组时，要用到下面两个结构提：
+
+struct ip_mreq {
+    struct in_addr imr_multiadd; /*IPv4的D类多播地址*/
+    struct in_add imr interface; /*本地接口IPv4地址*/
+}
+
+struct ipv6_mreq {
+    struct in6_addr ipv6mr_multiadd; /*IPv6多播地址*/
+    unsigned int ipv6mr_interface;   /*接口索引或者0*/
+}
+
+如果本地接口指定为通配地址(在IPv4中为INADDR_ANY)或者IPv6中的索引0，那么本地接口就由内核来选择。
+在一个给定的套接口上可以多次加入多播组，但是每次加入的必须是一个不同的多播地址。加入多播组的方法
+是设置套接口选项IP_ADD_MEMBERSHIP(IPv4)，如下：
+setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mcaddr, sizeof(struct ip_mreq));
+
+
+
+
+
+
+
+
+
+
+
+
+
+

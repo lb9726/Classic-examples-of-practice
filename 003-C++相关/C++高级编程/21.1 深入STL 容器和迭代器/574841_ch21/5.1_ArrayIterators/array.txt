@@ -1,0 +1,11 @@
+21.5 其他容器
+前面已经提到了，C++语言中还有其他一些方面在某种程度上与STL有关，这包括数组，string，流和bitset。
+
+21.5.1 数组作为STL容器
+
+应该记得，“哑” 指针可以很好地作为迭代器，因为它们支持所需的操作符。这一点绝非小事。这说明你可以把常规的C++数组当作STL容器，只需要使用元素的指针作为迭代器。当然，数组并没有提供诸如size(),empty(),insert()和erase()等方法，因此他们不是真正的STL容器。不过，由于数组通过指针确实支持迭代器，因此可以在第22章所述的算法和这一章介绍的某些方法中使用数组。
+
+    例如：可以使用vector insert()方法将一个数组中的所有元素复制到一个vector中，此方法取任意容器的一个迭代器区间。insert()方法原型如下：
+template <typename InputIterator> void insert(iterator position, InputIterator first, InputIterator last);
+
+如果想用一个int数组作为复制源，InputIterator的模板化类型则为int* 。以下是这个完整的例子。

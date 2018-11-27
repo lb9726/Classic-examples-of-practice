@@ -1,0 +1,54 @@
+curses库是一组函数，程序员可以用它们来设置光标的位置和终端屏幕上显示的字符样式。curses库最初是由UCB的开发小组开发的。大部分控制终端屏幕的程序使用curses。曾经由一组简单的函数组成的库现在包括了许多复杂的特性。
+
+Ubuntu下安装方法：
+
+sudo apt-get install libncurses5-dev 
+
+(如果发现找不到这个包，使用命令 sudo apt-get update 更新下包源)
+
+curses的基本用法如下：
+
+1. 包含头文件：curses.h
+
+2. 编译时应加上链接语句-lcurses，如：gcc temp.c -o temp -lcurses
+
+3. 重要的函数：
+
+initscr()：初始化curses库和ttty。（在开始curses编程之前，必须使用initscr()这个函数来开启curses模式）
+
+endwin()：关闭curses并重置tty。（结束curses编程时，最后调用的一个函数）
+
+move(y,x): 将游标移动至 x,y 的位置. 
+getyx(win,y,x): 得到目前游标的位置. (请注意! 是 y,x 而不是&y,&x ) 
+clear() and erase(): 将整个萤幕清除. (请注意配合refresh() 使用)
+echochar(ch): 显示某个字元. 
+addch(ch): 在当前位置画字符ch
+mvaddch(y,x,ch): 在(x,y) 上显示某个字元. 相当於呼叫move(y,x);addch(ch); 
+addstr(str): 在当前位置画字符串str
+mvaddstr(y,x,str): 在(x,y) 上显示一串字串. 相当於呼叫move(y,x);addstr(str); 
+printw(format,str): 类似 printf() , 以一定的格式输出至萤幕. 
+mvprintw(y,x,format,str): 在(x,y) 位置上做 printw 的工作. 相当於呼叫move(y,x);printw(format,str); 
+getch(): 从键盘读取一个字元. (注意! 传回的是整数值) 
+getstr(): 从键盘读取一串字元. 
+scanw(format,&arg1,&arg2...): 如同 scanf, 从键盘读取一串字元. 
+beep(): 发出一声哔声. 
+box(win,ch1,ch2): 自动画方框
+
+refresh():   使屏幕按照你的意图显示。比较工作屏幕和真实屏幕的差异，然后refresh通过终端驱动送出那些能使真实屏幕于工作屏幕一致的字符和控制码。（工作屏幕就像磁盘缓存，curses中的大部分的函数都只对它进行修改）
+
+standout(): 启动standout模式（一般使屏幕发色）
+
+standend(): 关闭standout模式
+
+常用的初始化函数集合：
+
+void initial()
+{
+      initscr();                                 //开启curses模式
+      cbreak();                               //开启cbreak模式,除了 DELETE 或 CTRL 等仍被视为特殊控制字元外一切输入的字元将立刻被一一读取
+      nonl();                                   //用来决定当输入资料时, 按下 RETURN 键是否被对应为 NEWLINE 字元
+      noecho();                             //echo() and noecho(): 此函式用来控制从键盘输入字元时是否将字元显示在终端机上
+      intrflush(stdscr,false);
+      keypad(stdscr,true);          //当开启 keypad 後, 可以使用键盘上的一些特殊字元, 如上下左右>等方向键
+      refresh();                              //将做清除萤幕的工作
+}

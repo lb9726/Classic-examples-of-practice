@@ -1,0 +1,59 @@
+/*
+关于删除文件中的数据：
+创建结构体数组，定义指针，指向该数组；
+用fscanf向文件中写数据
+由用户输入要删除的名称，，判断是否与文件中的相同，相同则删除该行，用下一行覆盖上一行
+
+
+*/
+
+
+#include "ui.h"
+int main()
+{    j=0;
+    if(LoginUI())
+    {
+        //printf("登陆成功\n");  测试语句最好删除
+	
+	while(1)
+	{
+	    int ret=MainUI();
+	    switch(ret)
+	    {
+		case 1:
+		    AddBookUI();
+		    break;
+		case 2:
+		    delete_bookinfo();
+                    while(getchar() == '\n');
+		    break;
+	        case 3:
+		    showBookUI();
+		    break;
+                 case 4:
+                    ModifyBook();
+		    break;
+		case 5:
+                    AddUser();
+		    break;
+		case 6:
+		    ShowUser();
+		    break;
+                case 7:
+                    DeleteUser();
+                    break;
+                case 8:
+                    ModifyUser();  
+                    break;
+ 		 
+	    }
+	    if(0==ret)
+		break;
+	}
+	
+    }
+	
+    else
+	LoginUI();//printf("登陆失败\n");
+    return 0;
+}

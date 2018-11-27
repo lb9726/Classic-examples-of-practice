@@ -1,0 +1,49 @@
+1. 先生成.o 的目标文件 gcc -c formatPrintf.c 生成 formatPrintf.o 文件
+2. 生成.a的静态库文件  ar -r libformatPrintf.a formatPrintf.o 
+3. 生成可执行程序 gcc main.c libformatPrintf.a -L. -o main.static
+此时生成的可执行的程序不依赖当前的库文件了，因为此时的可执行程序中已经包含了静态库文件的内容了，比动态库的确定是
+文件变大了，而且加入修改了库文件的话，必须重新编译生成可执行程序才可以
+
+include的头文件仍然需要包含，但是后续的库文件可以不提供，只需要编译好的可执行程序即可
+
+libo@ubuntu:~/Desktop/emulation/Test_lib/Static_lib/test_static_lib$ ldd main.static 
+	linux-vdso.so.1 =>  (0x00007fff1dffe000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f9f2ff89000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f9f30375000)
+不再依赖库文件了
+
+libo@ubuntu:~/Desktop/emulation/Test_lib/Static_lib/test_static_lib$ nm libformatPrintf.a 
+
+formatPrintf.o:
+0000000000000fa7 T addBlank
+0000000000000662 T appendColumn
+0000000000001648 T destroyLinklist
+                 U fclose
+                 U feof
+                 U fopen
+                 U free
+0000000000001692 T freeSpace
+0000000000000ccc T gainColumnMaxLength
+0000000000000813 T generateNode
+0000000000000623 T getLines
+0000000000000dba T getMax
+000000000000006f T initAarry
+0000000000000a73 T intFormString
+                 U __isoc99_fscanf
+000000000000135a T linking
+                 U malloc
+                 U memset
+0000000000000000 T myStrLen
+                 U printf
+000000000000147c T printInfoIntoTable
+                 U putchar
+                 U puts
+0000000000000a31 T readFileToList
+00000000000008a2 T readFileUseFscanf
+0000000000000ac1 T readInfoToArray
+000000000000017f T showInfoInorder
+                 U sprintf
+                 U __stack_chk_fail
+                 U strcat
+                 U strcpy
+

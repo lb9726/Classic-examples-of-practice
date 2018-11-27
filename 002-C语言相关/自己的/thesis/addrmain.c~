@@ -1,0 +1,7 @@
+#include"addrui.h"
+
+int main()
+{
+	user_loginUI();
+	return 0;
+}

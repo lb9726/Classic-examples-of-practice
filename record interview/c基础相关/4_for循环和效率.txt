@@ -1,0 +1,41 @@
+请简述以下两个 for 循环的优缺点。
+1.
+for( i = 0; i < N; i++)
+{
+    if (condition)
+        DoSomething();
+    else
+        DoOtherthing();
+}
+1.
+优点：程序简洁
+缺点：多执行了N-1次逻辑判断，并且打断了循环“流水线”作业，使得编译器不能对循环进行优化处理，降低了效率
+
+2. 
+if (condition)
+{
+    for( i = 0; i < N; i++)
+        DoSomething();
+}
+else 
+{
+    for( i = 0; i < N; i++)
+        DoOtherthing();
+}
+2.
+优点：循环效率高
+缺点：程序不简洁
+
+
+请问下面程序有什么错误?
+int a[60][250][1000],i,j,k;
+for(k=0;k<=1000;k++)
+    for(j=0;j<250;j++)
+        for(i=0;i<60;i++)
+            a[i][j][k]=0;
+【标准答案】把循环语句内外换一下。
+
+
+
+
+

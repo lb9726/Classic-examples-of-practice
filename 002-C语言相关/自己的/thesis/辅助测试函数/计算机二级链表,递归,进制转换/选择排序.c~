@@ -1,0 +1,109 @@
+/*
+设有10个元素a[0]~a[9],将a[0]与a[1]~a[9]比较，若a[0]比a[1]~a[9]都小，则不进行交换，即无任何操作。若a[1]~a[9]中有一个以上比a[0]小，
+则将其中最小的一个（假设为a[k])与a[0]交换，此时a[0]中存放了10个数中最小的数。
+第二轮将a[1]与a[2]~a[9]比较，将剩下9个数中的最小者与a[1]交换，此时a[1]中存放的是10个数中次小的数。
+以此类推，共进行9轮比较，a[0]到a[9]就已按由小到大的顺序存放了。
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int a[10];
+	int i,j,k,t;
+	printf("input 10 numbers :\n");
+	for(i=0;i<10;i++)
+		scanf("%d",&a[i]);
+	printf("\n");
+	for(i=0;i<9;i++)
+	{
+		k=i;
+		for(j=i+1;j<=9;j++)
+			if(a[k]>a[j]) k=j;  //该循环结束时，得到a[k]是a[i]~a[10]中最小值
+		if(k!=i)                //若a[i+1]~a[10]中有一个比以上a[i]小，则
+		{
+			t=a[i];a[i]=a[k];a[k]=t; //将a[i+1]~a[10]中的最小者a[k]与a[i]交换
+		}
+	}
+		printf("the sorted numbers :\n");
+		for(i=0;i<10;i++)
+			printf("%5d",a[i]);
+		printf("\n");
+	
+}
+
+
+//读文件到结构体数组的子函数
+void readfiletojiegouti(PERSONINFO people,FILE *file)
+{
+    if(file==NULL)
+    {
+        printf("打开文件出错！\n");
+        return;
+    }
+    else
+    {
+        while((fread(&people,sizeof(struct PERSONINFO),1,file))==1)//利用尾插法将文件中读取的信息临时存储在链表中
+        {
+            usr[y++].sName=people.sName;
+        }//end of while   
+    }// end of else
+}
+
+
+// 管理员登录
+int LoginUI()
+{
+    //界面绘制
+    system("clear");
+    char szUser[40]={'\0'};
+    char szPass[40]={'\0'};
+    printf("\t\t\t    欢迎使用公司管理系统!!!!\n");
+    printf("\t****************************************************************\n");
+    printf("\t*\t 只有 boss,manager,salemanager才可以进行登录管理！     *\n");
+    printf("\t*管理员用户名和登录密码都只有三次机会，如果超过将自动退出系统！*\n");
+    printf("\t****************************************************************\n");
+    int i=0,j=0,k;
+    printf("        请输入k的值，输入为 0：用户名为 boss\n");
+    scanf("%d",&k);
+    printf("\t用户名:");
+    scanf("%s",szUser);
+    while(strcmp(szUser,UsrName[k])!=0)
+    {
+        if(i>=2)
+        {
+            printf("您输入的用户名错误已达到3次,系统自动退出！！\n");
+            exit(0);//超过规定的次数则登录失败，退出系统
+        }
+            
+        i++;
+        printf("\n 管理员名无效！请重新输入：");
+        scanf("%s",szUser);
+    }
+    printf("\t密码:");
+    scanf("%s",szPass);
+
+    j=0;
+    while(strcmp(szPass,"123456")!=0)
+    {
+        if(j>=2)
+        {
+            printf("您输入的密码错误已达到3次,系统自动退出！！\n");
+            exit(0);    //超过规定次数则登录失败，退出系统
+        }
+        j++;
+        printf("\n密码输入错误！请重新输入：");
+        scanf("%s",szPass);
+     }
+     if(i<2&&j<2)
+     {
+        UserName[1]=UsrName[k];
+         return 1;
+     }
+     else 
+         return 0;
+}
+
+
+
+
+

@@ -1,0 +1,53 @@
+带参数的宏和函数很相似，但有本质上的区别：宏展开仅仅是字符串的替换，不会对表达式进行计算；宏在编译之前就被处理掉了，它没有机会参与编译，也不会占用内存。而函数是一段可以重复使用的代码，会被编译，会给它分配内存，每次调用函数，就是执行这块内存中的代码。
+
+【示例①】用函数计算平方值。
+#include <stdio.h>
+int SQ(int y){
+  return ((y)*(y));
+}
+int main(){
+    int i=1;
+    while(i<=5){
+        printf("%d^2 = %d\n", (i-1), SQ(i++));
+    }
+    return 0;
+}
+运行结果：
+1^2 = 1
+2^2 = 4
+3^2 = 9
+4^2 = 16
+5^2 = 25
+
+【示例②】用宏计算平方值。
+#include <stdio.h>
+#define SQ(y) ((y)*(y))
+int main(){
+    int i=1;
+    while(i<=5){
+        printf("%d^2 = %d\n", i, SQ(i++));
+    }
+    return 0;
+}
+在 VS2010 和 C-Free 5.0 下的运行结果：
+3^2 = 1
+5^2 = 9
+7^2 = 25
+
+在示例①中，先把实参 i 传递给形参 y，然后再自增 1，这样每循环一次 i 的值增加 1，所以最终要循环 5  次。
+
+在示例②中，宏调用只是简单的字符串替换，SQ(i++) 会被替换为 ((i++)*(i++))，这样每循环一次 i 的值增加 2，所以最终只循环 3  次。
+
+由此可见，宏和函数只是在形式上相似，本质上是完全不同的。
+
+带参数的宏也可以用来定义多个语句，在宏调用时，把这些语句又替换到源程序中，请看下面的例子：
+#include <stdio.h>
+#define SSSV(s1, s2, s3, v) s1 = length * width; s2 = length * height; s3 = width * height; v = width * length * height;
+int main(){
+    int length = 3, width = 4, height = 5, sa, sb, sc, vv;
+    SSSV(sa, sb, sc, vv);
+    printf("sa=%d, sb=%d, sc=%d, vv=%d\n", sa, sb, sc, vv);
+    return 0;
+}
+运行结果：
+sa=12, sb=15, sc=20, vv=60

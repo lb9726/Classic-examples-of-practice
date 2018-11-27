@@ -1,0 +1,83 @@
+#include<fstream>
+#include<iostream>
+#include<string>
+#include<iomanip>
+
+#include<stdlib.h>
+#include<stdio.h>
+#include<termios.h>
+#include<unistd.h>
+#include<assert.h>
+#include<string.h>
+
+using namespace std;
+
+class employee
+{
+	public:
+		int id;              //编号
+		char name[20];       //姓名
+		char passwd[20];     //密码
+		char sex[3];         //性别
+		char regtime[30];    //注册时间
+		char position[10];   //职称
+		char department[10]; //部门
+		char grade[6];       //等级
+		char leader[20];     //上级
+		int jifen;           //积分(用来提升等级)
+		
+		virtual void read()=0;   //读取人员信息
+		virtual void add()=0;    //添加人员信息
+	    virtual void del()=0;    //删除人员信息
+	    virtual void mod()=0;    //修改人员信息
+		virtual void look()=0;   //查找人员信息
+		virtual void show()=0;   //显示人员信息
+		virtual void save()=0;   //保存人员信息
+
+
+};
+
+class boss
+{
+	protected:
+		char name[10]="boss";
+		char passwd[20]="123456";
+		void  
+};
+
+class saleperson:public employee
+{
+	public:
+		
+		
+	protected:
+};
+
+class skillperson:public employee
+{
+	public:
+	protected:
+};
+
+class manager:public employee
+{
+	public:
+	protected:
+		
+};
+
+class salemanager:public employee,
+{
+	public:
+	protected:
+};
+
+
+
+
+
+
+
+
+
+

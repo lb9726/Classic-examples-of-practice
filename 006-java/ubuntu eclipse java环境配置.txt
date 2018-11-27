@@ -1,0 +1,14 @@
+1.上官网下载jdk
+http://www.oracle.com/technetwork/java/javase/archive-139210.html
+http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
+
+eclipse 安装介绍，在eclipse官网下载正确版本，ubuntu的下载
+http://www.eclipse.org/downloads/
+Ubuntu下安装eclipse
+
+1.新建一个文件夹  sudo mkdir -p /usr/lib/jvm/
+2. 将jdk文件解压到/usr/lib/jvm/ 之下  sudo tar -C /usr/lib/jvm/ -xvzf jdk-8u144-linux-x64.tar.gz
+
+3.解压eclipse tar -xzvf eclipse-java-oxygen-R-linux-gtk-x86_64.tar.gz
+
+4. 在解压的同一级别目录eclipse中，运行./eclipse即可

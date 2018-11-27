@@ -1,0 +1,26 @@
+demand = require
+request desire     (should) do 虚拟语气不论主、宾、表、从
+例如：my demand is that he (should) come tomorrow 
+
+2、要求高的，有挑战性的  demanding = challenging
+3、必修的 required  books 
+4、described result 想要的结果
+5、be in great demand:受欢迎的
+
+1、他要求所有的人马上行动起来共同努力完成这个任务
+He demanded that everyone (should) act now and act together to fulfil the task
+
+2、众所周知你们公司的服务深得消费者欣赏，我要求你们尽快解决我的问题
+To our knowledge, the service of your company wins the hearts of us cusomers. My demand is that you should solve my problem as soon as possible
+
+3、作为一个歌唱家，他很受欢迎，他的唱片畅销市场，光去年就达到了一亿
+As a singer, he is great demand. His CDS/records hit the market, reaching 100 million copies last year alone
+
+4、当罪犯达到时被警察发现了，车上的警察要求他停下来，但他继续跑
+Just as the criminal got to the bridge , he was spotted by the police. The policemen at the wheel demanded that he  (should) stop but he ran on 
+
+5、满足父母的需求所带来的压力增加了今天青少年的危机感
+The pressure to meet parents' demands has added to the sense of crisis among us young adults
+
+6、当你了解你的工作并且对它有热情，没有理由你得不到想要的赞赏
+When you know your work and show enthusiasm for it , there is no reason that you wouldn't get your desired appreciation 

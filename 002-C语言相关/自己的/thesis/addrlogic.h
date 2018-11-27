@@ -1,0 +1,12 @@
+#include"addrdata.h"
+
+void check_person_sex(char sex[]);
+
+void check_person_age(char age[]);
+
+void check_person_telephone(char telephone[]);
+
+void check_person_group(char group[]);
+
+void check_person_mails(char mails[]);
+

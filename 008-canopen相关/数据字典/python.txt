@@ -1,0 +1,10 @@
+libo@ubuntu:~/Desktop/数据字典/canopen_od/objdictgen$ python objdictedit.py 
+Traceback (most recent call last):
+  File "objdictedit.py", line 24, in <module>
+    import wx
+ImportError: No module named wx
+
+
+https://linux.cn/article-6040-rss.html
+sudo apt-get install python-wxgtk2.8
+安装完成之后能够正常打开了那个python objdictedit.py 文件了

@@ -1,0 +1,169 @@
+#include"logic.h"
+
+
+
+
+
+//获取系统时间
+void systemtime(employee e)
+{
+	char buf[40];
+	time_t rawtime;
+	struct tm * timeinfo;
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	sprintf(systime,"%d-%d-%d %d:%d:%d\n",timeinfo->tm_year+1900,timeinfo->tm_mon+1,timeinfo->tm_mday,timeinfo->tm_hour,timeinfo->tm_min,timeinfo->tm_sec);
+	strcpy(e.lastlogintime,systime);
+}
+
+//部门选择
+void depart(employee e)
+{
+	if(strcmp(e.position,"经理")==0 ||strcmp(e.position,"技术人员")==0)
+	{
+		strcpy(e.department,"技术部门");
+	}
+	if(strcmp(e.position,"销售经理")==0 ||strcmp(e.position,"销售人员")==0)
+	{
+		strcpy(e.department,"销售部门");
+	}
+}
+
+//级别选择
+void gradechoice(employee e)
+{
+	if(strcmp(e.position,"技术人员")==0 || strcmp(e.position,"销售人员")==0)
+	{
+		strcpy(e.grade,"3"); 
+	}
+	if(strcmp(e.position,"经理")==0 || strcmp(e.position,"销售经理")==0)
+	{
+		strcpy(e.grade,"2"); 
+	}
+}
+
+//上级选择
+void leaderchoice(employee e)
+{	
+	if(strcmp(e.position,"技术人员")==0) 
+	{
+		strcpy(e.leader,"经理"); 
+	}
+	if(strcmp(e.position,"销售人员")==0)
+	{
+		strcpy(e.leader,"销售经理"); 
+	}
+	if(strcmp(e.position,"经理")==0 || strcmp(e.position,"销售经理")==0)
+	{
+		strcpy(e.grade,"boss"); 
+	}
+}
+//固定工资
+void stablesalary(employee e)
+{	
+	if(strcmp(e.position,"技术人员")==0) 
+	{
+		stablesalary=0; 
+	}
+	if(strcmp(e.position,"销售人员")==0)
+	{
+		stablesalary=0; 
+	}
+	if(strcmp(e.position,"经理")==0 )
+	{
+		stablesalary=0; 
+	}
+	if( strcmp(e.position,"销售经理")==0)
+	{
+		stablesalary=6000; 
+	}
+	
+}
+
+//工作时间
+void wtime(employee e)
+{	
+	if(strcmp(e.position,"技术人员")==0) 
+	{
+		worktime=8; 
+	}
+	if(strcmp(e.position,"销售人员")==0)
+	{
+		worktime=0; 
+	}
+	if(strcmp(e.position,"经理")==0 )
+	{
+		worktime=0; 
+	}
+	if( strcmp(e.position,"销售经理")==0)
+	{
+		worktime=0; 
+	}
+}
+
+//单位时间报酬
+void ssalary(employee e)
+{	
+	if(strcmp(e.position,"技术人员")==0) 
+	{
+		timereward=20; 
+	}
+	if(strcmp(e.position,"销售人员")==0)
+	{
+		timereward=0; 
+	}
+	if(strcmp(e.position,"经理")==0 )
+	{
+		timereward=0; 
+	}
+	if( strcmp(e.position,"销售经理")==0)
+	{
+		timereward=0; 
+	}
+}
+
+//提成
+void stablesalary(employee e)
+{	
+	if(strcmp(e.position,"技术人员")==0) 
+	{
+		ticheng=0.3; 
+	}
+	if(strcmp(e.position,"销售人员")==0)
+	{
+		ticheng=0; 
+	}
+	if(strcmp(e.position,"经理")==0 )
+	{
+		ticheng=0; 
+	}
+	if( strcmp(e.position,"销售经理")==0)
+	{
+		ticheng=0.08; 
+	}
+}
+
+//积分初始化
+void jifeninit(employee e)
+{
+	if(strcmp(e.position,"技术人员")==0 || strcmp(e.position,"销售人员")==0)
+	{
+		jifen = 100; 
+	}
+	if(strcmp(e.position,"经理")==0 || strcmp(e.position,"销售经理")==0)
+	{
+		jifen = 200; 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

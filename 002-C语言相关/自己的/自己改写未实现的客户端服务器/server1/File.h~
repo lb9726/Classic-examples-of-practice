@@ -1,0 +1,5 @@
+//#include "serverdata.h"
+
+//处理传来的数据
+void Judgelogic(STNODE *head,USER Seruser);
+

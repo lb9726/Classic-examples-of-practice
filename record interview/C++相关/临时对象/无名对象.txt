@@ -1,0 +1,136 @@
+无名对象，也叫临时对象。指的是直接由构造函数产生，但是没有被任何符号所引用的对象。例如：string("abc")，这句话产生的就是一个无名对象，这个对象产生以后，没有什么办法使用它。但是对于string str("abc")来说，则产生的是一个有名字的对象，他的名字就是 str。
+
+任何引用必须初始化。
+
+const（对象）变量只能传递给const引用，不能传递给非const引用。假如说把一个const的对象传递给了非const引用，那么修改这个引用就相当于修改了原来的const对象，这个违反了const约束。这种方式不能通过编译，会报error: passing `const ref' as `this' argument of `void ref::change()' discards qualifiers。
+
+预备知识：
+
+ 
+
+无名对象，也叫临时对象。指的是直接由构造函数产生，但是没有被任何符号所引用的对象。例如：string("abc")，这句话产生的就是一个无名对象，这个对象产生以后，没有什么办法使用它。但是对于string str("abc")来说，则产生的是一个有名字的对象，他的名字就是 str。
+任何引用必须初始化。
+const（对象）变量只能传递给const引用，不能传递给非const引用。假如说把一个const的对象传递给了非const引用，那么修改这个引用就相当于修改了原来的const对象，这个违反了const约束。这种方式不能通过编译，会报error: passing `const ref' as `this' argument of `void ref::change()' discards qualifiers。
+请观察下面的代码的微妙差别，特别留意注释中的说明
+
+#include <iostream>
+
+using namespace std;
+
+
+class ref
+{
+    public:
+        ref(int input);
+        ~ref();
+        int i;
+        void change();
+        void change_const() const;
+
+};
+void ref::change_const() const
+{
+    cout<<"in change_const"<<endl;
+}
+void ref::change() 
+{
+    i=3;
+    cout<<"in change"<<endl;
+}
+ref::ref(int input)
+{
+    i=input;
+}
+ref::~ref()
+{
+    cout<<"tear down"<<endl;
+}
+
+
+void test_const(const string & str)
+{
+    cout<<str<<endl;
+}
+
+void test(string & str)
+{
+    cout<<str<<endl;
+}
+
+main()
+{
+//  int &i=1;//不能用非对象去初始化一个引用。
+    const int &j=1;//这样可以，但是没什么实际意义
+
+
+    string str("haha");
+    test(str);
+    test_const(str);
+
+
+//    test(string("haha"));//报invalid initialization of non-const reference of type 'std::string&' from a temporary of type 'std::string'。使用临时对象不能初始化test的string & 引用。
+    test_const(string("haha"));//使用临时对象初始化函数形参的时候，函数形参必须是有const限定。
+
+
+    ref const obj(1);
+    cout<<obj.i<<endl;
+    obj.change_const();
+    cout<<obj.i<<endl;
+    ref(2).change();//无名对象调用非const函数,这说明无名对象（临时对象）并不能等同于用const修饰的有名对象，用const修饰的有名对象，是不允许调用非const方法的，因为那样会修改对象的成员。这可以从下面的例子看到。
+//  obj.change();//const对象调用非const函数,报passing `const ref' as `this' argument of `void ref::change()' discards qualifiers
+}
+
+
+
+
+ ChunkTest.cpp:98: error: no matching function for call to `QStore::CQStoreDataClient::insert(std::string&, std::string, size_t, char[1000], int)'
+
+http://www.cnblogs.com/../src/QStore/client/QStoreDataClient.h:38: note: candidates are: int32_t QStore::CQStoreDataClient::insert(std::string&, std::string&, int32_t, const char*, int32_t)
+上述错误出现在下面的语句上； 
+
+pClient->insert(strChunkName, string(strKey), strlen(value), value, 10);
+
+红色的语句产生了一个临时对象，这个对象不能作为参数被insert函数调用，insert的声明如下：
+
+ 
+
+int32_t insert(std::string &sChunkName, std::string& strKey, int32_t nLen, const char* pBuffer, int32_t lExpireTime); 
+ 
+
+这个时候有两个办法：
+
+把函数定义改成int32_t insert(std::string &sChunkName, const std::string& strKey, int32_t nLen, const char* pBuffer, int32_t lExpireTime);
+调用的时候使用一个普通的有名对象。
+第一点需要能修改别人的代码，所以不方便实用。所以，最好的方法就是第二种：
+string strKey(key); 
+
+res = pClient->insert(strChunkName, strKey, strlen(value), value, 10);
+这样使用strKey这个有名的对象，编译顺利通过
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

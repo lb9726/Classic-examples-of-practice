@@ -1,0 +1,15 @@
+#include "Clilogic.h"
+
+
+int CliMainUI();
+int CliLoginUI(STNODE *Clistnode);
+int CliSeccesUI(STNODE *Clistnode);
+int CliOneChatUI(STNODE *Clistnode);
+int CliGroupChatUI(STNODE *Clistnode);
+int CliChangePassUI(STNODE *Clistnode);
+int CliRegisterUI(STNODE *Clistnode);
+int CliForgotUI(STNODE *Clistnode);
+
+int CliReturnUI();
+
+

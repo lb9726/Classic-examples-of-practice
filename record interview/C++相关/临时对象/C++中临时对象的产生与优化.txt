@@ -1,0 +1,227 @@
+C++中临时对象的产生与优化
+本文主要介绍c++中临时对象产生的几种情况，同时介绍避免的策略。由于在C++中对象的创建和消除会调用该对象对应的构造和析构函数，是一个相对比较耗时的操作，从程序效率角度来说我们应该了解并消除临时对象；又如果类中有指针，更应该了解临时对象，避免指针悬挂和内存泄露等问题。
+
+一、拷贝构造函数和赋值操作符
+在深入讨论临时对象之前来看一下拷贝构造函数和赋值操作符，为什么呢？一般而言，临时对象的产生一般对象的赋值或者拷贝，这时就需要了解拷贝操作和赋值操作。
+
+1.        拷贝操作：对象在定义时进行的初始化操作，此时调用的是拷贝构造函数完成。
+
+2.        赋值操作：对象定以后的赋值操作，此时调用的是赋值操作符完成。
+
+那么什么时候进行拷贝操作，什么时候进行赋值操作呢？如定义所示一个变量在第一次定义时进行的操作一般为拷贝操作，例如 A a; A a2 = 1; A a3(a2); A a4 = a3; 进行赋值操作的前提是变量左值已经定义，例如A a; A b; b=a;
+
+// 验证拷贝构造函数 和 赋值操作符  
+#include <iostream>  
+   
+class TestObject {  
+ public:  
+  TestObject() {  
+    std::cout << "TestObject() is called:"  
+      << con_call_num_++<< std::endl;  
+  }  
+  TestObject(int _x) {  
+    x_ = _x;  
+    std::cout << "TestObject(int) is called:"  
+      << con_call_num_++<< std::endl;  
+  }  
+  TestObject (TestObject & to) {  
+    x_ = to.x_;  
+    std::cout << "TestObject(TestObject) is called:"  
+      << ccon_call_num_++ << std::endl;  
+  }  
+  TestObject (const TestObject& to) {  
+    x_ = to.x_;  
+    std::cout << "TestObject(const TestObject) is called:"  
+      << ccon_call_num_++ << std::endl;  
+  }  
+  TestObject &operator =(const TestObject& to) {  
+    if (&to == this)  
+      return *this;  
+    x_ = to.x_;  
+    std::cout << "operator =(const) is called:"  
+      << equal_call_num_++ << std::endl;  
+    return *this;  
+  }  
+  TestObject &operator =(TestObject& to) {  
+    if (&to == this)  
+      return *this;  
+    x_ = to.x_;  
+    std::cout << "operator =() is called:"  
+      << equal_call_num_++ << std::endl;  
+    return *this;  
+  }  
+  ~TestObject() {  
+    std::cout << "~TestObject() is called:"  
+      << des_call_num_++ << std::endl;  
+  }  
+ private:  
+  int x_;  
+  static int con_call_num_;  
+  static int ccon_call_num_;  
+  static int equal_call_num_;  
+  static int des_call_num_;  
+};  
+   
+int TestObject::con_call_num_ = 0;  
+int TestObject::ccon_call_num_ = 0;  
+int TestObject::equal_call_num_ = 0;  
+int TestObject::des_call_num_ = 0;  
+   
+int main() {  
+  // copy  
+  TestObject to_1;  
+  TestObject to_2(1);  
+  TestObject to_3 = 1;  
+  TestObject to_4 = to_2;  
+  TestObject to_5(to_4);  
+  // assign  
+  to_1 = to_2;  
+  return 0;  
+}  
+其对应的输出为：
+
+ 
+TestObject() is called:0  
+TestObject(int) is called:1  
+TestObject(int) is called:2  
+TestObject(TestObject) is called:0  
+TestObject(TestObject) is called:1  
+operator =() is called:0  
+~TestObject() is called:0  
+~TestObject() is called:1  
+~TestObject() is called:2  
+~TestObject() is called:3  
+~TestObject() is called:4  
+ 从输出中可以看出带有”=“进行的不一定是赋值操作符，也有可能是拷贝构造函数。另外解决对象的深浅拷贝问题，要同时注意重载拷贝构造函数和赋值操作符。记住默认的拷贝和赋值操作均为浅拷贝。
+
+二、临时对象的产生与优化
+总体来说，临时对象产生主要有以下三种情况，
+
+1.        以值的方式给函数传参
+
+2.        隐式类型转换
+
+3.        函数返回一个对象时
+
+2.1 以值的方式给函数传参
+临时对象产生点在于给函数参数传值时，先生成该对象的临时对象，调用拷贝构造函数进行拷贝。消除方法是尽量使用引用或者传指针的方式。
+
+void Fun1(TestObject to) {  
+  std::cout << "Fun1(TestObject) is called" << std::endl;  
+}  
+void Fun1_1(TestObject & to) {  
+  std::cout << "Fun1_1(TestObject&) is called" << std::endl;  
+}  
+int main() {  
+  TestObject to_2;                                                                                
+  std::cout << "-----Test type 1-------" << std::endl;  
+  Fun1(to_2);  
+  Fun1_1(to_2);  
+  return 0;  
+}  
+产生输出如下：
+
+ 
+TestObject() is called:0  
+  
+-----Test type 1-------  
+TestObject(TestObject) is called:0  
+Fun1(TestObject) is called  
+~TestObject() is called:0  
+Fun1_1(TestObject&) is called  
+~TestObject() is called:1  
+说明：在函数传入参数时调用的是拷贝构造函数，并且临时对象的释放在一个完整语句结束时释放，即第一个分号之后。
+
+2.2 隐式类型转换
+临时对象的产生点在于发送隐式类型转换时，先进行类型转换，在进行赋值。消除方法是尽量定义即进行初始化。
+
+int main() {  
+  TestObject to_2;  
+  std::cout << "-----Test type 1-------" << std::endl;  
+  Fun1(to_2);  
+  Fun1_1(to_2);  
+  std::cout << "-----Test type 2-------" << std::endl;  
+  TestObject to_3;  
+  to_3 = 1;  
+  TestObject to_4 = 1;                                                                            
+  return 0;  
+}  
+输出结果为：
+
+ 
+-----Test type 1-------  
+TestObject(TestObject) is called:0  
+Fun1(TestObject) is called  
+~TestObject() is called:0  
+Fun1_1(TestObject&) is called  
+-----Test type 2-------  
+TestObject() is called:1  
+TestObject(int) is called:2  
+operator =(const) is called:0  
+~TestObject() is called:1  
+TestObject(int) is called:3  
+~TestObject() is called:2  
+~TestObject() is called:3  
+~TestObject() is called:4  
+在进行隐式类型转换进行的操作为：先调用构造函数生成临时对象，在进行赋值操作。
+
+2.3函数返回一个对象时
+临时对象产生点在于返回对象时先生成一个临时对象，在进行拷贝操作，消除方法是尽量不要返回对象，如果需要返回，可以考虑进行传入指针的方式进行赋值。
+
+TestObject Fun2_1() {  
+  std::cout << "Fun2_1() is called" << std::endl;  
+  return 1;  
+}  
+TestObject Fun2_2() {  
+  std::cout << "Fun2_2() is called" << std::endl;  
+  TestObject to;  
+  to.set_x(1);  
+  return to;  
+}  
+int main() {  
+  /* 
+  TestObject to_2; 
+  std::cout << "-----Test type 1-------" << std::endl; 
+  Fun1(to_2); 
+  Fun1_1(to_2); 
+  std::cout << "-----Test type 2-------" << std::endl; 
+  TestObject to_3; 
+  to_3 = 1; 
+  TestObject to_4 = 1; 
+  */  
+  std::cout << "-----Test type 3-------" << std::endl;  
+  Fun2_1();  
+  Fun2_2();  
+  return 0;  
+}   
+输出结果为：
+
+ 
+-----Test type 3-------  
+Fun2_1() is called  
+TestObject(int) is called:0  
+~TestObject() is called:0  
+Fun2_2() is called  
+TestObject() is called:1  
+~TestObject() is called:1  
+可以看到没有调用拷贝构造函数，主要因为现在编译器比较智能了能够对类似情况进行优化。
+
+C++中的返回值优化(returnvalue optimization)
+
+返回值优化（Return ValueOptimization，简称RVO），是这么一种优化机制：当函数需要返回一个对象的时候，如果自己创建一个临时对象用户返回，那么这个临时对象会消耗一个构造函数（Constructor）的调用、一个复制构造函数的调用（Copy Constructor）以及一个析构函数（Destructor）的调用的代价。
+
+三、总结
+理论结合实践才是真理。由于编译器的不同，产生结果可能会不同，在实际开发中遇到不确定的情况，多写测试用例。
+
+
+
+
+
+
+
+
+
+
+
+
+

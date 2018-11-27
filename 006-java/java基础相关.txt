@@ -1,0 +1,13 @@
+java基础之打印函数
+for (int i = 0; i < 10; i++)
+{
+	if (0 == i)
+	{
+		System.out.print(i);
+	}
+	else 
+	{
+		System.out.print(" " + i);
+	}
+}
+使用 + 将各个类型的需要打印的连接起来

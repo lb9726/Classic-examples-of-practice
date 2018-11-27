@@ -1,0 +1,139 @@
+http://blog.csdn.net/Xiejingfa/article/details/50750037
+
+shared_ptr
+shared_ptr是一个引用计数智能指针，用于共享对象的所有权也就是说它允许多个指针指向同一个对象。这一点与原始指针一致。
+先来一段简单的代码，看看shared_ptr的简单使用：
+#include <iostream>
+#include <memory>
+using  namespace std;
+
+class Example
+{
+public:
+    Example() : e(1) { cout << "Example Constructor..." << endl; }
+    ~Example() { cout << "Example Destructor..." << endl; }
+
+    int e;
+};
+
+int main() {
+
+    shared_ptr<Example> pInt(new Example());
+    cout << (*pInt).e << endl;
+    cout << "pInt引用计数: " << pInt.use_count() << endl;
+
+    shared_ptr<Example> pInt2 = pInt;
+    cout << "pInt引用计数: " << pInt.use_count() << endl;
+    cout << "pInt2引用计数: " << pInt2.use_count() << endl;
+}
+
+Example Constructor...
+1
+pInt引用计数: 1
+pInt引用计数: 2
+pInt2引用计数: 2
+Example Destructor...
+
+
+从上面这段代码中，我们对shared_ptr指针有了一些直观的了解。一方面，跟STL中大多数容器类型一样，shared_ptr也是模板类，因此在创建shared_ptr时需要指定其指向的类型。另一方面，正如其名一样，shared_ptr指针允许让多个该类型的指针共享同一堆分配对象。同时shared_ptr使用经典的“引用计数”方法来管理对象资源，每个shared_ptr对象关联一个共享的引用计数。对于“引用计数”的问题，这里就不展开介绍。有兴趣的同学可以上网查找资料，或者看看我的另一篇文章 【Cocos2d-x源码分析】 Cocos2d-x内存管理解析（Cocos2d-x也使用了“引用计数”方法来实现内存管理）。
+
+对于shared_ptr在拷贝和赋值时的行为，《C++Primer第五版》中有详细的描述：
+
+每个shared_ptr都有一个关联的计数值，通常称为引用计数。无论何时我们拷贝一个shared_ptr，计数器都会递增。
+例如，当用一个shared_ptr初始化另一个shred_ptr，或将它当做参数传递给一个函数以及作为函数的返回值时，它
+所关联的计数器就会递增。当我们给shared_ptr赋予一个新值或是shared_ptr被销毁（例如一个局部的
+shared_ptr离开其作用域）时，计数器就会递减。一旦一个shared_ptr的计数器变为0，它就会自动释放自己所管理
+的对象。
+
+对比我们上面的代码可以看到：当我们将一个指向Example对象的指针交给pInt管理后，其关联的引用计数为1。接下来，我们用pInt初始化pInt2，两者关联的引用计数值增加为2。随后，函数结束，pInt和PInt2相继离开函数作用于，相应的引用计数值分别自减1最后变为0，于是Example对象被自动释放（调用其析构函数）。
+
+接下来，我们完整地介绍一下shared_ptr的常见用法：
+
+1、创建shared_ptr实例
+
+最安全和高效的方法是调用make_shared库函数，该函数会在堆中分配一个对象并初始化，最后返回指向此对象的share_ptr实例。如果你不想使用make_ptr，也可以先明确new出一个对象，然后把其原始指针传递给share_ptr的构造函数。
+
+示例如下：
+int main() {
+
+    // 传递给make_shared函数的参数必须和shared_ptr所指向类型的某个构造函数相匹配
+    shared_ptr<string> pStr = make_shared<string>(10, 'a');
+    cout << *pStr << endl;  //  aaaaaaaaaa
+
+    int *p = new int(5);
+    shared_ptr<int> pInt(p);
+    cout << *pInt << endl;  // 5
+}
+
+2、访问所指对象
+
+shared_ptr的使用方式与普通指针的使用方式类似，既可以使用解引用操作符*获得原始对象进而访问其各个成员，也可以使用指针访问符->来访问原始对象的各个成员。
+
+3、拷贝和赋值操作
+
+我们可以用一个shared_ptr对象来初始化另一个share_ptr实例，该操作会增加其引用计数值。
+
+例如：
+
+int main() {
+    shared_ptr<string> pStr = make_shared<string>(10, 'a');
+    cout << pStr.use_count() << endl;  //  1
+
+    shared_ptr<string> pStr2(pStr);
+    cout << pStr.use_count() << endl;  //  2
+    cout << pStr2.use_count() << endl;  //  2
+}
+
+
+如果shared_ptr实例p和另一个shared_ptr实例q所指向的类型相同或者可以相互转换，我们还可以进行诸如p = q这样赋值操作。该操作会递减p的引用计数值，递增q的引用计数值。
+
+例如：
+
+class Example
+{
+public:
+    Example(string n) : name(n) { cout << n << " constructor..." << endl; }
+    ~Example() { cout << name << " destructor..." << endl; }
+
+    string name;
+};
+
+int main() {
+
+    shared_ptr<Example> pStr = make_shared<Example>("a object");
+    shared_ptr<Example> pStr2 = make_shared<Example>("b object");
+    cout << pStr.use_count() << endl;
+    cout << pStr2.use_count() << endl;
+
+    pStr = pStr2;   // 此后pStr和pStr指向相同对象
+    cout << pStr->name << endl;
+    cout << pStr2->name << endl;
+}
+输出如下：
+a object constructor...
+b object constructor...
+1
+1
+a object destructor...
+b object
+b object
+b object destructor...
+
+4、检查引用计数
+
+shared_ptr提供了两个函数来检查其共享的引用计数值，分别是unique()和use_count()。
+
+在前面，我们已经多次使用过use_count()函数，该函数返回当前指针的引用计数值。值得注意的是use_count()函数可能效率很低，应该只把它用于测试或调试。
+
+unique()函数用来测试该shared_ptr是否是原始指针唯一拥有者，也就是use_count()的返回值为1时返回true，否则返回false。
+
+示例：
+
+int main() {
+    shared_ptr<string> pStr = make_shared<string>(10, 'a');
+    cout << pStr.unique() << endl;  // true
+
+    shared_ptr<string> pStr2(pStr);
+    cout << pStr2.unique() << endl; // false;
+}
+

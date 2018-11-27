@@ -1,0 +1,23 @@
+company:main.o Linklist.o logic.o ui.o boss.o manager.o salesmanager.o salesperson.o skillperson.o
+	gcc main.o Linklist.o logic.o ui.o boss.o manager.o salesmanager.o salesperson.o skillperson.o -o company
+main.o:./1/main.c ./1/Linklist.h ./1/ui.h ./1/logic.h
+	gcc -c ./1/main.c
+Linklist.o:./1/Linklist.c ./1/Linklist.h
+	gcc -c ./1/Linklist.c
+logic.o:./1/logic.c ./1/logic.h
+	gcc -c ./1/logic.c
+ui.o:./1/ui.c ./1/ui.h 
+	gcc -c ./1/ui.c
+boss.o:./1/boss.c ./1/Linklist.h
+	gcc -c ./1/boss.c
+manager.o:./1/manager.c ./1/Linklist.h
+	gcc -c ./1/manager.c
+salesmanager.o:./1/salesmanager.c ./1/Linklist.h
+	gcc -c ./1/salesmanager.c
+salesperson.o:./1/salesperson.c ./1/Linklist.h
+	gcc -c ./1/salesperson.c
+skillperson.o:./1/skillperson.c ./1/Linklist.h
+	gcc -c ./1/skillperson.c
+clean:
+	rm *.o
+$

@@ -1,0 +1,221 @@
+1.上官网下载jdk
+http://www.oracle.com/technetwork/java/javase/archive-139210.html
+http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
+
+下载jdk-7u80-linux-x64.tar.gz  
+tar -xzvf jdk-7u80-linux-x64.tar.gz 解压后生成 jdk1.7.0_80
+然后见一个目录
+sudo mkdir -p /usr/lib/jvm/
+
+直接将这个文件解压到/usr/lib/jvm/ 目录之下
+sudo tar -C /usr/lib/jvm/ -xvzf jdk-8u144-linux-x64.tar.gz
+
+或者也可以直接使用 tar -xzvf jdk-7u80-linux-x64.tar.gz 解压后生成 jdk1.7.0_80
+然后使用mv  sudo mv jdk1.7.0_80/ /usr/lib/jvm/
+
+可以通过配置环境变量命令的方式来解决java -version出错的问题
+$sudo gedit ~/.bashrc
+添加以下代码：到 ~/.bashrc 文件的最后一行即可
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_80
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+jdk1.7.0_80 版本是自己对应的版本的文件夹，不一定相同
+
+查看本机上是否还有java可选。这里用到以下命令
+sudo update-alternatives --list java
+
+以上参考链接 http://jingyan.baidu.com/article/c33e3f48a3365dea15cbb5c9.html
+
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.7.0_80/bin/java" 1000
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_144//bin/java" 1001
+sudo update-alternatives  --config java
+
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_80/bin/java 1000
+引号不要也可以的，后面的1000可以更改为其他值，数值越大，优先级越高而已，无其他意义
+会显示以下的内容
+There are 2 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                Priority   Status
+------------------------------------------------------------
+  0            /usr/lib/jvm/jdk1.8.0_144/bin/java   1001      auto mode
+* 1            /usr/lib/jvm/jdk1.7.0_80/bin/java    1000      manual mode
+  2            /usr/lib/jvm/jdk1.8.0_144/bin/java   1001      manual mode
+Press enter to keep the current choice[*], or type selection number: 1
+通过输入数值，选择对应的jdk版本作为默认的版本，编译java文件
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_144
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+由于使用jdk1.7.0_80 的版本导致eclipse无法正确运行，所以将gedit ~/.bashrc 的更换为jdk1.8.0_144这个版本的jdk，后面确实可以正常运行了！
+
+
+出错内容
+------------------------------------------------------------------------------------------------------
+JVM terminated. Exit code=1
+/usr/lib/jvm/jdk1.7.0_80/bin/java
+-Dosgi.requiredJavaVersion=1.8
+-Dosgi.instance.area.default=@user.home/eclipse-workspace
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
+-Dosgi.requiredJavaVersion=1.8
+-Xms256m
+-Xmx1024m
+-jar /home/libo/Downloads/eclipse//plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar
+-os linux
+-ws gtk
+-arch x86_64
+-showsplash /home/libo/Downloads/eclipse//plugins/org.eclipse.epp.package.common_4.7.0.20170620-1800/splash.bmp
+-launcher /home/libo/Downloads/eclipse/eclipse
+-name Eclipse
+--launcher.library /home/libo/Downloads/eclipse//plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.500.v20170531-1133/eclipse_1624.so
+-startup /home/libo/Downloads/eclipse//plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar
+--launcher.appendVmargs
+-exitdata c588031
+-product org.eclipse.epp.package.java.product
+-vm /usr/lib/jvm/jdk1.7.0_80/bin/java
+-vmargs
+-Dosgi.requiredJavaVersion=1.8
+-Dosgi.instance.area.default=@user.home/eclipse-workspace
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
+-Dosgi.requiredJavaVersion=1.8
+-Xms256m
+-Xmx1024m
+-jar /home/libo/Downloads/eclipse//plugins/org.eclipse.equinox.launcher_1.4.0.v20161219-1356.jar 
+------------------------------------------------------------------------------------------------------
+
+====================================================
+sudo apt-get purge openjdk*
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+可以先不安装，看看eclipse有没有问题
+====================================================
+
+eclipse 安装介绍，在eclipse官网下载正确版本，ubuntu的下载
+http://www.eclipse.org/downloads/
+Ubuntu下安装eclipse
+一、eclipse安装环境JDK的安装
+
+1、下载JDK
+
+从官网下载jdk8
+
+jdk-8u5-linux-x64.tar.gz
+
+2、解压
+$ tar -zxvf jdk-8u5-linux-x64.tar.gz
+解压出来是一个jdk1.8.0_05文件夹
+3、将文件夹移动到安装目录
+$ sudo mv jdk1.8.0_05 /usr/local/
+
+4、配置环境变量 ，更改/etc/profile文件
+
+  sudo gedit /etc/profile
+
+         在文件最后加上如下几行：
+
+export JAVA_HOME=/usr/local/jdk1.8.0_05 
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH 
+export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+
+5、更改默认配置选项 ,依次执行如下命令
+
+ sudo update-alternatives  --install  /usr/bin/java java /usr/local/jdk1.8.0_05/bin/java 300
+
+sudo update-alternatives  --install  /usr/bin/javac javac /usr/local/jdk1.8.0_05/bin/javac 300
+
+i add next:
+
+sudo update-alternatives  --install  /usr/bin/jar jar /usr/local/jdk1.8.0_05/bin/jar 300
+sudo update-alternatives  --install  /usr/bin/javah javah /usr/local/jdk1.8.0_05/bin/javah 300
+
+sudo update-alternatives  --install  /usr/bin/javap javap /usr/local/jdk1.8.0_05/bin/javap 300
+
+
+二、安装eclipse
+1、下载eclipse
+从官网http://www.eclipse.org/downloads/下载Eclipse IDE for Java EE Developers的Linux版本
+eclipse-SDK-3.7.2-linux-gtk.tar.gz
+
+2、解压
+$ tar -zxvf eclipse-SDK-3.7.2-linux-gtk.tar.gz
+解压出来是一个eclipse文件夹
+
+3、将文件夹移动到安装目录
+$ sudo mv eclipse /usr/local/
+
+4、启动eclipse
+$ /usr/local/eclipse/eclipse
+
+至此，eclipse可以成功启动即安装成功。
+ 
+
+三、创建桌面链接
+
+　　Ubuntu 12.04使用了Unity界面，在桌面左侧侧多了一个启动器栏。我们可以将自己常用的软件在启动器栏放一个图标，实现快速地启动。启动器栏的每一个图标实际上都对应了/usr/share/applications目录下的一个文件。
+
+为了给eclipse创建启动栏图标，我们可以在/usr/share/applications目录下创建文件eclipse.desktop（文件名可以任意，但是文件名后缀必须是.desktop）
+
+ 输入一下命令：
+
+$ sudo su
+# gedit /usr/share/applications/eclipse.desktop
+写入以下内容
+[Desktop Entry]
+Name=Eclipse
+Comment=Eclipse SDK
+Encoding=UTF-8
+Exec=/usr/local/eclipse/eclipse
+Icon=/usr/local/eclipse/icon.xpm
+Terminal=false
+Type=Application
+Categories=Application;Development;
+
+然后我们在Dash主页搜索关键字“eclipse”，可以看到eclipse的图标
+ 可以将Eclipse图标锁定在侧边栏上，避免每次执行Eclipse时都必须再到Dash主页进行搜索。当Eclipse应用执行时，鼠标右键单击侧边栏上的Eclipse图标，在弹出的菜单里面选择“锁定到启动器”，这样就可以锁定了。
+
+ 
+
+
+
+
+同理当安装过多个gcc ，g++的版本的时候，也可以随意切换版本进行操作
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 100
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100
+
+libo@ubuntu:/usr/lib$ sudo update-alternatives --config gcc
+There are 3 choices for the alternative gcc (providing /usr/bin/gcc).
+
+  Selection    Path              Priority   Status
+------------------------------------------------------------
+  0            /usr/bin/gcc-4.8   100       auto mode
+  1            /usr/bin/gcc-4.6   100       manual mode
+  2            /usr/bin/gcc-4.7   100       manual mode
+* 3            /usr/bin/gcc-4.8   100       manual mode
+
+Press enter to keep the current choice[*], or type selection number: 3
+
+
+同理当安装过多个gcc ，g++的版本的时候，也可以随意切换版本进行操作
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
+
+
+libo@ubuntu:/usr/lib$ sudo update-alternatives --config g++
+There are 3 choices for the alternative g++ (providing /usr/bin/g++).
+
+  Selection    Path              Priority   Status
+------------------------------------------------------------
+* 0            /usr/bin/g++-4.6   100       auto mode
+  1            /usr/bin/g++-4.6   100       manual mode
+  2            /usr/bin/g++-4.7   100       manual mode
+  3            /usr/bin/g++-4.8   100       manual mode
+
+Press enter to keep the current choice[*], or type selection number:3
+

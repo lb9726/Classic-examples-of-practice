@@ -1,0 +1,4 @@
+#include "main.h"
+
+void Judgelogic(STNODE *head,USER *Seruser);
+STNODE *EndDicNode(STNODE *head,USER tem_user);

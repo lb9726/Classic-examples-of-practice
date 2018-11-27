@@ -1,0 +1,116 @@
+线程产生函数pthread_create()只能传递一个参数给线程的执行函数，所以当需要传递多个数据时，
+需要将所有数据封装在一个结构中，再将这个结构传递给执行函数
+
+
+#include<pthread.h>
+#include<stdlib.h>
+#include<stdio.h>
+
+void *function(void *arg);
+struct ARG          //定义结构体ARG
+{
+    int connfd;
+    int other;
+};
+
+int main()
+{
+    struct ARG arg;
+    int connfd, sockfd;
+    pthread_t tid;
+    .....
+    while(1)
+    {
+        if (-1 == (connfd = accept(sockfd, NULL ,NULL)))  // 接收客户的连接请求
+        {
+            // handle exception
+        }
+        arg.connfd  = connfd;                        // 设置线程执行函数的参数
+        if (pthread_create(&tid, NULL , function, (void *)arg))  //产生线程
+        {
+            // handle exception
+        }
+    }
+}
+
+void *function(void *arg)
+{
+    struct ARG info;
+    info.connfd = ((struct ARG *)arg)->connfd;  // 处理相应的参数
+    info.other = ((struct ARG *)arg)->other;
+    ....                                        // 处理客户请求
+    close(info.connfd);                         // 关闭已连接描述符
+    pthread_exit(NULL);                         // 退出线程
+}
+
+以上传递参数的方法存在问题，处理一个客户端请求时，其可以正常工作;但同时处理多个客户时，则无法正常工作。其原因在于，传递给执行参数的参数是以指针形式传递的。
+所以变量arg是所有线程共用的。如果新线程A正在处理客户A的请求时，主线程又接受了另一个客户B的连接，那么主线程将修改arg中的内容。这时，线程A再从arg中获得的信息
+实际上是客户B的信息。问题的关键就在于如何使每个新线程在主线程修改arg之前获得一份arg的拷贝，而不是共用arg。
+
+可以通过为arg分配空间来解决这个问题。首先为每个新线程分配存储arg的空间，再将arg传递给新线程，新线程使用后释放分配的arg空间。
+
+void *function(void *arg);
+struct ARG          //定义结构体ARG
+{
+    int connfd;
+    int other;
+};
+
+int main()
+{
+    struct ARG *arg;
+    int connfd, sockfd;
+    pthread_t tid;
+    .....
+    while(1)
+    {
+        if (-1 == (connfd = accept(sockfd, NULL ,NULL)))  // 接收客户的连接请求
+        {
+            // handle exception
+        }
+        arg = (struct ARG *)malloc(sizeof(struct ARG));
+        arg.connfd  = connfd;                        // 设置线程执行函数的参数
+        if (pthread_create(&tid, NULL , function, (void *)arg))  //产生线程
+        {
+            // handle exception
+        }
+    }
+}
+
+void *function(void *arg)
+{
+    struct ARG info;
+    info.connfd = ((struct ARG *)arg)->connfd;  // 处理相应的参数
+    info.other = ((struct ARG *)arg)->other;
+    ....                                        // 处理客户请求
+    close(info.connfd);                         // 关闭已连接描述符
+    free(arg);
+    pthread_exit(NULL);                         // 退出线程
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

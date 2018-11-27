@@ -1,0 +1,13 @@
+http://blog.csdn.net/wenrenhua08/article/details/39591285
+http://www.qter.org/
+http://blog.csdn.net/jobbofhe/article/details/51873355
+http://blog.csdn.net/chen19870707/article/details/40427645
+给你个Qt5的在线教程： https://www.devbean.net/category/qt-study-road-2/
+http://www.dushibaiyu.com/category/code/jichu/qt-jichu
+https://www.devbean.net/2012/08/qt-study-road-2-catelog/
+我也是初学者，我是这样做的。首先，我有一个美丽的愿望，就是写出一个可以看歌词的豆瓣电台，而在当时，没有这样的应用。我想，没有人写，我就自己写。为此，我着手准备开始学习编程，在MFC，C#，Java，Qt中，我选择了Qt。首先，我照着网上的教程从头到尾完成了简单的记事本。一个星期左右。其次，独立的完成简单的应用。也就和记事本差不多吧，我觉得再写一遍记事本也没什么，反正我写了好几遍记事本。在这个过程中，我深刻的理解和体会了Qt中神奇的信号与槽。一个星期左右。最后，我开始开发的美丽的愿望，参照各种程序源代码，自己添添补补，东拼西凑最终完成。两个星期。有了这么一个独立开发的经验之后，我现在做东西就有信心多了，不想最早的时候什么都觉得好神奇的样子，关键是不怕了，开发没有想象中的那么难。这样也就完成了入门的工作。要进入更深的层次就需要更多美丽的愿望，更多的打怪升级了。我的豆瓣电台，虽是初学成果，但我还是很喜欢：
+
+作者：王俊
+链接：https://www.zhihu.com/question/20165899/answer/14847860
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

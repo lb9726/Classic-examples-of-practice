@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	char cmd[100];
+	char str[30];
+	strcpy(str,"赵鑫.txt");
+	strcpy(cmd,"gedit ./chat/");
+	strcat(cmd,str);
+	system(cmd);
+	return 0;
+}
+
+/*
+char cmd[256];
+
+char str[10]="new.d";
+
+strcpy(cmd,"/bin/mv /../test.264 /  /../");
+
+strcat(cmd,str);
+
+system(cmd);
+*/
+
+/*
+openfile(char name[30])
+{
+	char cmd[100];
+	char str[30];
+	strcpy(str,name);
+	strcpy(cmd,"gedit ./chat/");
+	strcat(cmd,str);
+	system(cmd);
+}
+*/

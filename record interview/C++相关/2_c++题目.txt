@@ -1,0 +1,454 @@
+对于C++中类(class) 与结构(struct)的描述正确的为:
+A,类中的成员默认是private的,当是可以声明public,private 和protected,结构中定义的成员默认的都是public;
+B,结构中不允许定义成员函数,当是类中可以定义成员函数;
+C,结构实例使用malloc() 动态创建,类对象使用new 操作符动态分配内存;
+D,结构和类对象都必须使用new 创建;
+E,结构中不可以定义虚函数,当是类中可以定义虚函数.
+F,结构不可以存在继承关系,当是类可以存在继承关系.
+【标准答案】A,D
+
+
+两个互相独立的类:ClassA 和 ClassB,都各自定义了非静态的公有成员函数 PublicFunc() 和非静态的私有成员函数 PrivateFunc();现在要在ClassA中增加定义一个成员函数ClassA::AdditionalPunction(ClassA a,ClassB b);则可以在AdditionalPunction(ClassAx,ClassB y)的实现部分(函数功能体内部)出现的合法的表达是最全的是:
+A,x.PrivateFunc();x.PublicFunc();y.PrivateFunc();y.PublicFunc();
+B,x.PrivateFunc();x.PublicFunc();y.PublicFunc();
+C,x.PrivateFunc();y.PrivateFunc();y.PublicFunc();
+D,x.PublicFunc();y.PublicFunc();
+【标准答案】B
+
+
+C++程序下列说法正确的有:
+A,对调用的虚函数和模板类都进行迟后编译.
+B,基类与子类中函数如果要构成虚函数,除了要求在基 类中用virtual 声名,而且必须名字相同且参数类型相同返回类型相同。
+C,重载的类成员函数都必须要:或者返回类型不同,或者参数数目不同,或者参数序列的类型不同.
+D,静态成员函数和内联函数不能是虚函数,友员函数和构造函数也不能是虚函数,但是析构函数可以是虚函数.
+【标准答案】A
+
+
+下面的 throw表达式哪些是错误的?
+(a) class exceptionType { };
+throw exceptionType { };
+(b) enum mathErr { overflow, underflow, zeroDivide };
+throw zeroDivide();
+【标准答案】
+(a) class exceptionType { };
+throw exceptionType();
+(b) enum mathErr { overflow, underflow, zeroDivide };
+throw zeroDivide;
+
+
+写一个能做左值的函数(方法有很多)。如:
+max(x, y) += 2874 + 55;
+drwline(x, y)++;
+【参考答案】
+int &max(int & x, int & y)
+{
+    return x > y? x : y;
+}
+    int x = 55, y = 77;
+    max(x, y) += 12 + 11; // 此时 y = 92;
+    cout << "x = "x << "; y = "<< y << endl; // 输出 x = 55; y = 92;
+
+
+下面的函数实现在一个固定的数上加上一个数,有
+什么错误,改正 :
+int add_n(int n)
+{
+    static int i=100;
+    i+=n;
+    return i;
+}
+【标准答案】 因为static使得i的值会保留上次的值。
+以后的i会一直更新,使得第二次调用出现 出现错误,
+去掉static就可了
+
+写出打印结果
+unsigned short array[]={1,2,3,4,5,6,7};
+int i = 3;
+*(array + i) =
+【标准答案】4
+
+
+写一个函数计算当参数为n(n很大)时的值 1-2+3-4+5-6+7......+n。
+【参考答案】
+long fn(long n)
+{
+    if(n <= 0)
+    {
+        printf("error: n must > 0);
+        exit(1);
+    }
+    if(0 == n % 2)
+        return (n / 2) * (-1);
+    else
+        return (n / 2) * (-1) + n;
+}
+
+字符指针、浮点数指针、以及函数指针这三种类型的变量哪个占用的内存最大?为什么?
+【参考答案】指针变量也占用内存单元,而且所有指针变量占用内存单元的数量都是相同的。
+就是说,不管是指向何种对象的指针变量,它们占用内存的字节数都是一样的,
+并且要足够把程序中所能用到的最大地址表示出来(通常是一个机器字长)。
+
+
+以下三条输出语句分别输出什么?
+char str1[] = "abc";
+char str2[] = "abc";
+const char str3[] = "abc";
+const char str4[] = "abc";
+const char* str5 = "abc";
+const char* str6 = "abc";
+cout << boolalpha << ( str1==str2 ) << endl; // 输出什么?
+cout << boolalpha << ( str3==str4 ) << endl; // 输出什么?
+cout << boolalpha << ( str5==str6 ) << endl; // 输出什么?
+【参考答案】分别输出false,false,true。str1和str2都是字符数组,每个都有其自己的存储区,
+它们的值则是各存储区首地址,不等;str3和str4同上,只是按const语义,它们所指向的数据区不能修改。str5和str6并非数组而是字符指针,并不分配存储区,其后的“abc”以常量形式存于静态数据区,而它们自己仅是指向该区首地址的指针,相等。
+
+
+以下代码有什么问题?
+cout << (true?1:"1") << endl;
+【参考答案】三元表达式“?:”问号后面的两个操作数必须为同一类型。
+
+C++的空类,默认产生哪些类成员函数?
+【参考答案】
+class Empty
+{
+public:
+    Empty(); //缺省构造函数
+    Empty(const Empty& ); //拷贝构造函数
+    ~Empty(); //虚构函数
+    Empty& operator(const Empty& ) //赋值运算符
+    Empty& operator&(); //取址运算符
+    const Empty* operator&() const; // 取址运算符 const
+}
+
+
+以下代码能够编译通过吗,为什么?
+unsigned int const size1 = 2;
+char str1[ size1 ];
+unsigned int temp = 0;
+cin >> temp;
+unsigned int const size2 = temp;
+char str2[ size2 ];
+【标准答案】str2定义出错,size2非编译器期间常量,而数组定义要求长度必须为编译期常量。
+
+
+当一个类A 中没有生命任何成员变量与成员函数,这时sizeof(A)的值是多少,请解释一下编译器为什么没有让它为零。
+【标准答案】
+为1。
+如果是零的话,声明一个class A[10]对象数组,而每一个对象占用的空间是零,这时就没办法区分A[0],A[1]...了。
+
+
+以下代码中的输出语句输出0吗,为什么?
+struct CLS{
+    int m_i;
+    CLS( int i ) : m_i(i) {}
+    CLS()
+    {
+        CLS(0);
+    }
+};
+CLS obj;
+cout << obj.m_i << endl;
+【标准答案】不能。在默认构造函数内部再调用带参的构造函数属用户行为而非编译器行为,亦即仅执行函数调用,而不会执行其后的初始化表达式。只有在生成对象时,初始化表达式才会随相应的构造函数一起调用。
+
+
+What are the values of a, b, and c after thefollowing instructions:
+int a=5, b=7, c;
+c = a+++b;
+【标准答案】a=6,b=7,c=12
+
+
+在排序方法中,关键码比较次数与记录地初始排列
+无关的是 ( D )
+A. Shell排序
+B. 归并排序
+C. 直接插入排序
+D. 选择排序
+
+
+代码 void func()
+{
+static int val;
+...
+} 中,变量val的内存地址位于:
+A. 已初始化数据段 B.未初始化数据段
+C.堆             D.栈
+【标准答案】A
+
+
+一个栈的入栈序列是A,B,C,D,E,则栈的不
+可能的输出序列是( )
+A、EDCBA; B、DECBA;
+C、DCEAB; D、ABCDE
+【标准答案】C
+
+下面的代码有什么问题?
+class A {
+public:
+    A() { p=this; }
+    ~A() { if(p!=NULL) { delete p; p=NULL; } }
+    A* p;
+};
+【标准答案】delete 会自动调用析构函数。所以析构中调用delete引起了无限递归
+
+
+写出判断ABCD四个表达式的是否正确, 若正确, 写出经过表达式中 a的值。
+int a = 4;
+(A)a += (a++); (B) a += (++a) ;
+(C)(a++) += a; (D) (++a) += (a++);
+a = ?
+【参考答案】C错误,左侧不是一个有效变量,不能
+赋值,可改为(++a) += a;改后答案依次为9,10,10,11
+
+
+请你谈谈你是如何使用return语句的。
+【参考答案】
+(1)return 语句不可返回指向“栈内存”的“指针”或者“引用” ,因为该内存在函数体结束时被自动销毁。
+(2)要搞清楚返回的究竟是“值” 、 “指针”还是“引用” 。
+(3)如果函数返回值是一个对象,要考虑 return 语句的效率。
+
+
+return String(s1 + s2); 和String temp(s1 + s2);return temp; 一样吗?
+【参考答案】
+(1) 这是临时对象的语法,表示“创建一个临时对象并返回它” 。
+(2) 将发生三件事。首先,temp 对象被创建,同时完成初始化;然后拷贝构造函数把 temp 拷贝到保存返回值的外部存储单元中;最后,temp 在函数结束时被销毁(调用析构函数) 。然而“创建一个临时对象并返回它”的过程是不同的,编译器直接把临时对象创建并初始化在外部存储单元中,省去了拷贝和析构的化费,提高了效率。
+
+
+如果函数返回值是一个对象，要考虑return 语句的效率。例如
+return String(s1 + s2);
+这是临时对象的语法，表示“创建一个临时对象并返回它”。不要以为它与“先创建
+一个局部对象temp 并返回它的结果”是等价的，如
+String temp(s1 + s2);
+return temp;
+实质不然，上述代码将发生三件事。首先，temp 对象被创建，同时完成初始化；然
+后拷贝构造函数把temp 拷贝到保存返回值的外部存储单元中；最后，temp 在函数结束
+时被销毁（调用析构函数）。然而“创建一个临时对象并返回它”的过程是不同的，编译器直接把临时对象创建并初始化在外部存储单元中，省去了拷贝和析构的化费，提高了效率。
+类似地，我们不要将return int(x + y); // 创建一个临时变量并返回它
+写成
+int temp = x + y;
+return temp;
+由于内部数据类型如int,float,double 的变量不存在构造函数与析构函数，虽然该“临
+时变量的语法”不会提高多少效率，但是程序更加简洁易读。
+
+下列程序的运行结果是
+#include <iostream>
+const char *str = "vermeer";
+int main()
+{
+    const char *pstr = str;
+    cout << "The address of pstr is: " << pstr << endl;
+}
+【标准答案】 The address of pstr is: vermeer
+
+
+下列程序输出结果是
+inline void max_out( int val1, int val2 )
+{
+    cout << ( val1 > val2 ) ? val1 : val2;
+}
+int main()
+{
+    int ix = 10, jx = 20;
+    cout << "The larger of " << ix;
+    cout << ", " << jx << " is ";
+    max_out( ix, jx );
+    cout << endl;
+}
+【标准答案】The larger of 10, 20 is 0 ,为什么不是20呢?问题在于输出操作符的优先级高于条件操作符 所以输出 val1和val2比较结果的 true/false 。
+
+
+请编写一个 C 函数,该函数给出一个字节中被置1 的位的个数。
+【参考答案】
+unsigned int TestAsOne0(char log)
+{
+    int i;
+    unsigned int num=0, val;
+    for(i=0; i<8; i++)
+    {
+        val = log >> i; //移位
+        val &= 0x01; //与1相与
+        if(val)
+            num++;
+    }
+    return num;
+}
+
+
+编写一个算法 frequency ,统计在一个输入字符串中各个不同字符出现的频度。
+用适当的测试数据来验证这个算法。
+
+void frequency( String& s, char& A[ ], int& C[ ], int &k )
+{
+    int i, j, len = s.length( );
+    if ( !len ) { cout << "The string is empty. " << endl; k = 0; return; }
+    else
+    {
+        A[0] = s[0]; C[0] = 1; k = 1;
+        /*语句s[i]是串的重载操作*/
+        for ( i = 1; i < len; i++ ) C[i] = 0;
+        /*初始化*/
+            for ( i = 1; i < len; i++ )
+            {
+                /*检测串中所有字符*/
+                j = 0; 
+                while ( j < k && A[j] != s[i] ) j++; /*检查s[i]是否已在A[ ]中*/
+                    if ( j == k )
+                    { 
+                        A[k] = s[i]; C[k]++; k++ 
+                    } /*s[i]从未检测过*/
+                    else C[j]++; /*s[i]已经检测过*/
+            }
+        }
+}
+
+
+假设以数组Q[m]存放循环队列中的元素, 同时以rear和length分别指示环形队列中的队尾位置和队列
+中所含元素的个数。试给出该循环队列的队空条件和队满条件, 并写出相应的插入(enqueue)和删除
+(dlqueue)元素的操作。
+
+
+【参考答案】循环队列类定义
+#include <assert.h>
+template <class Type> class Queue {
+//循环队列的类定义
+public:
+    Queue ( int=10 );
+    ~Queue ( ) { delete [ ] elements; }
+    void EnQueue ( Type & item );
+    Type DeQueue ( );
+    Type GetFront ( );
+    void MakeEmpty ( ) { length = 0; } //置空队列
+    int IsEmpty ( ) const { return length == 0; } //判队列空否
+    int IsFull ( ) const { return length == maxSize; } //判队列满否
+    private:
+    int rear, length; //队尾指针和队列长度
+    Type *elements; //存放队列元素的数组
+    int maxSize;
+    //队列最大可容纳元素个数
+};
+
+
+template <class Type>
+Queue<Type>:: Queue ( int sz ) : rear (maxSize-1), length (0), maxSize (sz)
+{//建立一个最大具有maxSize个元素的空队列。
+    elements = new Type[maxSize];
+    assert ( elements != 0 );
+    //创建队列空间
+    //断言: 动态存储分配成功与否
+}
+
+template<class Type>
+    void Queue<Type> :: EnQueue ( Type &item ) {
+    assert ( ! IsFull ( ) ); //判队列是否不满,满则出错处理
+    length++; //长度加1
+    rear = ( rear +1) % maxSize; //队尾位置进1
+    elements[rear] = item; //进队列
+}
+
+template<class Type>
+Type Queue<Type> :: DeQueue ( ) {
+    assert ( ! IsEmpty ( ) ); //判断队列是否不空,空则出错处理
+    length--; //队列长度减1
+    return elements[(rear-length+maxSize) % maxSize]; //返回原队头元素值
+}
+
+template<class Type>
+    Type Queue<Type> :: GetFront ( ) {
+    assert ( ! IsEmpty ( ) );
+    return elements[(rear-length+1+maxSize) % maxSize];
+}
+
+
+已知 A [ n ]为整数数组,试写出实现下列运算的递归算法:
+(1) 求数组 A 中的最大整数。
+(2) 求 n 个整数的和。
+(3) 求 n 个整数的平均值。
+
+#include <iostream.h>
+class RecurveArray
+{
+private:
+    //数组类声明
+    int *Elements;
+    int ArraySize;
+    //数组指针
+    //数组尺寸
+    int CurrentSize;
+    //当前已有数组元素个数 public :
+    RecurveArray ( int MaxSize =10 ) :
+    ArraySize ( MaxSize ), Elements ( new int[MaxSize] ){ }
+    ~RecurveArray ( ) { delete [ ] Elements; }
+    void InputArray(); //输入数组的内容
+    int MaxKey ( int n ); //求最大值
+    int Sum ( int n ); //求数组元素之和
+    float Average ( int n );
+    //求数组元素的平均值
+};
+void RecurveArray :: InputArray ( )
+{
+    //输入数组的内容
+    cout << "Input the number of Array: \n";
+    for ( int i = 0; i < ArraySize; i++ ) cin >> Elements[i];
+}
+
+
+int RecurveArray :: MaxKey ( int n ) 
+{
+    //递归求最大值
+    if ( n == 1 ) return Elements[0];
+    int temp = MaxKey ( n - 1 );
+    if ( Elements[n-1] > temp ) return Elements[n-1];
+    else return temp;
+}
+
+int RecurveArray :: Sum ( int n ) 
+{
+    //递归求数组之和
+    if ( n == 1) return Elements[0];
+    else return Elements[n-1] + Sum (n-1);
+}
+
+float RecurveArray :: Average ( int n )
+{
+    //递归求数组的平均值
+    if ( n == 1) return (float) Elements[0];
+    else return ( (float) Elements[n-1] + ( n - 1) * Average ( n - 1 ) ) / n;
+}
+
+int main ( int argc, char* argv [ ] ) 
+{
+    int size = -1;
+    cout << "No. of the Elements : ";
+    while ( size < 1 ) cin >> size;
+    RecurveArray ra ( size );
+    ra.InputArray();
+    cout<< "\nThe max is: " << ra.MaxKey ( ra.MaxSize ) << endl;
+    cout<< "\nThe sum is: " << ra.Sum ( ra.MaxSize ) << endl;
+    cout<< "\nthe avr is: " << ra.Average ( ra.MaxSize ) << endl;
+    return 0;
+}
+
+
+已知 f 为单链表的表头指针, 链表中存储的都是整型数据,试写出实现下列运算的递归算法:
+(1) 求链表中的最大整数。
+(2) 求链表的结点个数。
+(3) 求所有整数的平均值。
+
+
+
+字符串的替换操作replace (String &s, String &t,String &v)是指:
+          |{ C[i][j]  当i >= j时
+A[i][j] = |
+          |{ C[j][i]   当i < j时
+若t是s的子串,则用串v替换串t在串s中的所有出现;若t不是s的子串,则串s不变。例如,若串s为
+“aabbabcbaabaaacbab”,串t为“bab”,串v为“abdc”,则执行replace操作后,串s中的结果为
+“aababdccbaabaaacabdc”。试利用字符串的基本运算实现这个替换操作。
+
+
+试编写一个求解Josephus问题的函数。用整数序列1, 2, 3, ......, n 表示顺序围坐在圆桌周围的人,并采用数组表示作为求解过程中使用的数据结构。然后使用 n = 9, s = 1, m = 5,以及 n = 9, s = 1, m = 0,或者 n = 9, s = 1, m = 10作为输入数据,检查你的程序的正确性和健壮性。
+
+
+编写类 String 的构造函数、析构函数和赋值函数已知类 String 的原型为:
+
+
+
+

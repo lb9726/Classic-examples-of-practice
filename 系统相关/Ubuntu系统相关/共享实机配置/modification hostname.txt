@@ -1,0 +1,26 @@
+sudo vi /etc/hostname
+修改主机名为libo，重启电脑
+
+libo@libo:~$ sudo vi /etc/sysctl.conf
+sudo：无法解析主机：libo
+
+libo@libo:~$ sudo vim /etc/hosts
+然后修改：127.0.1.1       libo
+[sudo] password for libo: 
+libo@libo:~$ uname -n
+libo
+libo@libo:~$ sudo vi /etc/sysctl.conf
+sudo：无法解析主机：libo
+libo@libo:~$ sudo vi /etc/rc.local 
+sudo：无法解析主机：libo
+libo@libo:~$ sudo vim /etc/hosts
+sudo：无法解析主机：libo
+libo@libo:~$ 
+libo@libo:~$ 
+libo@libo:~$ sudo vim /etc/hosts
+修改之前的主机名为libo即可
+libo@libo:~$
+
+打开终端(Ctrl+Alt+T),
+第一步：执行sudo su,输入密码，再cd /etc/进入到etc/文件夹下，执行：gedit hostname,可以看到这台ubuntu主机的主机名，将其修改为一个新的名称，保存退出。
+第二步：执行：gedit hosts，找到：127.0.1.1对应的主机名，将其修改成对应的新的主机名，然后重新系统即可。

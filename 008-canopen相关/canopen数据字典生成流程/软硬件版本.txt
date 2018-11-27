@@ -1,0 +1,19 @@
+获取设备Device type	pre-operation 	
+发送命令：63ch 8 40 00 10 00 00 00 00 00		
+收到：5BCh 8 43 00 10 A1 01 00 00 00
+
+
+获取设备Device name  pre-operation 	
+发送命令：63ch 8 40 08 10 00 00 00 00 00		
+收到：5BCh 8 41 08 10 00 13 00 00 00
+
+
+获取设备Hardware version	pre-operation 	
+发送命令：63ch 8 40 09 10 00 00 00 00 00		
+收到：5BCh 8 41 08 10 00 0C 00 00 00
+
+获取设备software version	pre-operation 	
+发送命令：63ch 8 40 0A 10 00 00 00 00 00		
+收到：5BCh 8 41 08 10 00 0D 00 00 00
+发送命令：63ch 8 70 00 10 00 00 00 00 00		
+获取当前软件版本号信息

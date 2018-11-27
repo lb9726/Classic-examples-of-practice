@@ -1,0 +1,200 @@
+const修饰函数
+在类中将成员函数修饰为const表明在该函数体内，不能修改对象的数据成员而且不能调用非const函数。为什么不能调用非const函数？因为非const函数可能修改数据成员，const成员函数是不能修改数据成员的，所以在const成员函数内只能调用const函数。
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+private:
+    int i;
+public:
+    void set(int n) //set函数需要设置i的值，所以不能声明为const 
+    {
+        i = n;
+    }
+    
+    int get()const //get函数返回i的值，不需要对i进行修改，则可以用const修饰。防止在函数体内对i进行修改。
+    {
+//        i = 8;  // st$ g++ const修饰.cpp -o c
+//const修饰.cpp: In member function ‘int A::get() const’:
+//const修饰.cpp:16:13: error: assignment of member ‘A::i’ in read-only object
+
+        return i;
+    }
+};
+
+int main()
+{
+    A a;
+    int i = 6;
+    a.set(i);
+    a.get();
+    cout << "i = "<< i << endl;
+    return 0;
+}  
+
+const修饰函数参数
+防止传入的参数代表的内容在函数体内被改变，但仅对指针和引用有意义。因为如果是按值传递，传给参数的仅仅是实参的副本，即使在函数体内改变了形参，实参也不会得到影响。如：
+
+void fun(const int i)
+{  
+    i = 10;  
+}
+
+在函数体内是不能改变i的值的，但是没有任何实际意义。
+const修饰的函数参数是指针时,代表在函数体内不能修改该指针所指的内容，起到保护作用，在字符串复制的函数中保证不修改源字符串的情况下，实现字符串的复制。
+
+void fun(const char * src, char * des)
+{  //保护源字符串不被修改，若修改src则编译出错。  
+    strcpy(des,src);  
+}
+  
+void main(){  
+    char a[10]="china";  
+    char b[20];  
+    fun(a,b);  
+    cout<<b<<endl;  
+}    
+
+
+而且const指针可以接收非const和const指针，而非const指针只能接收非const指针。
+const修饰引用时：如果函数参数为用户自定义的类对象如
+
+void h(A a)
+{  
+    …………  
+    …………  
+}
+传递进来的参数a是实参对象的副本，要调用构造函数来构造这个副本，而且函数结束后要调用析构函数来释放这个副本，在空间和时间上都造成了浪费，所以函数参数为类对象的情况，推荐用引用。但按引用传递，造成了安全隐患，通过函数参数的引用可以修改实参的内部数据成员，所以用const来保护实参。
+
+void h(const A & a)
+{  
+    …………  
+    …………  
+}
+
+const修饰函数返回值
+也是用const来修饰返回的指针或引用，保护指针指向的内容或引用的内容不被修改，也常用于运算符重载。归根究底就是使得函数调用表达式不能作为左值。
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+private:
+    int i;
+public:
+    A()
+    {
+        i = 0;
+    }
+    
+    int &get()
+    {
+        return i;
+    }
+};
+
+int main()
+{
+    A a;
+    cout << a.get() << endl; //数据成员值为0
+    a.get() = 2;             //尝试修改a对象的数据成员为1，而且是用函数调用表达式作为左值。
+    cout << a.get() << endl; //数据成员真的被改为1了，返回指针的情况也可以修改成员i的值，所以为了安全起见最好在返回值加上const，使得函数调用表达式不能作为左值
+}
+
+
+
+
+
+const修饰基本数据类型
+[cpp] view plain copy 在CODE上查看代码片派生到我的代码片
+#include <iostream>  
+using namespace std;  
+  
+void main(){  
+    const int a = 1;  
+    const char b = 'k';  
+    const float c = 3.14f;  
+    //a = 2;    
+    //b = 'n';  
+    //c = 1.2f;  
+}  
+const修饰基本类型表示这些类型为常量，不能再修改或赋值。还有需要注意的是3.14默认为double类型，如果用float变量保存的话应该写成float c = 3.14f。
+
+const修饰指针
+[cpp] view plain copy 在CODE上查看代码片派生到我的代码片
+#include <iostream>  
+using namespace std;  
+  
+void main(){  
+    int a = 0;  
+    int b = 0;  
+    int c = 0;  
+    int d = 0;  
+    const int *p1 =&a;   //指向整形常量的可变指针  
+    int const * p2 =&b;  //指向整形常量的可变指针  
+    int * const p3 =&c;  //指向可变整形的常指针  
+    const int * const p4 =&d;  //指向整形常量的常指针  
+}  
+p1所指向的内容为整型常量，所以*p1=2;是错误的。但可以进行p1++这样的操作，也可改变p1的指向
+p2跟p1一样只是表现形式不同，同样的*p2=2;是错误的。但可以进行p2++这样的操作，也可改变p2的指向
+p3是常指针，p3本身不能变化,不能改变p3的指向，但它所指向的内容可变，*p3=2;是对的
+p4是常指针，而且指向的内容是常量,*p4=2;是错的。
+
+判断方法：const在*前说明是指向常量的指针，const在*之后说明指针为常指针。*前后都有const说明指针为指向常量的常指针。
+
+const修饰引用
+很多同学跟我一样爱钻牛角尖将const修饰引用与const修饰指针进行对比，是不是const修饰引用也有修饰指针时的四种情况呢？
+#include <iostream>  
+using namespace std;  
+  
+void main(){  
+    int a1 = 1;  
+    int a2 = 1;  
+    int a3 = 1;  
+    int a4 = 1;  
+    const int & b1 = a1;  
+    int const & b2 = a2;  
+    int & const b3 = a3;  //提示“qualifiers on reference are ignored”  
+    const int & const b4 = a4;  //提示“qualifiers on reference are ignored”  
+}
+
+const int & b1 = a1; 则b1是常量b1++、b1=2都是不可以的，虽然b1是a1的一个别名，但是不能通过b1来修改a1。但是a1不是常量，可以a1=2，b1的值也会跟着改变。
+int const & b2 = a2;与第一个是相同的，b2是引用常量，不能通过b2修改a2，但是a2不是常量，可以修改，b2随之改变。
+int & const b3 = a3;提示了“qualifiers on reference are ignored”，即对引用的限定符被忽略，所以相当于int & b3 = a3； const没有起作用。
+const int & const b4 = a4; 同理实质上与第一种是一样的，相当于const int & b4 = a4;
+总结：首先要知道定义引用时就要进行初始化，而且引用不能改变指向。
+然后const在&之前表明引用为常引用，不能通过该引用修改值。const在&之后，const不起效果。
+
+#include <iostream>  
+using namespace std;  
+  
+class A {  
+private:  
+    int i;  
+public:  
+    A(){ i = 0; }  
+    void set(int n){  
+        i = n;  
+    }  
+    void get() const {  
+        cout<<"成员变量的值："<<i<<endl;  
+    }  
+};  
+void main(){  
+    const A a;  
+    //a.set(1);  
+    //a.get();  
+}
+
+定义一个const对象，const对象企图调用set函数改变成员变量的值，这是不允许的。const对象顾名思义为常对象，所有对象的成员变量不可变。而且const对象也不能调用非const函数，哪怕set函数没有修改成员变量，编译也会出错。而get函数为const函数，所以const对象可以调用get函数。
+
+
+
+
+
+
+
+

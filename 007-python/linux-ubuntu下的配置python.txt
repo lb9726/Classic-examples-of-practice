@@ -1,0 +1,104 @@
+sudo apt-get install idle-python3.4  终端直接安装3.4的版本的idle
+运行时在终端输入idle-python3.4
+
+1. 以前一直在 windows 下使用 python，最近改为 ubuntu 下使用 python
+
+2. windows 下安装 python 后，直接是使用 idle 进行编辑，而且 windows 下，多版本的 python 虽然可以共存，但是必须设置环境变量 path，只有路径最前面的那个版本，才是当前命令行或者系统默认使用的
+
+3. linux 下多个python版本是可以共存的，只不过在终端中运行的时候，输入 python2.7 或者 python3.2 就能进入不同的版本了
+1) ubuntu 14.10 下默认是 python2.7 版本的，而且只默认安装 shell 窗口，没有 idle。
+我们可以使用命令： sudo apt-get install idle 来安装 python2.7版本的idle。
+安装好后，在终端输入 idle 就会进入 2.7 的 idle 了
+2） 我们若是要安装 python3.4 版本，可以在软件商店中输入 python3，然后找到安装即可（其中还有 python3.4 的 idle）
+3） 通过终端进入不同版本的 python
+---输入 python，默认进入的是 2.7（也可以直接输入 python2 进入）
+---输入 python3，将进入 3.4 版本
+4. 制定程序的解释器版本：
+
+    在你的*.py文件中可以用 ＃!/usr/bin/python  来指定程序的解释器版本，不过这样使用起来有些不方便，所以就把/usr/bin/python这个快捷方式的指向修改下好了。
+
+解决方法：
+
+sudo cp /usr/bin/python /usr/bin/python_bak，先备份
+sudo rm /usr/bin/python，删除
+sudo ln -s /usr/bin/python3.4 /usr/bin/python，默认设置成python3.4
+这样在终端中输入python默认就是 3.4版本了
+版权声明：博客编写不易，转载时请注明出处，Thank you very much!
+
+
+
+http://blog.csdn.net/fang_chuan/article/details/60958329
+更改python的默认版本
+
+更改Ubuntu默认python版本的两种方法
+
+没找到原文地址，作者写的很实用的方法，赞一个。
+
+当你安装 Debian Linux 时，安装过程有可能同时为你提供多个可用的 Python 版本，因此系统中会存在多个 Python 的可执行二进制文件。一般Ubuntu默认的Python版本都为2.x, 如何改变Python的默认版本呢？下面来一起看看吧。
+你可以按照以下方法使用 ls 命令来查看你的系统中都有那些 Python 的二进制文件可供使用。
+?
+1
+2
+$ ls /usr/bin/python*
+/usr/bin/python /usr/bin/python2 /usr/bin/python2.7
+/usr/bin/python3 
+/usr/bin/python3.4 /usr/bin/python3.4m
+/usr/bin/python3m
+执行如下命令查看默认的 Python 版本信息:
+
+?
+1
+2
+$ python --version
+Python 2.7.8
+1、基于用户修改 Python 版本：
+
+想要为某个特定用户修改 Python 版本，只需要在其 home 目录下创建一个 alias(别名) 即可。打开该用户的 ~/.bashrc文件，添加新的别名信息来修改默认使用的 Python 版本。
+
+?
+1
+alias 
+python='/usr/bin/python3.4'
+一旦完成以上操作，重新登录或者重新加载 .bashrc 文件，使操作生效。
+
+?
+1
+$ . ~/.bashrc
+检查当前的 Python 版本。
+
+?
+1
+2
+$ python --version
+Python 3.4.2
+2、 在系统级修改 Python 版本
+
+我们可以使用 update-alternatives 来为整个系统更改 Python 版本。以 root 身份登录，首先罗列出所有可用的 python 替代版本信息：
+
+?
+1
+2
+# update-alternatives --list python
+update-alternatives: error: no alternatives
+for python
+如果出现以上所示的错误信息，则表示 Python 的替代版本尚未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.4 放入其中。
+
+?
+1
+2
+3
+4
+# update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+update-alternatives: using
+/usr/bin/python2.7 to provide
+/usr/bin/python (python)
+in auto mode
+# update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
+update-alternatives: using
+/usr/bin/python3.4 to provide
+/usr/bin/python (python)
+in auto mode
+--install 选项使用了多个参数用于创建符号链接。最后一个参数指定了此选项的优先级，如果我们没有手动来设置替代选项，那么具有最高优先级的选项就会被选中。这个例子中，我们为 /usr/bin/python3.4 设置的优先级为2，所以update-alternatives 命令会自动将它设置为默认 Python 版
+
+
+

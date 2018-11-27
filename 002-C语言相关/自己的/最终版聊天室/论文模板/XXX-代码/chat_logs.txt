@@ -1,0 +1,34 @@
+tt to qq  9:15: 3 : oo
+qq to tt  9:15:19 : pp
+tt to all  9:19:20 : nihao
+qq to all  9:19:34 : op
+tt to qq  9:21:29 : lk
+tt to qq  9:26:10 : kk
+qq to tt  9:28:28 : ok
+tt to qq  9:34:37 : 你好
+qq to all  9:34:47 : 大家好(群发消息！)
+qq to qq  9:43:44 : kk
+tt to qq  9:44: 4 : hi
+qq to all  9:44:14 : po(群发消息！)
+qq to all  9:44:35 : tt下线咯！
+
+tt to all  9:44:43 : qq下线咯！
+
+qq to all  9:46:55 : qq下线咯！
+
+tt to qq 10:29:41 : sb
+qq to tt 10:30:11 : tt:
+qq to tt 10:30:28 : nidaye
+qq to tt 10:30:45 : nidaye
+qq to tt 10:30:54 : 你大爷
+tt to qq 10:30:30 : 你好哦
+qq to tt 10:31: 6 : nidaye
+tt to qq 10:30:50 : ll
+qq to tt 10:31:40 : hi
+qq to tt 10:31:46 : hello
+qq to tt 10:31:50 : sb
+tt to all 10:31:26 : qq下线咯！
+
+qq to all 10:32: 0 : tt下线咯！
+
+123 to all 14:17:58 : nihao(群发消息！)

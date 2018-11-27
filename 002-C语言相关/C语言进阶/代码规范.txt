@@ -1,0 +1,214 @@
+1.C语言部分
+    1-1：程序块要采用缩进风格编写，
+            缩进的空格数为4个。
+   说明：开发工具自动生成的代码可以有不一致。
+
+    1-2：相对独立的程序块之间、变量说明之后
+            必须加空行。
+    示例：如下例子不符合规范。
+    if (!valid_ni(ni))
+    {
+        ... // program code
+    }
+    repssn_ind = ssn_data[index].repssn_index;
+    repssn_ni  = ssn_data[index].ni;
+
+    应如下书写
+    if (!valid_ni(ni))
+    {
+        ... // program code
+    }
+
+    repssn_ind = ssn_data[index].repssn_index;
+    repssn_ni  = ssn_data[index].ni;
+
+    1-3：较长的语句（>30字符）要分成多行书写，
+    长表达式要在低优先级操作符处划分新行，操作
+    符放在新行之首，划分出的新行要进行适当的缩
+    进，使排版整齐，语句可读。
+    示例：
+    perm_count_msg.head.len =   NO7_TO_STAT_PERM_COUNT_LEN
+                          + STAT_SIZE_PER_FRAM * sizeof( _UL );
+
+    act_task_table[frame_id * STAT_TASK_CHECK_NUMBER + index].occupied
+              = stat_poi[index].occupied;
+
+    act_task_table[taskno].duration_true_or_false
+              = SYS_get_sccp_statistic_state( stat_item );
+
+    report_or_not_flag = ((taskno < MAX_ACT_TASK_NUMBER)
+                      && (n7stat_stat_item_valid (stat_item))
+                      && (act_task_table[taskno].result_data != 0));
+
+ 
+
+    1-4：循环、判断等语句中若有较长的表达式
+            或语句，则要进行适应的划分，长表达
+            式要在低优先级操作符处划分新行，操
+            作符放在新行之首。
+    示例：
+    if ((taskno < max_act_task_number)
+        && (n7stat_stat_item_valid (stat_item)))
+    {
+        ... // program code
+    }
+
+    for (i = 0, j = 0; (i < BufferKeyword[word_index].word_length)
+                    && (j < NewKeyword.word_length); i++, j++)
+    {
+        ... // program code
+    }
+
+    for (i = 0, j = 0; 
+        (i < first_word_length) && (j < second_word_length); 
+        i++, j++)
+    {
+        ... // program code
+    }
+
+    1-5：若函数或过程中的参数较长，则要进行
+             适当的划分。
+    示例：
+    n7stat_str_compare((BYTE *) & stat_object,
+                   (BYTE *) & (act_task_table[taskno].stat_object),
+                   sizeof (_STAT_OBJECT));
+
+    n7stat_flash_act_duration( stat_item, frame_id *STAT_TASK_CHECK_NUMBER
+                                      + index, stat_object );
+
+    1-6：不允许把多个短语句写在一行中，即一
+             行只写一条语句。
+    示例：如下例子不符合规范。
+    rect.length = 0;  rect.width = 0;
+
+    应如下书写
+    rect.length = 0;
+    rect.width  = 0;
+
+    1-7：if、for、do、while、case、switch、
+            default等语句自占一行，且if、for、
+            do、while等语句的执行语句部分无论多
+            少都要加括号{}。
+    示例：如下例子不符合规范。
+            if (pUserCR == NULL) return;
+
+    应如下书写：
+        if (pUserCR == NULL)
+        {
+            return;
+        }
+
+    1-8：对齐只使用空格键，不使用TAB键。
+    说明：以免用不同的编辑器阅读程序时，因TAB
+             键所设置的空格数目不同而造成程序布局
+             不整齐，不要使用BC作为编辑器合版本，
+             因为BC会自动将8个空格变为一个TAB键，
+             因此使用BC合入的版本大多会将缩进变乱。
+
+    1-9：函数或过程的开始、结构的定义及循环、
+            判断等语句中的代码都要采用缩进风格，
+            case语句下的情况处理语句也要遵从语句
+            缩进要求。
+
+    1-10：程序块的分界符（如C/C++语言的大括号
+              ‘{’和‘}’）应各独占一行并且位于同一列，
+              同时与引用它们的语句左对齐。在函数体的
+              开始、类的定义、结构的定义、枚举的定义
+              以及if、for、do、while、switch、case
+              语句中的程序都要采用如上的缩进方式。
+    示例：如下例子不符合规范。
+    for (...) {
+        ... // program code
+    }
+
+    if (...){
+        ... // program code
+    }
+
+    void example_fun( void ){
+    ... // program code
+    }
+
+    应如下书写。
+    for (...)
+    {
+        ... // program code
+    }
+
+    if (...)
+    {
+        ... // program code
+    }
+
+    void example_fun( void )
+    {
+        ... // program code
+    }
+
+    1-11：在两个以上的关键字、变量、常量进行
+              对等操作时，它们之间的操作符之前、
+              之后或者前后要加空格；进行非对等操
+              作时，如果是关系密切的立即操作符
+            （如－>），后不应加空格。
+    说明：采用这种松散方式编写代码的目的是使代
+              码更加清晰。
+
+              由于留空格所产生的清晰性是相对的，所以，
+              在已经非常清晰的语句中没有必要再留空格，
+              如果语句已足够清晰则括号内侧(即左括号后
+              面和右括号前面)不需要加空格，多重括号间
+              不必加空格，因为在C/C++语言中括号已经
+              是最清晰的标志了。
+
+              在长语句中，如果需要加的空格非常多，那么
+              应该保持整体清晰，而在局部不加空格。给操
+              作符留空格时不要连续留两个以上空格。
+
+            示例：
+            (1) 逗号、分号只在后面加空格。
+            int a, b, c;
+
+            (2)比较操作符, 赋值操作符"="、 "+="，
+                算术操作符"+"、"%"，逻辑操作符"&&"、
+                "&"，位域操作符"<<"、"^"等双目操作符
+                的前后加空格。
+            if (current_time >= MAX_TIME_VALUE)
+            a = b + c;
+            a *= 2;
+            a = b ^ 2;
+
+        (3)"!"、"~"、"++"、"--"、"&"（地址运算符）
+             等单目操作符前后不加空格。
+        *p = 'a';               // 内容操作"*"与内容之间
+        flag = !isEmpty;  // 非操作"!"与内容之间
+        p = &mem;         // 地址操作"&" 与内容之间
+        i++;                    // "++","--"与内容之间
+
+        (4)"->"、"."前后不加空格。
+        p->id = pid;       // "->"指针前后不加空格
+
+        (5) if、for、while、switch等与后面的括号间
+            应加空格，使if等关键字更为突出、明显。
+        if (a >= b && c > d)
+
+2.C++编程规范
+    2-1.类名必须首字母大写。
+    2-2.成员变量名称必须以“m_”开头。
+    2-3.成员变量尽可能用private修饰。
+    2-4.将供外部使用的成员函数用public修饰，
+       供内部其使用的成员函数用protected修饰，
+       尽量少用private修饰。
+    2-5.大部分成员函数的声明和实现必须要分开。
+    备注：成员函数的声明放在类的内部
+              成员函数的实现放在类的外部
+    2-6.每完成一个功能模块，尽量编译修改通过，
+       再开始完成下一个模块。
+    2-7.头文件的包含顺序：先C再C++。
+    2-8.功能的实现：先完成功能，再考虑效率
+    2-9.一个函数尽量只实现一个功能，
+       函数代码量尽量控制在20～30行。
+    2-10.单元测试的测试案例要全面，尽量能够测试到
+         所有功能分支。
+    2-11.不要使用编译器默认提供的构造函数和析构函数
+
+

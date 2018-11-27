@@ -1,0 +1,29 @@
+QByteArray tmp = val.toUtf8();
+    if (jsonFormatIsRight(tmp))
+    {
+        qDebug()<<__PRETTY_FUNCTION__<<"the format is right";
+    }
+    else
+    {
+        qDebug()<<__PRETTY_FUNCTION__<<"the format is wrong";
+        return;
+    }
+    
+    
+bool JsonParse::jsonFormatIsRight(/*const */QByteArray& byteArray)
+{
+    QJsonParseError jsonError;
+    QJsonDocument doucment = QJsonDocument::fromJson(byteArray, &jsonError);  // 转化为 JSON 文档
+    if (!doucment.isNull() && (jsonError.error ==QJsonParseError::NoError))   // 解析未发生错误
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+在jsonFormatIsRight(val.toUtf8())直接使用这个val.toUtf8()作为函数的参数时，编译器会报error
+
+/home/libo/Desktop/Repository/Qt_project/006-All_Test_Demo/TestQjsonFormatParse/jsonparse.h:13: note:   no known conversion for argument 1 from ‘QByteArray’ to ‘QByteArray&’

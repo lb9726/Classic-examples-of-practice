@@ -1,0 +1,122 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+
+int getsockopt(int sock, int level, int optname, void *optval, socklen_t *optlen);
+
+int setsockopt(int sock, int level, int optname, const void *optval, socklen_t optlen);
+
+参数：  
+sock：将要被设置或者获取选项的套接字。
+level：选项所在的协议层。
+optname：需要访问的选项名。
+optval：对于getsockopt()，指向返回选项值的缓冲。对于setsockopt()，指向包含新选项值的缓冲。
+optlen：对于getsockopt()，作为入口参数时，选项值的最大长度。作为出口参数时，选项值的实际长度。对于setsockopt()，现选项的长度。
+
+用法：
+ /*一个端口释放后会等待两分钟之后才能再被使用，SO_REUSEADDR是让端口释放后立即就可以被再次使用。*/
+    int reuse = 1;
+    if (-1 == setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse))) {
+        return -1;
+    }
+    
+     /*一个端口释放后会等待两分钟之后才能再被使用，SO_REUSEADDR是让端口释放后立即就可以被再次使用。*/
+    int reuse = SO_REUSEADDR;
+    if (-1 == setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse))) {
+        return -1;
+    }
+    SO_REUSEADDR 的值打印出来为2
+    
+
+IP地址转换函数
+通常人们喜欢用点分十进制来表示IP地址，而套接字地址结构中却需要用网络字节序的二进制存储。为了方便字符串的IP和二进制值的IP相互交换，linux系统提供了相应的地址转换函数。
+#include<arpa/inet.h>
+
+in_addr_t inet_addr(const char *str);
+
+int inet_aton(const char *str, struct in_addr *numstr);
+
+char *inet_ntoa(struct in_addr inaddr);
+
+函数中a代表ASCII串;n代表数值(numeric) 格式，是存在于套接字地址结构中的二进制值
+
+(1) inet_addr 函数。将字符串形式的IP地址转换成32为二进制值的IP地址。str指向字符串形式的IP地址。函数调用成功，返回值为32位网络字节序的二进制值的IP地址。
+这个函数不会对IP地址的有效性进行验证，所有2的32次方个（0.0.0.0 ~ 255.255.255.255）可能的二进制值都认为是有效的IP地址。由于该函数会返回一个常值INADDR_NONE
+(一般是32个1的值)，所以对于点分十进制的IP地址255.255.255.255 不能由此函数处理。现在人们常用inet_aton 函数代替 inet_addr函数。
+
+(2) inet_aton 函数。进行相同的转换。str指向字符串形式的IP地址。numstr指向转换后的32位网络字节序的IP地址。如果成功返回2,否则返回0。
+
+(3) inet_ntoa 函数。将一个32位网络字节序的二进制IP地址转换成相应的点分十进制的IP地址。这个函数的参数是一个结构，而不是指向结构的指针。
+该函数的返回值所指向的串留在静态内存中，所以函数是不可重入的。
+上述3个地址转换函数都只能处理IPV4地址，而不能处理IPV6地址。下面介绍两个较新的函数，它们对IPV4和IPV6地址都能处理
+
+#include<arpa/inet.h>
+
+int inet_pton(int family, const char *str, void *numstr);
+
+const char *inet_ntop(int family, const void *numstr, char *str, size_t len);
+
+函数中p代表地址的表达(presentation),格式通常是ASCII串;n代表数值（numeric)格式，是存在于套接字地址结构中的二进制值。这两个函数中的
+family参数指的是操作地址的地址族，IPV4是AF_INET，而IPV6是AF_INET6。
+(1) inet_pton 函数。将指针str所指的字符串形式的IP地址转换成网络字节序的二进制IP地址，并用指针numstr存储。如果成功返回1,如果指定的
+family输入字符串不是一个有效的表达格式，则返回值为0,出错返回-1.
+(2) inet_ntop 函数。进行相反的操作，将numstr所指的二进制IP地址转换成字符串形式的IP地址，并用指针str存储。参数len是目标的大小，
+为了避免函数溢出其调用者的缓冲区，如果len太小无法容纳表达式的结果，则返回一个空指针，并置errno为ENOSPC。由于参数str不能是空指针，
+调用者必须为目标分配内存并指定大小，成功时，此指针就是函数的返回值。
+
+
+
+IO多路复用
+I/O多路复用并发服务器
+初始化(socket -> bind -> listen);
+while(1) {
+    设置监听读写文件描述符集合(FD_*);
+    调用select;
+    如果是监听套接字就绪,说明有新的连接请求 
+    {
+        建立连接(accept);
+        加入到监听文件描述符集合;
+    }
+    否则说明是一个已经连接过的描述符 
+    {
+        进行操作(send或者recv);
+    }
+}
+
+
+
+服务器处理相关：
+服务器在有用户注册之前先读取文件内容，生成用户链表，
+1.先生成一个头节点，当文件为空时，head->next = NULL
+2.如果文件不为空，则按照读文件的顺序依次生成结点存储信息。
+
+每当有一个用户注册时，就将刚刚注册成功的用户加到当前的链表的表尾，返回当前头指针
+并且需要写一次文件，用以保存刚刚注册的用户
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

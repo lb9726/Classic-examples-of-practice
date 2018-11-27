@@ -1,0 +1,67 @@
+内存重叠：拷贝的目的地址在源地址范围内。所谓内存重叠就是拷贝的目的地址和源地址有重叠。
+在函数strcpy和函数memcpy都没有对内存重叠做处理的，使用这两个函数的时候只有程序员自己保证源地址和目标地址不重叠，或者使用memmove函数进行内存拷贝。
+memmove函数对内存重叠做了处理。
+现在来看函数strcpy
+原型：extern char *strcpy(char *dest,char *source);
+功能：把source所指由NULL结束的字符串复制到dest所指的数组中。
+说明：source和dest所指内存区域不可以重叠且dest必须有足够的空间来容纳source的字符串。
+返回指向dest的指针。
+重叠从两方面考虑：
+(1).dest数据覆盖了source; 如：dest(8byte) 地址：1000
+source(8byte) 地址：1002
+(2).dest所指的区域本来就是source的一部分； 如：dest(8byte) 地址：1000
+source(8byte) 地址：0998
+例如：针对第一种交叉情况情况，dst<src且dst+count>src，memcpy和memmove的结果是一样的。请看下面的例子讲解：
+string s = "hello world";
+memmove(&s[0],&s[5],10);
+举个内存重叠环境的例子：
+int main()
+{char *p = NULL;
+p=(char*)malloc(100);
+memcpy(p,"123456789",strlen("123456789")); //会等到错误的结果，有一个长度参数，只能拷贝cnt个
+//字节就结束了
+printf("before p =%s\n",p);
+strcpy(p+1,p); //注意：这里重叠了，而strcpy是根据判断原串中的'\0'
+printf("after p =%s\n",p);
+free(p);
+}
+1.下面来看strcpy()原型写法： 字符串拷贝. 
+char *strcpy(char *strDest, const char *strSrc)
+{
+assert((strDest!=NULL) && (strSrc !=NULL));
+char *address = strDest; 
+while( (*strDest++ = * strSrc++)·1 != '/0') 
+NULL ; 
+return address ; 
+}
+2.下面来看下memcpy函数的原型写法：内存拷贝
+void *memcpy(void *dest, const void *source, size_t count)
+{
+assert((NULL != dest) && (NULL != source));
+char *tmp_dest = (char *)dest;
+char *tmp_source = (char *)source;
+while(count --)//不对是否存在重叠区域进行判断
+*tmp_dest ++ = *tmp_source ++;
+return dest;
+}
+3.下面来看下memmove函数的原型写法：
+void *memmove(void *dest, const void *source, size_t count)
+{
+assert((NULL != dest) && (NULL != source));
+char *tmp_source, *tmp_dest;
+tmp_source = (char *)source;
+tmp_dest = (char *)dest;
+if((dest + count<source) || (source + count) <dest))
+{// 如果没有重叠区域
+while(count--)
+*tmp_dest++ = *tmp_source++;
+}
+else
+{ //如果有重叠（反向拷贝）
+tmp_source += count - 1;
+tmp_dest += count - 1;
+while(count--)
+*--tmp_dest = *--tmp;
+}
+return dest;
+}

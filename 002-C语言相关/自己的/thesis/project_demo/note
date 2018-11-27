@@ -1,0 +1,72 @@
+
+1.用例图   ------   确定系统功能
+
+2.流程图   ------   main()函数的实现
+
+3.软件三层架构
+
+    将用例图确定的函数 按 架构放在 不同的位置
+    协同工作
+
+4.错误处理：(1)注释法 - 范围
+            (2)打印法 - 监控关键数据
+            (3)gdb 
+
+
+5.界面切换
+
+  要点：所有界面是平等
+
+  实施：(1)所有 XXXXUI()的返回值 设置为 int
+        (2)给 上述界面函数 编号,通过界面编号进行
+           界面切换
+
+int LoginUI()
+{
+    XXXXXXXXXX
+
+    if  成功
+        return 1;  // 主界面
+    else  失败
+        return 0;  // 退出
+}
+
+
+
+int main()
+{
+    int choice = 101;
+    while(choice)
+    {
+        switch(choice)
+        {
+        case 101:  
+             choice = LoginUI();
+             break;
+        case 1：
+             choice = MainUI();
+             break;      
+        case 2:
+             AddBooKUI();
+             choice = XXXXXUI(); // 提示是否添加
+        }
+    }
+
+    ExitUI();
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

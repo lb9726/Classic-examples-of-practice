@@ -1,0 +1,206 @@
+重载(overload)、重写(override,有的书也叫做“覆盖”)、重定义(redefinition)的区别?
+
+重载 同一名字空间 是指允许存在多个同名函数,而这些函数的参数表不同。
+重定义/隐藏 不同名字空间 用于继承,派生类与基类的函数同名,屏蔽基
+类的函数重写/覆盖 不同名字空间 用于继承,子类重新定义复类虚函数的方法
+
+
+
+函数重载,我们靠什么来区分调用的那个函数?靠返回值判断可以不可以?
+【参考答案】如果同名函数的参数不同(包括类型、顺序不同) ,那么容易区别出它们是不同的。如果同名函数仅仅是返回值类型不同,有时可以区分,有时却不能。例如:
+void Function(void);
+int Function (void);
+上述两个函数,第一个没有返回值,第二个的返回值是 int 类型。如果
+这样调用函数:
+int x = Function ();
+则可以判断出 Function 是第二个函数。问题是在 C++/C 程序中,我们
+可以忽略函数的返回值。在这种情况下,编译器和程序员都不知道哪个
+Function 函数被调用。 所以只能靠参数而不能靠返回值类型的不同来区分重载函数。
+
+
+所有的运算符都能重载吗?
+【参考答案】不能被重载的运算符
+在 C++运算符集合中,有一些运算符是不允许被重载的。这种限制是出于安全方面的考虑,可防止错误和混乱。
+(1)不能改变 C++内部数据类型(如 int,float 等)的运算符。
+(2)不能重载‘.’,因为‘.’在类中对任何成员都有意义,已经成为标准用法。
+(3)不能重载目前 C++运算符集合中没有的符号,如#,@,$等。原因有两点,一是难以理解,二是难以确定优先级。
+(4)对已经存在的运算符进行重载时,不能改变优先级规则,否则将引起混乱。
+
+
+int max( int *ia, int sz );
+int max( int *, int = 10 );
+算函数重载?还是重复声明?
+【标准答案】如果在两个函数的参数表中只有缺省实参不同则第二个声明被视为第一个的重复声明 。
+
+
+总结：重载是在同一个类中的，覆盖即重写，是指子类重新定义基类的虚函数，此时基类中的成员函数必须是被virtual修饰的；在基类中无virtual修饰的成员函数，在子类中重新定义时，被称作隐藏
+
+
+
+C++中重载、重写（覆盖）和隐藏的区别
+重载：是指同一可访问区内被声明的几个具有不同参数列（参数的类型，个数，顺序不同）的同名函数，根据参数列表确定调用哪个函数，重载不关心函数返回类型。
+class A{
+public:
+  void test(int i);
+  void test(double i);//overload
+  void test(int i, double j);//overload
+  void test(double i, int j);//overload
+  int test(int i);         //错误，非重载。注意重载不关心函数返回类型。
+};
+
+隐藏：是指派生类的函数屏蔽了与其同名的基类函数，注意只要同名函数，不管参数列表是否相同，基类函数都会被隐藏。
+
+#include <iostream>
+using namespace std;
+
+class Base
+{
+public:
+    void fun(double ,int ){ cout << "Base::fun(double ,int )" << endl; }
+};
+
+class Derive : public Base
+{
+public:
+    void fun(int ){ cout << "Derive::fun(int )" << endl; }
+};
+
+int main()
+{
+    Derive pd;
+    pd.fun(1);//Derive::fun(int )
+    pb.fun(0.01, 1);//error C2660: “Derive::fun”: 函数不接受 2 个参数
+
+    system("pause");
+    return 0;
+}
+
+    
+重写(覆盖)：是指派生类中存在重新定义的函数。其函数名，参数列表，返回值类型，所有都必须同基类中被重写的函数一致。只有函数体不同（花括号内），派生类调用时会调用派生类的重写函数，不会调用被重写函数。重写的基类中被重写的函数必须有virtual修饰。
+
+示例：
+#include<iostream>
+
+using namespace std;
+
+class Base
+{
+public:
+    virtual void fun(int i){ cout << "Base::fun(int) : " << i << endl;}
+};
+
+class Derived : public Base
+{
+public:
+    virtual void fun(int i){ cout << "Derived::fun(int) : " << i << endl;}
+};
+int main()
+{
+    Base b;
+    Base * pb = new Derived();
+    pb->fun(3);//Derived::fun(int)
+
+    system("pause");
+    return 0;
+}
+
+
+
+重载和重写的区别：
+（1）范围区别：重写和被重写的函数在不同的类中，重载和被重载的函数在同一类中。
+（2）参数区别：重写与被重写的函数参数列表一定相同，重载和被重载的函数参数列表一定不同。
+（3）virtual的区别：重写的基类必须要有virtual修饰，重载函数和被重载函数可以被virtual修饰，也可以没有。
+隐藏和重写，重载的区别：
+（1）与重载范围不同：隐藏函数和被隐藏函数在不同类中。
+（2）参数的区别：隐藏函数和被隐藏函数参数列表可以相同，也可以不同，但函数名一定同；当参数不同时，无论基类中的函数是否被virtual修饰，基类函数都是被隐藏，而不是被重写。 
+示例
+//小结：1、有virtual才可能发生多态现象  
+// 2、不发生多态（无virtual）调用就按原类型调用  
+#include<iostream>  
+using namespace std;  
+  
+class Base  
+{  
+public:  
+    virtual void f(float x)  
+    {  
+        cout<<"Base::f(float)"<< x <<endl;  
+    }  
+    void g(float x)  
+    {  
+        cout<<"Base::g(float)"<< x <<endl;  
+    }  
+    void h(float x)  
+    {  
+        cout<<"Base::h(float)"<< x <<endl;  
+    }  
+};  
+class Derived : public Base  
+{  
+public:  
+    virtual void f(float x)  
+    {  
+        cout<<"Derived::f(float)"<< x <<endl;   //多态、覆盖  
+    }  
+    void g(int x)  
+    {  
+        cout<<"Derived::g(int)"<< x <<endl;     //隐藏  
+    }  
+    void h(float x)  
+    {  
+        cout<<"Derived::h(float)"<< x <<endl;   //隐藏  
+    }  
+};
+
+int main(void)  
+{  
+    Derived d;  
+    Base *pb = &d;  
+    Derived *pd = &d;  
+    // Good : behavior depends solely on type of the object  
+    pb->f(3.14f);   // Derived::f(float) 3.14  
+    pd->f(3.14f);   // Derived::f(float) 3.14  
+  
+    // Bad : behavior depends on type of the pointer  
+    pb->g(3.14f);   // Base::g(float)  3.14  
+    pd->g(3.14f);   // Derived::g(int) 3   
+  
+    // Bad : behavior depends on type of the pointer  
+    pb->h(3.14f);   // Base::h(float) 3.14  
+    pd->h(3.14f);   // Derived::h(float) 3.14  
+    return 0;  
+}  
+
+（1）函数Derived::f(float)覆盖了Base::f(float)。
+（2）函数Derived::g(int)隐藏了Base::g(float)，而不是重载。
+（3）函数Derived::h(float)隐藏了Base::h(float)，而不是覆盖。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

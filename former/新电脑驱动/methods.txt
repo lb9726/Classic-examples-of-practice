@@ -1,0 +1,6 @@
+http://www.intel.com/content/www/us/en/support/network-and-i-o/ethernet-products/000005480.html
+tar xvf e1000e-3.3.3.tar
+cd src
+make
+sudo make install
+restart

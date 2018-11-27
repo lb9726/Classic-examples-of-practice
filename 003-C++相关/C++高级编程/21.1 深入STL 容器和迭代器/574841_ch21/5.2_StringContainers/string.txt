@@ -1,0 +1,29 @@
+string作为STL容器
+可以把string看作是字符的一个顺序容器。因此，了解到了C++ string是一个完备的顺序容器应该并不奇怪。他包括begin()和end()方法（会返回指向string内部的迭代器），insert()和erase()方法，size(),empty(),以及所有其他顺序容器的基本功能。这与vector相当接近，甚至还提供了reserve()和capacity()方法。不过，不同于vector,string不需要将元素连续地存储在内存中。另外vector提供的某些方法string并没有提供，如push_back()。
+    C++ string实际上是basic_string模板类char实例化的一个typedef。不过，为简单起见，我们只谈到string。在此有关wstring的讨论同样适用于basic_string模板的其他实例化。
+
+可以像使用vector一样将string用作一个STL容器。以下是一个例子。
+
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  string str1;
+
+  str1.insert(str1.end(), 'h');
+  str1.insert(str1.end(), 'e');
+  str1.insert(str1.end(), 'l');
+  str1.insert(str1.end(), 'l');
+  str1.insert(str1.end(), 'o');
+
+  for (string::const_iterator it = str1.begin(); it != str1.end(); ++it) {
+    cout << *it;
+  }
+  cout << endl;
+
+  return (0);
+}
+
+除了STL顺序容器的方法，string还提供了大量有用的方法和友元函数。string接口就是杂乱接口的一个很好的例子，这是第5章讨论过的一个设计陷阱。完整的string接口在本书网站上的标准库参数资源中做了总结;本节只是介绍了如何把string用作STL容器。

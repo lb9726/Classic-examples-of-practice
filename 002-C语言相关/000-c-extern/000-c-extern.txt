@@ -1,0 +1,190 @@
+1.用extern声明外部变量
+    外部变量(即全局变量)是在函数的外部定义的，它的作用域为从变量的定义处开始到本程序文件的结尾。 在此作用域内，全局变量可以为程序中各个函数所引用。编译时将外部变量分配在静态存储区。
+    有时需要用extern来声明外部变量，以扩展外部变量的作用域。
+    
+    1. 在一个文件内声明外部变量
+    如果外部变量不在文件的开头定义，其有效的作用范围只限于定义处到文件结束。
+    如果在定义点之前的函数想要引用该外部变量，则应该在引用之前用关键字extern对该变量作“外部变量声明”。表示该变量是一个已经定义的外部变量。有了此声明，就可以从“声明”处起，合法地使用该外部变量了。
+    例如：
+    #include <stdio.h>
+#include <stdlib.h>
+
+int max(int x, int y)
+{
+    int z;
+    z = x > y ? x : y;
+    return (z);
+}
+
+int main()
+{
+    extern int A, B;
+    printf("max = %d\n", max(A, B));
+}
+
+int A = 13, B = -8;
+
+在本程序文件的最后一行定义外部变量A, B,但由于外部变量定义的位置在函数main之后，因此本来在mian函数中不能引用外部变量A，B。现在我们在main函数的第二行用extern对A和B进行"外部变量声明"，表示A和B是已经定义的外部变量(但定义的位置在后面)。这样，在main函数中就可以合法地使用全局变量A和B了。如果不做extern声明，编译时出错，系统不认为A，B是已经定义在外部的变量。一般做法是外部变量的定义放在引用它的所有函数之前，这样就可以避免在函数中多加上一个extern声明。
+用extern声明外部变量时，类型名可以写也可以省略不写，例如extern int A; 也可以写成extern A；
+    
+
+2.在多个文件的程序中声明外部变量
+一个c程序可以由一个或者多个源程序文件组成。如果程序只由一个源文件组成，使用外部变量的方法前面已经介绍了。如果程序由多个源程序文件组成，那么在一个文件中想引用另一个文件中已经定义的外部变量，须用extern作声明。
+file1.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int A;
+int main()
+{
+    int power(int ); // 对调用的函数作声明
+    int b = 3, c, d, m;
+    printf("enter the number a and its power m: ");
+    scanf("%d %d", &A, &m); // scanf其他字符需要原样输入，否则导致错误scanf("%d，%d", &A, &m); 要输入 3, 3才行
+    c = A * b;
+    printf("%d * %d = %d\n", A, b, c);
+    d = power(m);
+    printf("%d * %d = %d\n", A, m, d);
+}
+
+file2.c
+extern A;
+int power(int n)
+{
+    int i, y = 1;
+    for (i = 1; i <= n; ++i)
+    {
+        y *= A;    
+    }
+    return (y);
+}
+可以看到file2.c 文件中的开头有一个extern声明，它声明在本文件中出现的变量A是一个已经在其他文件中定义过的外部变量，本文件不必再次为它分配内存，本来外部变量A的作用域是file1.c，但现在用extern声明将其作用域扩大到file2.c文件中。加入程序有5个源文件，在一个文件中定义外部整形变量A，其他4个文件都可以引用A，但必须在每一个文件中都加上extern A;声明。在各文件经过便以后，将各目标文件链接成一个可执行的目标文件。
+但是这样的全局变量应十分慎重，因为在执行一个文件中的函数时，可能会改变该全局变量的值，他会影响到另一个文件中的函数的执行结果。
+
+用static 声明外部变量
+有时在程序设计中希望某些外部变量只限于被本文件引用，而不能被其他文件引用，这时可以在定义外部变量时加上一个static声明，例如：
+file1.c 
+static int A;
+main()
+{
+}
+
+file2.c
+extern int A;
+main()
+{
+    A = A * n;
+}
+在file1.c 中定义一个全局变量A，但它用static声明，因此只能用于本文件。虽然在file2.c
+文件中用extern int A; 但file2.c 文件中无法使用file1.c 中的全局变量A。
+
+
+这种加上static声明，只能用于本文件的外部变量(全局变量)称为静态外部变量，在程序设计中，常由若干人分别完成各个模块，各人可以独立地在其设计的文件中使用相同的外部变量名而互不相干。只需在每个文件中的外部变量前加上static即可。这就为程序的模块化，通用性提供方便。如果已经知道其他文件不引用本文件的外部变量，可以对本文件中的外部变量都加上static，成为静态外部变量，以免被其他文件误用。
+
+
+内部函数和外部函数
+
+同一个源程序文件中的函数之间是可以相互调用的，不同源程序文件中的函数之间也是可以相互调用的，根据需要我们也可以指定函数不能被其他文件调用。根据函数能否被其他源程序文件调用，将函数分为内部函数和外部函数。
+
+内部函数
+    如果一个函数只能被本文件中的其他函数所调用，而不能被其他源文件中的函数调用，则称为内部函数。在定义内部函数时，在函数名和函数类型前面家static标志符。其一般形式为：
+    static 类型标志符 函数名(形参列表)
+    例如： static int func(int a, int b);
+    内部函数又称静态函数。使用内部函数，可以使函数只局限于所在文件，如果在不同的文件中有同名的内部函数，互不干扰。
+    
+
+外部函数
+    多个函数可分布在不同的源程序中，在一个源文件中的函数调用其他源文件中定义的函数时，须用extern声明被调用函数为外部函数。其声明形式有：
+    1. 在定义函数时，如果i在函数首部的最左端冠以关键字extern，则表示此函数是外部函数，可以供其他文件调用。如： extern int func(int a, int b);
+    这样，函数func就可以为其他文件调用。c语言规定，如果在定义函数省略了extern，则隐含为外部函数。本书前面所用的函数都是外部函数。
+    2. 在需要调用此函数的文件中，用extern声明所用的函数是外部函数。
+    例子：
+file1.c
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    extern void enter_string(char str[80]);
+    extern void delete_string(char str[], char ch);
+    extern void print_string(char str[]);
+    /*以上3行声明在本函数中将要调用在其他文件中定义的三个函数*/
+    
+    char c;
+    char str[80];
+    printf("please enter string: ");
+    enter_string(str);
+    you_hua(str);
+    printf("please enter a character to delete: ");
+    scanf("%c", &c);
+    delete_string(str, c);
+    print_string(str);
+}
+
+file2.c
+#include<stdio.h>
+#include<stdlib.h>
+
+//将fgets函数多存入的一个\n处理掉
+void you_hua(char *p)
+{
+	while(*p != '\0')
+	{	
+		if(*p == '\n')
+		{
+		 	*p ='\0';
+		 	break;
+		}	
+		p++;
+	}
+	return;
+}
+
+void enter_string(char str[80])
+{
+    fgets(str, 79, stdin);
+}
+
+file3.c
+#include<stdio.h>
+#include<stdlib.h>
+
+void delete_string(char str[], char ch)
+{
+    int i, j;
+    for (i = j = 0; str[i] != '\0'; ++i)
+    {
+        if (ch != str[i])
+        {
+            str[j++] = str[i];
+        }        
+    }
+    str[j] = '\0';
+}
+
+file4.c
+#include<stdio.h>
+#include<stdlib.h>
+
+void print_string(char str[])
+{
+    printf("%s\n", str);
+}
+
+程序中三个函数都是定义为外部函数。在main函数总用extern声明在main函数中用到的enter_string,
+delte_string是在其他文件中定义的外部函数。
+通过此例子可知，使用extern声明就能够在一个文件中调用其他文件中定义的函数，或者说把作用域扩展到本文件。
+extern声明的形式就是在函数原型的基础上加关键字extern。由于函数在本质上是外部的，在程序中经常要调用外部函数,
+更方便编程，C语言允许在声明函数时省略写extern。
+
+利用函数原型扩展函数作用域最常见的例子就是#include 命令的应用。在前面几个章节中曾多次使用#include命令，
+并且提到过使用#include命令所指定的“头文件”中包含有调用库函数时所需要的信息。例如，在程序中需要调用sin函数，
+但三角函数并不是由用户在本文件中定义的，而是存放在书需函数库中的。按以上的介绍，必须在本文件中写出sin函数的原型，
+否则无法调用sin函数。sin函数的原型是： double sin(double x);
+显然，要求程序设计者在调用库函数时先从手册查出所使用的库函数的原型，并在程序中一一写出来是麻烦而且困难的。
+为减少程序设计者的困难，在头文件math.h中包括了所有数学函数的原型和其他有关信息，用户只需要用一下include命令：
+#include <math.h>
+这样，在该文件中就能合法地调用数学库中个函数了。
+
+
+

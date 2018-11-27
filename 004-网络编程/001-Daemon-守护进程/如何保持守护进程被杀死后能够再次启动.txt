@@ -1,0 +1,44 @@
+https://blog.csdn.net/a193314/article/details/49252727
+系统自动启动Linux APP 方式有很多
+
+如利用 inittab init.d
+
+关于守护进程被杀死后再次启动的文章看了很多，一直没找到适合我项目的。最后想了一个办法曲线救国。
+
+上代码
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+//inittab 加入监听此程序
+//利用此程序监听test_api_app 进程执行情况
+ 
+int main(void)
+{
+	char buffer[2];
+	memset(buffer,'\0',2);
+	int num;
+	FILE    *fp;
+	sleep(15);
+	for(;;)
+	{
+		fp = popen("ps -ef | grep test_api_app | grep -v grep | wc -l","r");
+		if (NULL == fp)
+		{
+			pclose(fp);
+		}
+		else
+		{
+			fgets(buffer,sizeof(buffer),fp);
+			pclose(fp);
+			num=atoi(buffer);
+			//DbgPrintf("have %d pthread\n",num);
+			if(num<0||num==0)
+				system("test_api_app");
+		}
+		sleep(10);
+	}
+	return 0;
+}
+

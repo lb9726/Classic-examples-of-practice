@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="QLineEdit" name="lineEditPlaintext">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>70</y>
+     <width>801</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="inputMask">
+    <string/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>明文</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditKey">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>130</y>
+     <width>221</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="maxLength">
+    <number>8</number>
+   </property>
+   <property name="placeholderText">
+    <string>密钥</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditECB">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>200</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>ECB密文</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditCBC">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>250</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>CBC密文</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditCFB">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>300</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>CFB密文</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditOFB">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>350</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>OFB密文</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditCTR">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>400</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>CTR密文</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonEncode">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>130</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>加密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonECB">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>200</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ECB解密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCBC">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>250</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CBC解密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCFB">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>300</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CFB解密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonOFB">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>350</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OFB解密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCTR">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>400</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CTR解密</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSetKey">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>130</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>设置密钥</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonClearECB">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>200</y>
+     <width>41</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonClearCBC">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>41</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonClearCFB">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>300</y>
+     <width>41</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonClearOFB">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>350</y>
+     <width>41</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonClearCTR">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>400</y>
+     <width>41</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditVI">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>460</y>
+     <width>681</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>461</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>  VI</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

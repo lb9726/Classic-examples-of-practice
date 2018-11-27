@@ -1,0 +1,76 @@
+C++大概是这个世界上最飘逸、成功、失败的语言吧，临时对象是C++语言中最复杂的东西之一。
+以下代码段新手大概经常会写吧：
+ 在CODE上查看代码片派生到我的代码片
+std::string FetchFormat(){  
+    return "%d";  
+}  
+  
+  
+int main(){  
+    printf(FetchFormat().c_str(), 100);  
+}  
+
+这个代码在大多数时，会跑得“很好”，然而，如果有一天你听到崩溃的碎片声，你也不应有任何不快。在这个程序中使用了一个从FetchFormat()调用返回的临时对象，在main函数中调用printf时，对第一个参数求值完成时，这个临时对象可能被析构，如果这个临时对象被析构，当进入printf函数体内时，自然地会崩溃了。
+        C++中对临时对象的定义为：一切非显式定义和生成的对象均为临时对象。至于临时对象何时被析构呢，根据《C++语言的设计与演化》知道，历史上对这个问题曾经有很多的争议，也提出过很多建议，最后老大发话了，在生成临时对象的最大表达式结束处即是临时对象的析构处（EOS，end of statement）。
+        至于什么时表达式，C++标准中对将表达式定义为：由操作数、操作符、函数调用构成的式子。int x = 1；int x, y;
+double xxx；x = y + z；......均是表达式，表达式是有值的，C++对临时对象的析构会在临时对象所在的表达式求值完成后进行。
+
+        以下以一些具体代码说明临时对象析构的地方。
+ 在CODE上查看代码片派生到我的代码片
+int main(){  
+    std::string x = "hello";  
+    std::string y = "world";  
+    const char * pz = (const char*)(x + y);  
+    printf("%s", pz);  
+}  
+        以上代码是非法的，因为const char * pz = (const char*)(x + y);这句会生成一个临时对象 x + y，根据标准，这个临时对象会在表达式求值结束时析构，即在给pz赋值结束时，这个临时对象被析构掉，pz指向一段非法内存，在printf中对其引用自然非法。
+
+ 在CODE上查看代码片派生到我的代码片
+int main(){  
+    std::string x = "hello";  
+    std::string y = "world";  
+    printf("%s", (const char*)(x + y));  
+}  
+        以上代码是合法的，这个代码跟前一段代码相比更简洁，更重要的是，这一段代码是最安全的合法的。根据C++标准，x + y生成的临时对象会在在最大表达式结束处析构，这个最大表达式即printf函数调用，也就是说，在 printf 函数调用完成时才析构 x + y生成的临时对象。
+
+ 在CODE上查看代码片派生到我的代码片
+int main(){  
+    std::string x = "hello";  
+    std::string y = "world";  
+    const char * pz = NULL;  
+    if(pz = (const char*)(x + y) && pz[0] == 'h'){  
+        printf("%s", pz);  
+    }  
+}  
+        以上代码合法，x + y会生成一个临时对象，然后会计算表达式pz == (const char*)(x + y) && pz[0] == 'h'的值，求值完成后，临时对象析构，pz指向非法内存，值得注意的是，pz[0] == 'h' 这一句是合法的，因为C++标准指出，临时对象在临时对象所在的最大表达式求值结束时析构，x + y确实是在表达式x + y中生成，但是，x + y并不是最大表达式，最大表达式为 pz == (const char*)(x + y) && pz[0] == 'h'。
+
+ 在CODE上查看代码片派生到我的代码片
+void Show(const char * pzStr){  
+    printf("%s", psStr);  
+}  
+  
+int main(){  
+    std::string x = "hello";  
+    std::string y = "world";  
+    Show((const char*)(x + y));  
+}  
+        这一段代码是合法的，有人可能会说，在Show的参数求值完成时，x + y会被析构，但是，C++标准指出，在临时对象所在的最大表达式求值结束时，才析构临时对象， x + y的最大表达式为Show((const char*)(x + y));即 C++标准保证，在函数调用完成后才析构x + y。
+
+        
+ 在CODE上查看代码片派生到我的代码片
+std::string Fetch(){  
+    return "%d";  
+}  
+int main(){  
+    const std::string& ref = Fetch();  
+    printf(ref.c_str(), 100);  
+}  
+
+        这一段代码是合法的，理由与上面完全不同，这个是C++标准强制要求延迟析构临时对象的特例。
+
+关于临时对象的析构，以上例子几乎包含大家会碰到的所有情况。
+
+
+
+
+

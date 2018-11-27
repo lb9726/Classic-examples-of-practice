@@ -1,0 +1,133 @@
+static变量放在头文件的后果
+
+问题：想用 static TList* g_xxx =NULL;
+当全局变量存链表头，但是可能在多处使用该全局变量，listGetHead()之类的参数用，所以就打算把static变量暴露出去，放在头文件。
+最后出现了一个问题，那就是往链表存东西，当时用listGetHead和listGetNext之类的传全局变量都能传，到想用它时候从别处使用，g_xxx仍然为NULL。
+
+这种定义方式是否叫全局变量
+
+后来想到，头文件，是不是每个源文件引用这个头文件都是单独计算的？也就是假设互不相干，虽然在同一个工程下，但是毕竟还是要编译的，要分析原理。
+假设a.c和b.c都引用a.h定义的变量，也可以等价看成a.c和a.h编译一次，b.c和a.h编译一次，他们是分开的。做个小实验
+
+main和a都引用了a.h，a = 0在a.h中定义，直观感觉上，默认a是0，经过第一次操作应该是2，经过第二次操作应该是10。
+但是认为那种直观感觉是错的，预期：在funcA内，初始a为0，程序结束时main内的a还是2。
+
+[cpp] view plain copy
+//main.c  
+#include "a.h"  
+#include <stdio.h>  
+main(){  
+        printf("a(%p) is %d\n",&a,a);  
+        a = 2;  
+        printf("a(%p) is %d\n",&a,a);  
+        funcA();  
+        printf("a(%p) is %d\n",&a,a);  
+}  
+
+[cpp] view plain copy
+//a.c  
+#include <stdio.h>  
+#include "a.h"  
+funcA(){  
+        printf("in funcA():a(%p) is %d\n",&a,a);  
+        a = 10;  
+        printf("in funcA():after \"a = 10i\"a(%p) is %d\n",&a,a);  
+}  
+
+[cpp] view plain copy
+//a.h  
+static int a = 0;  
+运行结果：
+[cpp] view plain copy
+a(0x8049748) is 0  
+a(0x8049748) is 2  
+in funcA():a(0x804974c) is 0  
+in funcA():after "a = 10i"a(0x804974c) is 10  
+a(0x8049748) is 2  
+
+实际结果符合预期。实际上产生了两个变量a，操作上互不相干。
+
+学艺不精，以前经常看到类似形式，比如类和成员，只暴露什么set和get方法给外部，变量不让外部操作，虽然那是为了安全和操作统一，和这次情况不太一样，但是通过动手实践从另外一个角度理解了这样做的好处。也该好好巩固一下static变量的基础知识了。
+
+所以最好变量还是在c或cpp文件中，大不了弄一个接口函数，声明到头文件暴露出去。对于我的需求，获取一下地址就行了，毕竟不是变量，是个链表指针，不用set和get那么麻烦，获取了地址就好说了。
+
+
+新问题：
+指针默认NULL，用一个函数获取指针，直接对指针进行修改，，再用函数获取指针，指针还是NULL。
+就是说，不光定义有限制，定义成功后，也不是拿起来地址就能随便改的？那就在加一个设置函数？
+
+
+
+static在头文件中定义带来的危害
+
+static的三种使用方式
+(1)局部静态变量 
+(2)外部静态变量/函数 
+(3)静态数据成员/成员函数 
+
+引用static变量要小心！
+因为static的局部性，全局静态变量在声明他的文件之外是不可见的。准确地讲从定义之处开始到文件结尾。
+1. 如果在头文件中定义static变量，被多个文件引用，编译可以顺利通过！即该头文件被包含了多少次，这些变量就定义了多少次。
+
+2. 在C++类中定义的静态变量也不能在头文件中初始化，一定要在cpp中初始化。问题比较难发现。
+2.1  比如 test.cpp 引用类 testclass，在testclass类中定义静态变量，并在testclass.h中初始化
+[cpp] view plain copy
+class testclass{  
+static string teststr;  
+}  
+string testclass::teststr="";  
+
+编译运行都没有问题
+2.2  在定义一个类myclass，在myclass.cpp中
+[cpp] view plain copy
+#include “testclass.h”  
+
+test.cpp中 添加 #include "myclass.h"
+再编译就出错了，认为teststr被定义了多次。
+multiple definition of `cgi::testclass::teststr'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

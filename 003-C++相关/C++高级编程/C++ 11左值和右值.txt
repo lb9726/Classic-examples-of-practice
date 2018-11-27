@@ -1,0 +1,493 @@
+http://blog.chinaunix.net/uid-693168-id-3453399.html
+C++ 11中引入的一个非常重要的概念就是右值引用。理解右值引用是学习“移动语义”（move semantics）的基础。而要理解右值引用，就必须先区分左值与右值。
+       对左值和右值的一个最常见的误解是：等号左边的就是左值，等号右边的就是右值。左值和右值都是针对表达式而言的，左值是指表达式结束后依然存在的持久对象，右值是指表达式结束时就不再存在的临时对象。一个区分左值与右值的便捷方法是：看能不能对表达式取地址，如果能，则为左值，否则为右值。下面给出一些例子来进行说明。
+ int a = 10;
+ int b = 20;
+ int *pFlag = &a;
+ vector<int> vctTemp;
+ vctTemp.push_back(1);
+ string str1 = "hello ";
+ string str2 = "world";
+ const int &m = 1;
+       请问，a，b, a+b, a++, ++a, pFlag, *pFlag, vctTemp[0], 100, string("hello"), str1, str1+str2, m分别是左值还是右值？
+           a和b都是持久对象（可以对其取地址），是左值；
+           a+b是临时对象（不可以对其取地址），是右值；
+           a++是先取出持久对象a的一份拷贝，再使持久对象a的值加1，最后返回那份拷贝，而那份拷贝是临时对象（不可以对其取地址），故其是右值；
+           ++a则是使持久对象a的值加1，并返回那个持久对象a本身（可以对其取地址），故其是左值；
+           pFlag和*pFlag都是持久对象（可以对其取地址），是左值；
+           vctTemp[0]调用了重载的[]操作符，而[]操作符返回的是一个int &，为持久对象（可以对其取地址），是左值；
+           100和string("hello")是临时对象（不可以对其取地址），是右值；
+           str1是持久对象（可以对其取地址），是左值；
+           str1+str2是调用了+操作符，而+操作符返回的是一个string（不可以对其取地址），故其为右值；
+           m是一个常量引用，引用到一个右值，但引用本身是一个持久对象（可以对其取地址），为左值。
+      区分清楚了左值与右值，我们再来看看左值引用。左值引用根据其修饰符的不同，可以分为非常量左值引用和常量左值引用。
+      非常量左值引用只能绑定到非常量左值，不能绑定到常量左值、非常量右值和常量右值。如果允许绑定到常量左值和常量右值，则非常量左值引用可以用于修改常量左值和常量右值，这明显违反了其常量的含义。如果允许绑定到非常量右值，则会导致非常危险的情况出现，因为非常量右值是一个临时对象，非常量左值引用可能会使用一个已经被销毁了的临时对象。
+      常量左值引用可以绑定到所有类型的值，包括非常量左值、常量左值、非常量右值和常量右值。
+      可以看出，使用左值引用时，我们无法区分出绑定的是否是非常量右值的情况。那么，为什么要对非常量右值进行区分呢，区分出来了又有什么好处呢？这就牵涉到C++中一个著名的性能问题——拷贝临时对象。考虑下面的代码：
+vector<int> GetAllScores()
+{
+ vector<int> vctTemp;
+ vctTemp.push_back(90);
+ vctTemp.push_back(95);
+ return vctTemp;
+}
+复制代码
+       当使用vector<int> vctScore = GetAllScores()进行初始化时，实际上调用了三次构造函数。尽管有些编译器可以采用RVO（Return Value Optimization）来进行优化，但优化工作只在某些特定条件下才能进行。可以看到，上面很普通的一个函数调用，由于存在临时对象的拷贝，导致了额外的两次拷贝构造函数和析构函数的开销。当然，我们也可以修改函数的形式为void GetAllScores(vector<int> &vctScore)，但这并不一定就是我们需要的形式。另外，考虑下面字符串的连接操作：
+ string s1("hello");
+ string s = s1 + "a" + "b" + "c" + "d" + "e";
+复制代码
+       在对s进行初始化时，会产生大量的临时对象，并涉及到大量字符串的拷贝操作，这显然会影响程序的效率和性能。怎么解决这个问题呢？如果我们能确定某个值是一个非常量右值（或者是一个以后不会再使用的左值），则我们在进行临时对象的拷贝时，可以不用拷贝实际的数据，而只是“窃取”指向实际数据的指针（类似于STL中的auto_ptr，会转移所有权）。C++ 11中引入的右值引用正好可用于标识一个非常量右值。C++ 11中用&表示左值引用，用&&表示右值引用，如：
+ int &&a = 10; 
+       右值引用根据其修饰符的不同，也可以分为非常量右值引用和常量右值引用。
+       非常量右值引用只能绑定到非常量右值，不能绑定到非常量左值、常量左值和常量右值（VS2010 beta版中可以绑定到非常量左值和常量左值，但正式版中为了安全起见，已不允许）。如果允许绑定到非常量左值，则可能会错误地窃取一个持久对象的数据，而这是非常危险的；如果允许绑定到常量左值和常量右值，则非常量右值引用可以用于修改常量左值和常量右值，这明显违反了其常量的含义。
+       常量右值引用可以绑定到非常量右值和常量右值，不能绑定到非常量左值和常量左值（理由同上）。
+       有了右值引用的概念，我们就可以用它来实现下面的CMyString类。
+class CMyString
+{
+public:
+    // 构造函数
+ CMyString(const char *pszSrc = NULL)
+ {
+  cout << "CMyString(const char *pszSrc = NULL)" << endl;
+  if (pszSrc == NULL)
+  {
+   m_pData = new char[1];
+   *m_pData = '\0';
+  }
+  else
+  {
+   m_pData = new char[strlen(pszSrc)+1];
+   strcpy(m_pData, pszSrc);
+  }
+ }
+
+    // 拷贝构造函数
+ CMyString(const CMyString &s)
+ {
+  cout << "CMyString(const CMyString &s)" << endl;
+  m_pData = new char[strlen(s.m_pData)+1];
+  strcpy(m_pData, s.m_pData);
+ }
+
+    // move构造函数
+ CMyString(CMyString &&s)
+ {
+  cout << "CMyString(CMyString &&s)" << endl;
+  m_pData = s.m_pData;
+  s.m_pData = NULL;
+ }
+
+    // 析构函数
+ ~CMyString()
+ {
+  cout << "~CMyString()" << endl;
+  delete [] m_pData;
+  m_pData = NULL;
+ }
+
+    // 拷贝赋值函数
+ CMyString &operator =(const CMyString &s)
+ {
+  cout << "CMyString &operator =(const CMyString &s)" << endl;
+  if (this != &s)
+  {
+   delete [] m_pData;
+   m_pData = new char[strlen(s.m_pData)+1];
+   strcpy(m_pData, s.m_pData);
+  }
+  return *this;
+ }
+
+    // move赋值函数
+ CMyString &operator =(CMyString &&s)
+ {
+  cout << "CMyString &operator =(CMyString &&s)" << endl;
+  if (this != &s)
+  {
+   delete [] m_pData;
+   m_pData = s.m_pData;
+   s.m_pData = NULL;
+  }
+  return *this;
+ }
+
+private:
+ char *m_pData;
+};
+复制代码
+        可以看到，上面我们添加了move版本的构造函数和赋值函数。那么，添加了move版本后，对类的自动生成规则有什么影响呢？唯一的影响就是，如果提供了move版本的构造函数，则不会生成默认的构造函数。另外，编译器永远不会自动生成move版本的构造函数和赋值函数，它们需要你手动显式地添加。
+        当添加了move版本的构造函数和赋值函数的重载形式后，某一个函数调用应当使用哪一个重载版本呢？下面是按照判决的优先级列出的3条规则：
+             1、常量值只能绑定到常量引用上，不能绑定到非常量引用上。
+             2、左值优先绑定到左值引用上，右值优先绑定到右值引用上。
+             3、非常量值优先绑定到非常量引用上。
+        当给构造函数或赋值函数传入一个非常量右值时，依据上面给出的判决规则，可以得出会调用move版本的构造函数或赋值函数。而在move版本的构造函数或赋值函数内部，都是直接“移动”了其内部数据的指针（因为它是非常量右值，是一个临时对象，移动了其内部数据的指针不会导致任何问题，它马上就要被销毁了，我们只是重复利用了其内存），这样就省去了拷贝数据的大量开销。
+        一个需要注意的地方是，拷贝构造函数可以通过直接调用*this = s来实现，但move构造函数却不能。这是因为在move构造函数中，s虽然是一个非常量右值引用，但其本身却是一个左值（是持久对象，可以对其取地址），因此调用*this = s时，会使用拷贝赋值函数而不是move赋值函数，而这已与move构造函数的语义不相符。要使语义正确，我们需要将左值绑定到非常量右值引用上，C++ 11提供了move函数来实现这种转换，因此我们可以修改为*this = move(s)，这样move构造函数就会调用move赋值函数。
+C++的Lambda表达式在WIN RT的异步编程中，占有非常重要的作用。但C++的Lambda表达式又不同于其他语言，比如C#，javascript。本篇旨在讨论C++ Lambda表达式的基本语法和概念，希望大家多多指正。
+ 
+ 首先，我们看一下Lambda表达式的基本构成
+ 
+1. 是捕获值列表，2.是传入参数列表，3.可修改标示符，4.错误抛出标示符，5.函数返回值，6.是函数体。
+ 
+在.NET 中，我们认为比较标准的Lambda表达式应该是这个样子
+// declaring_lambda_expressions1.cpp
+#include <functional>
+
+int main()
+{
+   // Assign the lambda expression that adds two numbers to an auto variable.
+   auto f1 = [] (int x, int y) { return x + y; }; 
+
+   // Assign the same lambda expression to a function object.
+   function<int (int, int)> f2 = [] (int x, int y) { return x + y; };
+   f1(3,4); 
+复制代码
+}
+f1是一个auto的值，也是function<>这个模板类型，我们可以理解成为一个函数指针。然后我们用f1(3,4)去调用他。
+ 
+如果我们想在函数声明的时候就直接执行他，我们可以在Lambda表达式的最后加传入参数，像这样。
+int main()
+{
+   using namespace std;
+   int n = [] (int x, int y) { return x + y; }(5, 4);
+
+   //assign the return type
+   int n = [] (int x, int y) -> int{ return x + y;}(5, 4);
+   cout << n << endl;
+复制代码
+}
+第二个表达式中声明的返回值必须跟随->符号，并且两个必须同时出现。如果返回值唯一的话，我们可以省略->+返回值类型。
+Lambda表达式允许返回值不唯一的情况，但必须指定返回值类型。
+在以上的例子当中，只是常规的Lambda表达式用法，下面我们要说一说捕获值列表。
+ 
+捕获值列表，是允许我们在Lambda表达式的函数体中直接使用这些值，捕获值列表能捕获的值是所有在此作用域可以访问的值，包括这个作用域里面的临时变量，类的可访问成员，全局变量。捕获值的方式分两种，一种是按值捕获，一种是按引用捕获。顾名思义，按值捕获是不改变原有变量的值，按引用捕获是可以在Lambda表达式中改变原有变量的值。
+[&] 所有的值都是按引用捕获
+[=] 所有的值都是按值捕获
+如果你不想某些值被按引用或者按值捕获，但其他的值却想那样做的话
+[ &, n ] 除了n 所有的值按引用捕获
+[ = , &n ]除了n所有的值按值捕获
+当然，我们也可以指定某几个值的捕获属性
+[ m, n ]m,n按引用捕获
+[ &m, &n ]m,n按值捕获
+ 
+       int m = 0, n = 0;
+    
+      [=] (int a) mutable { m = ++n + a; }(4);
+      [&] (int a) { m = ++n + a; }(4);
+
+      [=,&m] (int a) mutable { m = ++n + a; }(4);
+      [&,m] (int a) mutable { m = ++n + a; }(4);
+
+      [m,n] (int a) mutable { m = ++n + a; }(4);
+      [&m,&n] (int a) { m = ++n + a; }(4);
+
+      [=] (int a) mutable { m = ++n + a; }(4);
+复制代码
+ 
+大家一定好奇为什么这里有很多mutable。在按值引用的情况下，Lambda函数体内部是不能直接修改引用值的。如下面注释代码，是会报错的。这种情况下，我们要在Lambda表达式前加mutable，但是结果m,n 依然没有被修改，维持按值引用的特性。
+int main()
+{
+      int m = 0, n = 0;
+      // 不加mutable会报错
+      //[=] (int a){ m = ++n + a; }(4);
+      //[m,n] (int a){ m = ++n + a; }(4);
+
+      [=] (int a) mutable { m = ++n + a; }(4);
+     //
+     // [=] (int m, int n, int a){m=++n+a; }(m, n, 4);
+     // 下面这个函数m,n的值依然会被修改，因为m,n是按引用传入的
+     // [=] (int &m, int &n, int a){m=++n+a; }(m, n, 4);
+      cout << m << endl << n << endl;
+复制代码
+}
+ 
+ 在这个例子中捕获值列表[this]中的this是用来指向这个类的，但[this]只有在类的内部，或者是this指针存在的情况下才能使用。
+class Scale
+{
+public:
+   // The constructor.
+   explicit Scale(int scale)
+      : _scale(scale)
+   {
+   }
+
+   // Prints the product of each element in a vector object 
+   // and the scale value to the console.
+   void ApplyScale(const vector<int>& v) const
+   {
+      for_each(v.begin(), v.end(), 
+         [this](int n) { cout << n * _scale << endl; });
+   }
+
+private:
+   int _scale;
+};
+ 
+关于异常：
+我们可以通过try-catch去捕获异常，而在Lambda表达式中声明throw()，是指示编译器这个函数不会抛异常，会引起编译的警告。
+ 
+然后，Lambda可以支持返回函数指针，或者说是嵌套一个Lambda表达式，比如：
+int main()
+{
+   using namespace std;
+
+   // The following lambda expression contains a nested lambda
+   // expression.
+   int m = [](int x) 
+      { return [](int y) { return y * 2; }(x) + 3; }(5);
+
+   // Print the result.
+   cout << m << endl;
+复制代码
+}
+我们可以把 return [](int y) { return y * 2; }(x) 抽象成 f(x) 所以原函数就是return f(5)+3 就是2*5+3=13
+ 
+加入函数指针之后，我们来看一看一个Lambda表达式可以写的多复杂，这是来自于MSDN的官方的例子。
+// higher_order_lambda_expression.cpp
+// compile with: /EHsc
+#include <iostream>
+#include <functional>
+
+int main()
+{
+   using namespace std;
+
+   // The following code declares a lambda expression that returns 
+   // another lambda expression that adds two numbers. 
+   // The returned lambda expression captures parameter x by value.
+   auto g = [](int x) -> function<int (int)> 
+      { return [=](int y) { return x + y; }; };
+
+   // The following code declares a lambda expression that takes another
+   // lambda expression as its argument.
+   // The lambda expression applies the argument z to the function f
+   // and adds 1.
+   auto h = [](const function<int (int)>& f, int z) 
+      { return f(z) + 1; };
+
+   // Call the lambda expression that is bound to h. 
+   auto a = h(g(7), 8);
+
+   // Print the result.
+   cout << a << endl;
+复制代码
+}
+ 
+ 
+ 
+结果很简单就是7+8+1=16 我通过代码帮大家展开一下：
+   auto g = [](int x) -> function<int (int)> 
+      { return [=](int y) { return x + y; }; };
+
+   auto h = [](const function<int (int)>& f, int z) 
+      { return f(z) + 1; };
+
+   auto a = h(g(7), 8);
+   // 解：
+   // 我们先看看g(7) 等于什么
+   // 我们把g的返回值 return [=](int y) { return x + y; }; 抽象成一个函数t(y)
+   // 那么g(x)返回的就t(y)
+   // 也就是g(7)=t(y) 这里g的参数和t的参数无关
+   // 那么 h(g(7), 8)=h(t(y), 8))
+   // 代入h的表达式，我们发现t(y)就是f(z)
+   // 代入的结果就是 return t(8)+1,再把g(7)代入就是7+8+1=16
+   
+复制代码
+   cout << a << endl; 
+ 
+最后，有人会很好奇foe_each为什么可以传入Lambda表达式
+首先，我们看看for_each的展开
+template<class InputIterator, class Function>
+  Function for_each(InputIterator first, InputIterator last, Function f)
+  {
+    for ( ; first!=last; ++first ) f(*first);
+    return f;
+  }
+复制代码
+//From: http://www.cplusplus.com/reference/algorithm/for_each/ 
+ 当然这不是实际的代码，但是我们可以看到，调用的只是f()再传入迭代器的值，所以，我们在写for_each的Lambda表达式的时候，传入参数一定是和迭代器的类型是匹配的。
+在没有Lambda表达式的时候，只要是能写成 f(*first)这样的东西传进来的都行，所以就会出现结构体重载()操作符，这样的奇葩
+void myfunction (int i) {
+  cout << " " << i;
+}
+
+struct myclass {
+  void operator() (int i) {cout << " " << i;}
+} myobject;
+
+int main () {
+  vector<int> myvector;
+  myvector.push_back(10);
+  myvector.push_back(20);
+  myvector.push_back(30);
+
+  cout << "myvector contains:";
+  for_each (myvector.begin(), myvector.end(), myfunction);
+
+  // or:
+  cout << "\nmyvector contains:";
+  for_each (myvector.begin(), myvector.end(), myobject);
+
+  cout << endl;
+
+  return 0;
+复制代码
+}
+ 
+在C++中Lambda表达式被设计的相对复杂，但我相信，这也是C++这门语言的魅力所在，功能很强大，但是很难学。
+
+
+https://www.cnblogs.com/niuxichuan/p/5679813.html
+
+
+
+C++中的左值与右值
+
+一. constexpr和常量表达式
+
+　　常量表达式（const expression）是指值不会改变并且在编译过程就能得到计算结果的表达式。显然，字面值属于常量表达式，用常量表达式初始化的const对象也是常量表达式。
+
+　　一个对象（或表达式）是不是常量表达式由它的数据类型和初始值共同决定，例如：
+
+ 
+
+const int max_files = 20;       // max_files是常量表达式  
+const int limit = max_files + 1;    // limit是常量表达式  
+int staff_size = 27;                // staff_size不是常量表达式  
+const int sz = get_size();      // sz不是常量表达式 
+　　尽管staff_size的初始值是个字面值常量，但由于它的数据类型只是一个普通int而非const int，所以它不属于常量表达式。另一方面，尽管sz本身是一个常量，但它的具体值直到运行时才能获取到，所以也不是常量表达式。
+
+ 
+
+　　在一个复杂系统中，很难（几乎肯定不能）分辨一个初始值到底是不是常量表达式。当然可以定义一个const变量并把它的初始值设为我们认为的某个常量表达式，但在实际使用时，尽管要求如此却常常发现初始值并非常量表达式的情况。可以这么说，在此种情况下，对象的定义和使用根本就是两回事儿。
+
+　　C++11新标准规定，允许将变量声明为constexpr类型以便由编译器来验证变量的值是否是一个常量表达式。声明为constexpr的变量一定是一个常量，而且必须用常量表达式初始化：
+
+ 
+
+constexpr int mf = 20;          // 20是常量表达式  
+constexpr int limit = mf + 1;   // mf + 1是常量表达式  
+constexpr int sz = size();      // 只有当size是一个constexpr函数时才是一条正确的声明语句 
+　　尽管不能使用普通函数作为constexpr变量的初始值，但是，新标准允许定义一种特殊的constexpr函数。这种函数应该足够简单以使得编译时就可以计算其结果，这样就能用constexpr函数去初始化constexpr变量了。
+
+　　一般来说，如果你认定变量是一个常量表达式，那就把它声明成constexpr类型。
+
+ 
+
+　　常量表达式的值需要在编译时就得到计算，因此对声明constexpr时用到的类型必须有所限制。因为这些类型一般比较简单，值也显而易见、容易得到，就把它们称为"字面值类型"（literal type）。
+
+　　到目前为止接触过的数据类型中，算术类型、引用和指针都属于字面值类型。自定义类Sales_item、IO库、string类型则不属于字面值类型，也就不能被定义成constexpr。
+
+ 
+
+　　尽管指针和引用都能定义成constexpr，但它们的初始值却受到严格限制。一个constexpr指针的初始值必须是nullptr或者0，或者是存储于某个固定地址中的对象。
+
+　　值得一提的是，函数体内定义的变量一般来说并非存放在固定地址中，因此constexpr指针不能指向这样的变量。相反的，定义于所有函数体之外的对象其地址固定不变，能用来初始化constexpr指针。同样，允许函数定义一类有效范围超出函数本身的变量（即局部静态变量），这类变量和定义在函数体之外的变量一样也有固定地址。因此，constexpr引用能绑定到这样的变量上，constexpr指针也能指向这样的变量。
+
+　　指针和constexpr
+
+　　必须明确一点，在constexpr声明中如果定义了一个指针，限定符constexpr仅对指针有效，与指针所指的对象无关：
+
+ 
+
+const int *p = nullptr;         // p是一个指向整型常量的指针  
+constexpr int *q = nullptr;     // q是一个指向整数的常量指针 
+　　p和q的类型相差甚远，p是一个指向常量的指针，而q是一个常量指针，其中的关键在于constexpr把它所定义的对象置为了顶层const。
+
+　　与其他常量指针类似，constexpr指针既可以指向常量也可以指向一个非常量：
+
+ 
+
+constexpr int *np = nullptr;    // np是一个指向整数的常量指针，其值为空  
+int j = 0;  
+constexpr int i = 42;       // i的类型是整型常量  
+// i和j都必须定义在函数体之外  
+constexpr const int *p = &i;    // p 是常量指针，指向整型常量i  
+constexpr int *p1 = &j;         // p1是常量指针，指向整数j 
+ 二. 左值和右值
+
+　　C++的表达式要不然是右值，要不然就是左值。这两个名词是从C语言继承过来的，原来是为了帮助记忆：左值可以位于赋值语句的左侧，右值则不能。
+
+　　在C++语言中，二者的区别就要复杂很多。
+
+　　一个左值表达式的求值结果是一个对象或者一个函数，然而以常量对象为代表的某些左值实际上不能作为赋值语句的左侧运算对象。此外，虽然某些表达式的求值结果是对象，但它们是右值而非左值。
+
+　　可以做一个简单的归纳：当一个对象被用作右值的时候，用的是对象的值（内容），当对象被用作左值的时候，用的是对象的身份（在内存中的位置）。
+
+　　知乎看到的经典总结：左值右值的形式区分（或者称语法区分）是能否用取地址&运算符；语义区分（即其本质涵义）在于表达式代表的是持久对象还是临时对象。
+
+　　使用关键字decltype的时候，左值和右值也有所不同。如果表达式的求值结果是左值，decltype作用于该表达式（不是变量），得到一个引用类型。
+
+　　如：假定p的类型是int*，因为解引用运算符生成左值，所以decltype（*p）的结果是int&p，另一方面，由于取地址运算符生成右值，所以decltype（&p）的结果是
+
+　　int**，也就是说是一个指向整型指针的指针。
+
+　　关于C++中的左值和右值，参考链接：C++中的左值和右值，左值右值的一点总结，C++11中的左值和右值，左值、右值与右值引用。
+
+　　下面是我自己对于左值和右值的一点体会：严格来讲，左值和右值有一个非常严格的评判标准，即是否可以用取地址&运算符。
+
+　　关于在等号左右两边的判断（左值可以出现在等号左边或右边，右值只能出现在右边）是不完善的，例如有些左值是无法出现在赋值符左边的，典型的就是常变量对       象：如const int i = 1，变量 i 除了初始化的过程其他情况是不允许再赋值的，但是 i 却毫无疑问地是左值，可以使用取地址符。
+
+　　不和对象相关的字面值常量（只有内置类型具有）一般来说是右值，但是有一个例外，就是字符串字面值，可以取地址，是左值，但是也不能位于等号左边。
+
+　　相对的是，有时候右值是可以位于等号左边的，尽管新标准并不提倡这一点。例如，string s1, s2; s1 + s2 = "wow!"。
+
+　　s1 + s2是右值，但是位于赋值符号的左边。为了维持向后兼容性，新标准库仍然允许向右值赋值。
+
+三. 右值引用
+
+　　为了支持移动操作，新标准引入了一种新的引用类型——右值引用（rvalue referrence）。
+
+　　所谓右值引用就是必须绑定到右值的引用。我们通过&&而不是&来获得右值引用。如我们将要看到的，右值引用有一个重要的性质——可以绑定到一个即将销毁的对象。
+
+　　因此，我们可以自由地将一个右值引用的资源“移动”到另一个对象中。
+
+　　类似任何引用，一个右值引用也不过是某一个对象的另一个名字而已。如我们所知，对于左值引用，我们不能将其绑定到需要转换的表达式、字面常量或是返回右值的表达式。
+
+　　右值引用有着完全相反的特性：我们可以将一个右值引用绑定到这类表达式上，但不能将一个右值引用直接绑定到一个左值上：
+
+　　
+
+int i = 42;            
+int &r = i;                    //正确：r引用i
+int &&rr = i;                //错误：不能将一个右值绑定到一个左值上
+const int &r3 = i * 42    //正确：我们可以将一个const引用绑定到一个左值
+int &&rr2 = i * 42        // 正确：将rr2绑定到乘法结果上
+　　返回左值引用的函数，连同赋值、下标、解引用和前置递增/递减运算符，都是返回左值的表达式的例子。我们可以将一个左值引用绑定到这类表达式的结果上。
+
+　　返回非引用类型/右值引用的函数，连同算术、关系、位以及后置递增/递减运算符，都生成右值，我们不能将一个左值引用绑定到这类表达式上，但我们可以将一个
+
+　　const的左值引用或者一个右值引用绑定到这类表达式上。
+
+　　左值持久，右值短暂
+
+　　考察左值和右值表达式的列表，两者相互区别之处就很明显：左值有持久的状态，而右值要么是字面常量，要么是在表达式求值过程中创建的临时对象。
+
+　　由于右值引用只能绑定到临时对象，我们得知：
+
+　　所引用的对象将要被销毁；该对象没有其他用户
+
+　　这两个特性意味着：使用右值引用的代码可以自由地接管所引用的对象的资源。
+
+　　变量是左值
+
+　　变量可以看做只有一个运算对象而没有运算符的表达式，虽然我们很少这样看待变量。类似其他任何表达式，变量表达式也有左值右值属性。
+
+　　变量表达式都是左值。带来的结果就是，我们不能将一个右值引用绑定到一个右值引用类型的变量上，这有些令人惊讶。
+
+　　其实有了右值表示临时对象这一观察结果，变量是左值这一特性并不令人惊讶。毕竟，变量是持久的，直至离开作用域时才被销毁。
+
+　　标准库move函数
+
+　　虽然不能将一个右值引用直接绑定到一个左值上，但我们可以显式地将一个左值转换为对应的右值引用类型。我们可以通过调用一个名为move的标准库函数来获得绑定到
+
+　　左值上的右值引用，此函数定义在头文件utility中。
+
+　　
+
+int &&rr3 = std::move(rr1)    //ok
+　　move调用告诉编译器：我们有一个左值，但我们希望像一个右值一样处理它。我们必须认识到，调用move就意味着承诺：除了对rr1赋值或销毁它外，我们将不再使用它
+
+　　在调用move后，我们不能对移后源对象的值做任何假设。
+　　
+　　
+　　

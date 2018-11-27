@@ -1,0 +1,2 @@
+http://www.runoob.com/python/file-methods.html
+http://www.runoob.com/python/python-tutorial.html

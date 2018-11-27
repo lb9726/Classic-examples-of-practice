@@ -1,0 +1,208 @@
+什么是常指针，什么是指针常量？
+
+在c中，对于const定义的指针，不赋初值编译不报错，
+int* const px;这种定义是不允许的。（指针常量定义的时候对其进行初始化）
+int const *px;这种定义是允许的。（常指针可以再定义的时候不初始化）
+
+但是，在C++中
+int* const px;和const int* const px;会报错，const int* px;不报错。
+必须初始化指针的指向int* const px = &x;const int* const px=&x;
+强烈建议在初始化时说明指针的指向，防止出现野指针！
+
+常指针：   指的是常量指针，是指指针的地址为常量，不能改变，内容可以改变  int * const p;
+指针常量： 指的是指向一个常量的指针，地址可以改变，但内容不能改变        int const *p;
+指向常量的常指针： 指针所保存的地址不可变，指针所指向的数值也不可变      int const * const p; const int * const p;
+
+指针常量，常指针，指向常量的常指针
+
+1.指针常量
+从字面意思可以看出，指针是一个常量，也就是地址不能被修改。
+int*  —— const p
+
+特点是指针指向的数值可以改变，然而指针所保存的地址却不可以改变。
+
+2.指向常量的指针
+const ——int*p
+特点是指针所保存的地址可以改变，然而指针所指向的值却不可以改变。同理，当添加*p = b时，会发生编译错误！
+
+3.指向常量的常指针
+const int const*p 或者 int const * const p;
+特点是指针所保存的地址不可变，指针所指向的数值也不可变
+
+4.空指针
+顾名思义，就是保存地址为空的指针
+int *p = 0;   //此时的指针p就是一个空指针
+
+5.内存泄露
+int *p = new int;
+p = new int;
+delete p;        //用delete来释放刚刚申请的那块内存区域，注意此时指针p还是可能依旧指向的这块区域(注意可能二字)。
+这样就会有内存丢失，也就是所谓的内存泄漏。
+因为第一行我们在堆中申请了一块int型的区域，并且用指针p指向该空间。但是紧接着我们又在堆中申请了一块int型的区域，用p指向了该空间。
+那么先前申请的那块区域就无法访问了，但同时这块无法访问的区域没有被删除。所以就造成了内存泄漏。
+
+6.迷途指针
+int *p = new int;   //在堆中申请一块区域，用p指向这块区域
+所以此时指针p的指向地址具有不确定性，故而称作迷途指针，避免的方法是将指针初始化为空指针。
+
+
+
+
+请问以下代码有什么问题:
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+    char a;
+    char *str = &a;
+    strcpy(str,"hello");
+    printf("str = %s\n", str);
+    return 0;
+}
+
+【标准答案】
+没有为str分配内存空间,将会发生异常问题出在将一个字符串复制进一个字符变量指针所指地址。
+虽然可以正确输出结果,但因为越界进行内在读写而导致程序崩溃。
+上述代码运行时是不能输出正确结果的，直接是段错误的
+
+请问以下代码有什么问题:
+
+int main()
+{
+    char *s = "AAA";
+    printf("%s\n", s);
+    s[0] = 'B';
+    printf("%s\n", s);
+    return 0;
+}有什么错?
+编译没有error，运行时出现段错误，能打印出AAA，而后段错误
+
+【标准答案】
+"AAA"是字符串常量。s是指针,指向这个字符串常量,所以声明s的时候就有问题。
+const char* s="AAA"; 然后又因为是常量,所以对是s[0]的赋值操作是不合法的。
+
+
+请你谈谈引用和指针的区别。
+【参考答案】
+(1)引用被创建的同时必须被初始化(指针则可以在任何时候被初始化) 。
+(2)不能有 NULL 引用,引用必须与合法的存储单元关联(指针则可以是 NULL) 。
+(3)一旦引用被初始化,就不能改变引用的关系(指针则可以随时改变所指的对象) 。
+
+
+void getmemory(char *p)
+{
+    p=(char *) malloc(100);
+    strcpy(p,“hello world”);
+}
+
+int main( )
+{
+    char *str = NULL;
+    getmemory(str);
+    printf(“%s\n”,str);
+    free(str);
+    return 0;
+}
+会出现什么问题?
+【标准答案】程序崩溃,getmemory中的malloc 不能返回动态内存,调用getmemory(str)函数后，
+str的指针仍然为空，此时，读空指针会崩溃
+free()对str操作很危险，但不会崩溃。
+
+void getmemory(char *p)
+{
+    p = (char *)malloc(100);
+    strcpy(p, "hello world");  //这个是正确的
+}
+
+int main()
+{
+    char *str = NULL;
+    getmemory(str);
+    printf("%s\n", str);  //str仍然为空，访问空地址的字符串是非法的，所以出现段错误
+    free(str);
+    return 0;
+}
+
+上述代码编译无错误，无警告，但运行出现段错误
+//    printf("%s\n", str); 注释掉打印，可以运行且无错误，因此free只是比较危险，不会出现段错误
+printf("%s\n", str);访问空地址的字符串是非法的，所以出现段错误
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+char *GetMemory(char **p, int num)
+{
+    *p = (char *)malloc(num);
+}
+
+int main()
+{
+    char *str = NULL;
+    GetMemory(&str, 100);
+    strcpy(str, "hello");
+    printf("str = %s\n", str);
+    return 0;
+}
+上述的代码能够输出hello，但是存在内存泄漏
+
+
+char szstr[10];
+strcpy(szstr,"0123456789");
+产生什么结果?为什么?
+【标准答案】长度不一样,出现段错误
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+	char szstr[2];
+	strcpy(szstr,"0123456789");
+	//printf("szstr = %s\n", szstr);
+	return 0;
+}
+//strcpy越界了，strcpy不检查数组越界，这个始终是需要注意的。
+
+
+程序哪里有错误
+wap( int* p1,int* p2 )
+{
+    int *p;
+    *p = *p1;
+    *p1 = *p2;
+    *p2 = *p;
+}
+【标准答案】p为野指针，此处是给*p赋值
+
+
+要求设置一绝对地址为0x67a9的整型变量的值为0xaa66?
+【标准答案】
+int *ptr;
+ptr = (int *)0x67a9;
+*ptr = 0xaa55;
+*(int * const)(0x67a9) = 0xaa55;
+
+
+要对绝对地址0x100000赋值,我们可以用(unsigned int*)0x100000 = 1234;那么要是想让程序
+跳转到绝对地址是0x100000去执行,应该怎么做?
+【标准答案】
+*((void (*)( ))0x100000 ) ( );
+首先要将0x100000强制转换成函数指针,即:
+(void (*)())0x100000
+然后再调用它:
+*((void (*)())0x100000)();
+
+
+
+
+
+
+
+
+
+

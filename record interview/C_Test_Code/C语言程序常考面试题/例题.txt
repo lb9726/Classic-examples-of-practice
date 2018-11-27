@@ -1,0 +1,16 @@
+编写 strcpy 函数
+已知 strcpy 函数的原型是 char *strcpy(char *strDest, constchar *strSrc);其中 strDest 是目的字符串,strSrc 是源字符串。
+(1)不调用 C++/C 的字符串库函数,请编写函数 strcpy 。
+char *strcpy(char *strDest, const char *strSrc)  
+{  
+    assert(strDest != NULL);  
+    assert(strSrc != NULL);  
+    char *ret = strDest;  
+    while((* strDest++ = * strSrc++) != '\0')   
+        ;  
+    return ret;  
+}
+(2)strcpy 能把 strSrc 的内容复制到 strDest,为什么还要char * 类型的返回值?
+为了实现链式表达式： int length = strlen(strcpy(strDest, "hello world"));
+
+

@@ -1,0 +1,1 @@
+./configure --arch=arm --os=linux --cc=arm-linux-gnueabihf-gcc  --cxx=arm-linux-gnueabihf-g++ --ld=arm-linux-gnueabihf-gcc --prefix=/opt/qiyuan/Apps/_install_canFestival --target=unix --can=socket --kerneldir=/opt/qiyuan/tarbal/qiyang/linux-3.2.0-04.06.00.08  --timers=unix 

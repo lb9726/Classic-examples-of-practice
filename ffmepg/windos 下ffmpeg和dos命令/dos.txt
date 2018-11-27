@@ -1,0 +1,48 @@
+在windows下使用system命令可以调用从命令行执行可执行程序执行
+例如ffmpeg的使用 
+    int ab = system("C:\\Users\\yonghao\\Desktop\\ffmpeg-20170921-183fd30-win32-shared\\bin\\ffmpeg.exe -i C:\\Users\\yonghao\\Desktop\\ffmpeg-20170921-183fd30-win32-shared\\bin\\Test1.mp4 -s 1280x544 -b:v 2386k t1.avi");
+
+将结果重定向到文本文件中去
+其中> 会清空文件，>> 会追加到文件尾部
+例如： ffmpeg -i Test1.mp4 2>libo.txt 重定向并且清空上次的文件内容
+ffmpeg -i Test1.mp4 2>>libo.txt 重定向并且不清空上次的文件内容
+
+http://blog.csdn.net/llrraa2010/article/details/8462854
+
+http://hi.baidu.com/nullspace/item/50e2c35c0fbb5813aaf6d7d6
+
+这样可以重定向标准出错
+a.exe 2>out.txt
+但这样就报告：另一个程序正在使用此文件，进程无法访问。
+a.exe >out.txt 2>out.txt
+这样可以重定向标准出错
+a.exe 1>out.txt 2>&1
+或
+a.exe >out.txt 2>&1
+注意2>&1要放在后面
+或者
+a.exe 1>out.txt 2<&1
+测试程序：
+#include <iostream>
+using namespace std;
+int main()
+{
+cout << "this is out\n";
+cerr << "this is err\n";
+//fprintf(stdout, "this is out\n");
+//fprintf(stderr, "this is err\n");
+
+return 0;
+}
+cout cerr和fprintf的区别：
+重定向时fprintf保持顺序，便cout cerr顺序反了
+直接输出到屏幕结果是
+this is out
+this is err
+用cout/cerr，重定向后变成了
+this is err
+this is out
+用fprintf正常
+
+
+

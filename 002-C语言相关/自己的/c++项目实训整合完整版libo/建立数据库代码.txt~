@@ -1,0 +1,7 @@
+create table personinfo(id int(10) not null auto_increment,name varchar(20),passwd varchar(20),sex varchar(10),position varchar(20),department varchar(20),grade varchar(4),leader varchar(20),stablesalary double,worktime int(4),timereward int(4),ticheng double,zonge double,performance varchar(20),latertimes int(4),salary double,jifen int(4),beizhu varchar(100),primary key(id)) default charset=utf8;
+
+insert into personinfo (id,name,passwd,sex,position,department,grade,leader,stablesalary,worktime,timereward,ticheng,zonge,performance,latertimes,salary,jifen,beizhu)values(1000,'李华','1234','男','经理','技术部','2','boss',20000,8,50,0,0,'无',0,0,200,'无');
+
+create table logintable(id int(11),username varchar(20),passwd varchar(20),lastlogintime datetime,logincounts int(11)) default charset = utf8;
+
+

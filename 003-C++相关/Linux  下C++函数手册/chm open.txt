@@ -1,0 +1,2 @@
+ctrl+alt+t 打开终端，输入sudo apt-get install xchm，这是一个轻巧的linux下chm文件阅读器，如图
+sudo apt-get install kchmviewer

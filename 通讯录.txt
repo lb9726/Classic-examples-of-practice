@@ -1,0 +1,83 @@
+祝华萍：2513
+IT部门：5995
+策划部：2503
+http://kone.drop-beats.com/
+user ：jescen
+password： jescen
+
+
+1.abstract class 在 Java 语言中表示的是一种继承关系，一个类只能使用一次继承关系。但是，一个类却可以实现多个interface。
+
+2.在abstract class 中可以有自己的数据成员，也可以有非abstarct的成员方法，而在interface中，只能够有静态的不能被修改的数据成员(也就是必须是static final的，不过在 interface中一般不定义数据成员)，所有的成员方法都是abstract的。
+
+　　3.abstract class和interface所反映出的设计理念不同。其实abstract class表示的是"is-a"关系，interface表示的是"like-a"关系。
+
+　　4.实现抽象类和接口的类必须实现其中的所有方法。抽象类中可以有非抽象方法。接口中则不能有实现方法。
+
+　　5.接口中定义的变量默认是public static final 型，且必须给其初值，所以实现类中不能重新定义，也不能改变其值。
+
+　　6.抽象类中的变量默认是 friendly 型，其值可以在子类中重新定义，也可以重新赋值。
+
+　　7.接口中的方法默认都是 public,abstract 类型的。
+
+
+大家再讨论一个小问题哈：error和exception有什么区别?
+erro是重大错误（绝症），exception是较为普通的异常（感冒发烧 ）
+
+编译器编译时期报错和报异常的区别是什么？
+
+
+
+
+public class Base
+{
+    private String baseName = "base";
+    public Base()
+    {
+        callName();
+    }
+
+    public void callName()
+    {
+        System. out. println(baseName);
+    }
+
+    static class Sub extends Base
+    {
+        private String baseName = "sub";
+        public void callName()
+        {
+            System. out. println (baseName) ;
+        }
+    }
+    public static void main(String[] args)
+    {
+        Base b = new Sub();
+    }
+}
+
+
+1. Base b = new Sub();
+2. Base b = 直接忽略，从 new Sub();开始
+3. 类加载器加载 Base，Sub 类到jvm;
+4. 为Base，Sub 类中的两个属性baseName 分配存储空间，但是不初始化；
+注意:属性的初始化时放在构造器中，按照代码顺序执行的。
+5. new Sub会调用Sub的无参构造器，而在这个构造器中会隐式调用父类Base的无参构造器；
+6. 父类Base的构造器中代码本质是
+public Base()
+{
+baseName = "base";
+callName();
+}
+即父类的属性baseName 的值为base。但为何输出null，骚年别急。
+7. 因为父类构造器方法是在子类中调用的，即大环境是子类。此时，调用的方法callName()当然是指子类的方法。而这个方法打印的属性baseName当然也是子类的。那现在子类的属性baseName的值是多少呢？答案是null.因为此时子类Sub的构造器内代码本质是:
+super();
+baseName="sub";
+此时baseName="sub"还没执行。
+
+因此，左后的值当然是null.
+
+初始化的时候，在构造器中，肯定是有一个顺序的  我跟你们讲过的，super是放在首位，子类的初始化肯定是在后面，但是代码只执行了super这一步
+
+
+

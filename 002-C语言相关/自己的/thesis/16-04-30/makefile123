@@ -1,0 +1,27 @@
+CC = gcc
+FLAGS = -c
+objects = ./obj/addrdata.o ./obj/addrlogic.o ./obj/addrmain.o ./obj/addrui.o 
+currentpathobj = addrdata.o  addrlogic.o  addrmain.o  addrui.o
+thesis : $(objects)
+	$(CC) -o thesis $(objects)
+	
+./obj/addrmain.o : ./src/addrmain.c ./include/addrui.h
+	$(CC) $(FLAGS) ./src/addrmain.c
+	
+./obj/addrui.o : ./src/addrui.c ./include/addrui.h
+	$(CC) $(FLAGS) ./src/addrui.c
+	
+./obj/addrlogic.o : ./src/addrlogic.c ./include/addrlogic.h
+	$(CC) $(FLAGS) ./src/addrlogic.c
+	
+./obj/addrdata.o : ./src/addrdata.c ./include/addrdata.h
+	$(CC) $(FLAGS) ./src/addrdata.c
+	
+move : addrdata.o addrlogic.o addrmain.o addrui.o 
+	-mv *.o ./obj
+
+.PHONY:	clean
+clean :
+	-rm thesis $(currenpathobj) $(objects) 
+
+

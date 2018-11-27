@@ -1,0 +1,12 @@
+
+//Company 数据库
+//创建员工表
+ create table user(m_Number int not null,m_name varchar(48) not null,8m_age int,m_sex varchar(10),m_position varchar(48),m_level int,m_salary int,m_passwd varchar(48),m_Tel varchar(48),primary key(m_Number))default charset utf8;Query OK, 0 rows affected (0.12 sec)
+ 
+ 
+ 
+ // /home/hyw/下载/邓紫棋-你把我灌醉.wav 
+ 
+ 
+ //创建时间表
+ create table time( hour int,min int, sec int);

@@ -1,0 +1,111 @@
+
+
+※整数各 
+
+
+整数排列成最大数（C or Java）
+任意一个整数，对该整数各个位上数字进行排序，组成一个最大的整数，
+例：任意整数，int iRandom = 28564
+=》结果：整数：86542
+
+请用代码写出来。
+注意，该整数不是例中的5位数，是任意数字，可能是1位数，可能是位数，可能是4位数。）
+
+
+
+
+
+整数分解成质数相乘
+
+
+
+
+
+
+ 
+输入整数N，求阶乘N！（1*2*3*4*……*N-1*N）
+5.1 输出N！的结果
+5.2  N！结果后面有多少个0？
+
+
+
+
+
+
+新建一个有序二叉树，
+   要求：二叉树的左孩子都比根结点小，右孩子比根结点大。
+
+
+
+http://liangshuizwl.blog.163.com/blog/static/1282681212009819854490/
+
+
+编写类String的构造函数、析构函数和赋值函数，
+已知类String的原型为
+class String 
+{  
+　public:  
+　　String(const char *str = NULL); // 普通构造函数  
+　　String(const String &other); // 拷贝构造函数  
+　　~ String(void); // 析构函数  
+　　String & operate =(const String &other); // 赋值函数  
+　private:  
+　　char *m_data; // 用于保存字符串  
+};
+
+//普通构造函数 
+ 
+String::String(const char *str)  
+{ 
+　if(str==NULL)  
+　{ 
+　　m_data = new char[1]; // 得分点：对空
+字符串自动申请存放结束标志'\0'的空 
+　　//加分点：对m_data加NULL 判断 
+　　*m_data = '\0';  
+　}  
+　else 
+　{ 
+　　int length = strlen(str);  
+　　m_data = new char[length+1]; // 若能
+加 NULL 判断则更好  
+　　strcpy(m_data, str);  
+　} 
+} 
+ 
+
+ 
+// String的析构函数 
+ 
+String::~String(void)  
+{ 
+　delete [] m_data; // 或delete m_data; 
+} 
+//拷贝构造函数 
+ 
+String::String(const String &other) 　　
+　// 得分点：输入参数为const型 
+{  
+　int length = strlen(other.m_data);  
+　m_data = new char[length+1]; 　　　
+　//加分点：对m_data加NULL 判断 
+　strcpy(m_data, other.m_data);  
+} 
+ 
+//赋值函数 
+ 
+String & String::operate =(const String 
+&other) // 得分点：输入参数为const型 
+{  
+　if(this == &other) 　　//得分点：检查自赋值 
+　　return *this;  
+　delete [] m_data; 　　　　//得分点：释放原有的内存资源 
+　int length = strlen( other.m_data );  
+　m_data = new char[length+1]; 　//加分点：对m_data加NULL 判断 
+　strcpy( m_data, other.m_data );  
+　return *this; 　　　　　　　　//得分点：返回本对象的引用 
+}
+
+
+
+约瑟夫环

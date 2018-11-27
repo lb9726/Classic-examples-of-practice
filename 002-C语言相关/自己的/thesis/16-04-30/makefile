@@ -1,0 +1,26 @@
+PRG = txl
+
+SRCDIR = src
+OBJDIR = obj
+
+INC = -Iinclude
+LIB = -lpthread
+  
+CC = gcc
+CC_FLAG = -Wall
+
+SRC = $(notdir $(wildcard $(SRCDIR)/*.c))
+OBJ = $(SRC:%.c=$(OBJDIR)/%.o)
+
+all:$(PRG)
+
+$(PRG):$(OBJ)  
+	$(CC) $^ -o $@ $(LIB) 
+   
+$(OBJDIR)/%.o: $(SRCDIR)/%.c 
+	$(CC) $(INC) -c $< -o $@ 
+
+.PRONY:clean
+clean:  
+	@echo "Clean......"  
+	rm -f $(OBJ) $(PRG)  

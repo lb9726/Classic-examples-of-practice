@@ -1,0 +1,31 @@
+利用Linux的端口转发可以实现共享实机， 就是谁的电脑插着实机，我们通过adb connect 他的电脑也可以进行实机操作 push 安装cpk logcat抓打印
+
+1. sudo vi /etc/sysctl.conf
+
+删除 net.ipv4.tcp_syncookies=1 和 net.ipv4.ip_forward=1 前的 # 开启转发
+
+（然后执行 sudo sysctl -p或者重启）
+
+2. sudo vi /etc/rc.local
+
+在 exit 0 之前加入如下两行命令
+
+iptables -t nat -I PREROUTING -p tcp --dport 5555 -j DNAT --to 192.168.5.111
+iptables -t nat -I POSTROUTING -p tcp --dport 5555 -j MASQUERADE
+
+重启一下就行
+
+3. sudo adb connect SomeOne.local 就可以连上实机了
+
+-------------------- 
+Best Regards!
+--------------------
+唐文凯
+上海先锋商泰电子技术有限公司
+地址：上海市淮海中路775号新华联大厦西楼8层
+电话：13816325965
+邮件：tangwenkai@pset.suntec.net
+Jabber: tangwenkai@jasmine.3s.kwg.pioneer.co.jp
+
+
+

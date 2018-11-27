@@ -1,0 +1,143 @@
+libo@ubuntu:~/Desktop/CanFestival-3-b72a88dbc7c3$ ./compile_param 
+Host OS: linux
+Host arch: arm
+Using arm-linux-gnueabihf-gcc as a C compiler
+Using arm-linux-gnueabihf-g++ as a C++ compiler
+Using arm-linux-gnueabihf-gcc as a linker
+Using prefix: /opt/qiyuan/Apps/_install_canFestival
+No wxWidgets available
+Creating Makefile
+Creating src/Makefile
+Creating drivers/Makefile
+Creating objdictgen/Makefile
+Creating examples/Makefile
+Creating objdictgen/canfestival_config.py
+Creating drivers/timers_unix/Makefile
+Creating drivers/can_socket/Makefile
+Creating drivers/unix/Makefile
+Creating examples/CANOpenShell/Makefile
+Creating examples/TestMasterSlave/Makefile
+Creating examples/TestMasterSlaveLSS/Makefile
+Creating examples/SillySlave/Makefile
+Creating examples/TestMasterMicroMod/Makefile
+Creating examples/test_copcican_linux/Makefile
+All done.
+libo@ubuntu:~/Desktop/CanFestival-3-b72a88dbc7c3$ make
+make -C objdictgen all
+make[1]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/objdictgen'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/objdictgen'
+make -C drivers driver
+make[1]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers'
+make -C timers_unix driver
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/timers_unix'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o timers_unix.o -c timers_unix.c
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/timers_unix'
+make -C can_socket driver
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/can_socket'
+arm-linux-gnueabihf-gcc -O2 -fPIC   -I../../include -I../../include/unix -I../../include/can_socket -o can_socket.o -c can_socket.c
+arm-linux-gnueabihf-gcc -shared -Wl,-soname,libcanfestival_can_socket.so  -o libcanfestival_can_socket.so can_socket.o
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/can_socket'
+make -C unix driver
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/unix'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/timers_unix -o unix.o -c unix.c
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/unix'
+make[1]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers'
+make -C src canfestival
+make[1]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/src'
+ 
+*********************************************
+**Compiling objacces.c -> unix_objacces.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_objacces.o -c objacces.c
+ 
+*********************************************
+**Compiling lifegrd.c -> unix_lifegrd.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_lifegrd.o -c lifegrd.c
+ 
+*********************************************
+**Compiling sdo.c -> unix_sdo.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_sdo.o -c sdo.c
+ 
+*********************************************
+**Compiling pdo.c -> unix_pdo.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_pdo.o -c pdo.c
+ 
+*********************************************
+**Compiling sync.c -> unix_sync.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_sync.o -c sync.c
+ 
+*********************************************
+**Compiling nmtSlave.c -> unix_nmtSlave.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_nmtSlave.o -c nmtSlave.c
+ 
+*********************************************
+**Compiling nmtMaster.c -> unix_nmtMaster.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_nmtMaster.o -c nmtMaster.c
+ 
+*********************************************
+**Compiling states.c -> unix_states.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_states.o -c states.c
+ 
+*********************************************
+**Compiling timer.c -> unix_timer.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_timer.o -c timer.c
+ 
+*********************************************
+**Compiling dcf.c -> unix_dcf.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_dcf.o -c dcf.c
+ 
+*********************************************
+**Compiling emcy.c -> unix_emcy.o
+*********************************************
+arm-linux-gnueabihf-gcc -O2   -I../include -I../include/unix -I../include/timers_unix -I../drivers/unix -o unix_emcy.o -c emcy.c
+ 
+*********************************************
+**Building [libcanfestival.a]
+*********************************************
+arm-linux-gnueabihf-ar rc libcanfestival.a unix_objacces.o unix_lifegrd.o unix_sdo.o unix_pdo.o unix_sync.o unix_nmtSlave.o unix_nmtMaster.o unix_states.o unix_timer.o unix_dcf.o unix_emcy.o
+arm-linux-gnueabihf-ranlib libcanfestival.a
+make[1]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/src'
+make -C examples all
+make[1]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples'
+make -C CANOpenShell all
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/CANOpenShell'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o CANOpenShellMasterOD.o -c CANOpenShellMasterOD.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o CANOpenShellSlaveOD.o -c CANOpenShellSlaveOD.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o CANOpenShell.o -c CANOpenShell.c
+make -C ../../drivers/unix libcanfestival_unix.a
+make[3]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/unix'
+Building [libcanfestival_unix.a]
+arm-linux-gnueabihf-ar rc libcanfestival_unix.a unix.o ../timers_unix/timers_unix.o
+arm-linux-gnueabihf-ranlib libcanfestival_unix.a
+make[3]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/unix'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o CANOpenShell CANOpenShellMasterOD.o CANOpenShellSlaveOD.o CANOpenShell.o ../../src/libcanfestival.a ../../drivers/unix/libcanfestival_unix.a -lpthread -lrt -ldl
+mkdir -p Debug; cp CANOpenShell Debug
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/CANOpenShell'
+make -C TestMasterSlave all
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/TestMasterSlave'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o TestSlave.o -c TestSlave.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o TestMaster.o -c TestMaster.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o TestMasterSlave.o -c TestMasterSlave.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o Slave.o -c Slave.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o Master.o -c Master.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o "TestMasterSlave" TestSlave.o TestMaster.o TestMasterSlave.o Slave.o Master.o ../../src/libcanfestival.a ../../drivers/unix/libcanfestival_unix.a -lpthread -lrt -ldl
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/TestMasterSlave'
+make -C TestMasterMicroMod all
+make[2]: Entering directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/TestMasterMicroMod'
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o TestMaster.o -c TestMaster.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o TestMasterMicroMod.o -c TestMasterMicroMod.c
+arm-linux-gnueabihf-gcc -O2   -I../../include -I../../include/unix -I../../include/can_socket -I../../include/timers_unix -o "TestMasterMicroMod" TestMaster.o TestMasterMicroMod.o ../../src/libcanfestival.a ../../drivers/unix/libcanfestival_unix.a -lpthread -lrt -ldl
+make[2]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples/TestMasterMicroMod'
+make[1]: Leaving directory `/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/examples'
+libo@ubuntu:~/Desktop/CanFestival-3-b72a88dbc7c3$ 
+

@@ -1,0 +1,9 @@
+Host iauto
+Hostname review.iauto.net
+IdentityFile ~/.ssh/id_rsa
+User libo
+Port 29418
+Host igerrit.storm
+Hostname igerrit.storm
+IdentityFile ~/.ssh/id_rsa
+User libo

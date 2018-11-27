@@ -1,0 +1,12 @@
+1.参考那份文档
+为了不影响其他用户，在~/.bashrc中的最后添加export 
+export PATH=$PATH:/opt/gcc_4.9/bin
+source ~/.bashrc 使之立即生效，或者重新启动
+
+2.在生成的compile_param中修改成如下内容：
+./configure --arch=arm --os=linux --cc=arm-linux-gnueabihf-gcc  --cxx=arm-linux-gnueabihf-g++ --ld=arm-linux-gnueabihf-gcc --prefix=/opt/qiyuan/Apps/_install_canFestival --target=unix --can=socket --kerneldir=/opt/qiyuan/tarbal/qiyang/linux-3.2.0-04.06.00.08  --timers=unix 
+
+之前生成的 --ld=arm-linux-ld 编译会报错，提示这玩意不存在，而后更改为--ld=arm-linux-gnueabihf-gcc，编译通过了，如success.txt的结果，生成了libcanfestival_can_socket.so
+有两个文件： /home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/can_virtual/   	/home/libo/Desktop/CanFestival-3-b72a88dbc7c3/drivers/can_socket
+
+目前不确定哪一个是真正需要的库文件

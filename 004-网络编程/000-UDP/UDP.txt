@@ -1,0 +1,98 @@
+在UDP套接字编程中，服务器实现的步骤如下：
+1. 使用socket()函数创建套接字
+2. 将创建的套接字绑定到指定的地址结构
+3. 等待接受客户的数据请求
+4. 处理客户端请求
+5. 向客户端发送应答数据
+6. 关闭套接字
+
+客户端实现的步骤很简单，如下：
+1. 使用socket()函数创建套接字
+2. 发送数据请求给服务器
+3. 等待接收服务器的数据应答
+4. 关闭套接字
+
+recvfrom()函数
+UDP使用recvfrom()函数接收数据，它类似与标准的read(), 但是在recvfrom()函数中要指明目的地址。
+recvfrom()函数如下：
+#include <sys/types.h>
+#include <sys/socket.h>
+
+ssize_t recvfrom(int sockfd, void *buf, size_t len, int flag, struct sockaddr * from, size_t * addrlen);
+前三个参数： sockfd, buf和len 等同于read()的前3个参数，分别为调用socket()函数生成的描述符,指向读入缓冲区的指针和读入的字节数。
+flags参数是传输控制标志，其值如下：
+1. 0 常规操作，所做的操作与read相同。
+2. MSG_OOB: 指明要读的是带外数据而不是一般数据
+3. MSG_PEEK: 可以查看可读的数据而不读出，在接收数据后不会将这些数据丢弃。
+
+recvfrom函数的最后两个参数类似于accept的最后两个参数： from返回与之通信的对方的套接字地址结构，告诉用户接收到的数据报来自于谁;
+最后一个参数addrlen是一个指向整数值的指针(值-结果参数),存储数据发送者的套接字地址结构的长度。如果recvfrom函数中的from参数是空指针，
+则相应的长度参数(addrlen)也必须是空指针，这表示并不关心发送数据方的协议地址。
+该函数调用成功的返回值为接收到的数据长度(以字节为单位)，也就是接收的数据报中用户数据的总量;如果调用失败返回-1,并置相应的errno值
+
+调用recvfrom()函数的代码如下：
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#define MAXDATASIZE 100
+...
+int num, sockfd;
+socklen_t addrlen;
+sockadd_in peer_addr;
+char buf[MAXDATASIZE];
+...
+addrlen = sizeof(peer_addr);
+while(1)
+{
+    num = recvfrom(sockfd, buf, MAXDATASIZE, 0, (struct sockaddr *)*peer_addr, &addrlen);
+    if (num < 0)
+    {
+        /*handle exception*/
+    }
+    /*handle data*/
+}
+
+说明：recvfrom()函数接收数据，将接收到的数据保存到buf中，整数num返回接收的字节数，
+地址结构peer_addr返回数据发送数据方的协议地址，addrlen返回存储在peer_addr中的字节数。
+如果调用recvfrom()函数失败，对接收异常进行处理。
+没有异常，处理接收到的数据即可。
+
+
+sendto函数
+UDP使用sendto()函数发送数据，它类似于标准的write，但是与recvfrom()函数一样，sendto()函数要指明目的地址。
+sendto()函数如下:
+#include <sys/types.h>
+#include <sys/socket.h>
+ssize_t sendto(int sockfd, const void *buf, size_t len , int flags, const struct sockaddr *to, int addrlen);
+前三个参数： sockfd, buf和len等同于函数write()的前3个参数，分别为调用socket函数生成的描述符， 指向发送缓冲区的指针和发送的字节数。
+flags参数是传输控制标志，其值如下：
+1. 0 常规操作，所做的操作与write相同。
+2. MSG_DONTROUTE 告诉内核目的主机在直接连接的本地网络上，不需要查路由表。
+3. MSG_OOB 指明发送的是带外数据。
+
+函数sendto的参数to的类型是套接字地址结构，指明数据地址结构，指明数据将发往的协议地址，他的大小由addrlen参数来指定。
+但是sendto函数中的最后一个参数是一个整数值，而不是值-结果参数。
+sendto的最后两个参数类似于connect的最后两个参数：用数据报将发往的协议地址来装填套接字地址结构。
+该函数调用成功的返回值为发送数据的长度(以字节为单位);如果调用失败则返回-1,并置相应的errno的值。
+
+发送一个长度为0的数据报是允许的，在UDP的情况下，长度为0的数据报是一个包含IP头部(一般来说，IPv4的头部为20字节，IPv6的头部为40字节)，
+8字节UDP头部和没有数据的IP数据报。这也意味这对于数据报协议，recvfrom返回0值也是可行的。 由于UDP是无连接的，所以它并不表示对方已
+关闭了连接，这与TCP套接字上的read返回0的情况不同。
+recvfrom 和 sendto 也可用于TCP协议，但是一般不这么使用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+wc *.c *.h -l 统计行数 -c 字节数 -w 统计字数
+
+libo@ubuntu:~/Desktop/Repository/ToolKit$ wc -l `find ./ -name "*.cpp"`
+递归查找行数

@@ -1,0 +1,142 @@
+假如现在要开发一个C语言程序，让它输出红色的文字，并且要求跨平台，在 Windows 和 Linux 下都能运行，怎么办呢？
+
+这个程序的难点在于，不同平台下控制文字颜色的代码不一样，我们必须要能够识别出不同的平台。
+
+Windows 有专有的宏_WIN32，Linux 有专有的宏__linux__，以现有的知识，我们很容易就想到了 if else，请看下面的代码：
+#include <stdio.h>
+int main(){
+    if(_WIN32){
+        system("color 0c");
+        printf("http://c.biancheng.net\n");
+    }else if(__linux__){
+        printf("\033[22;31mhttp://c.biancheng.net\n\033[22;30m");
+    }else{
+        printf("http://c.biancheng.net\n");
+    }
+    return 0;
+}
+但这段代码是错误的，在 Windows 下提示 __linux__ 是未定义的标识符，在 Linux 下提示 _Win32 是未定义的标识符。对上面的代码进行改进：
+#include <stdio.h>
+int main(){
+    #if _WIN32
+        system("color 0c");
+        printf("http://c.biancheng.net\n");
+    #elif __linux__
+        printf("\033[22;31mhttp://c.biancheng.net\n\033[22;30m");
+    #else
+        printf("http://c.biancheng.net\n");
+    #endif
+    return 0;
+}
+#if、#elif、#else 和 #endif 都是预处理命令，整段代码的意思是：如果宏 _WIN32 的值为真，就保留第 4、5 行代码，删除第 7、9 行代码；如果宏 __linux__ 的值为真，就保留第 7 行代码；如果所有的宏都为假，就保留第 9 行代码。
+
+这些操作都是在预处理阶段完成的，多余的代码以及所有的宏都不会参与编译，不仅保证了代码的正确性，还减小了编译后文件的体积。
+
+这种能够根据不同情况编译不同代码、产生不同目标文件的机制，称为条件编译。条件编译是预处理程序的功能，不是编译器的功能。
+
+条件编译有多种形式，下面一一讲解。
+#if 命令
+
+#if 命令的完整格式为：
+#if 整型常量表达式1
+    程序段1
+#elif 整型常量表达式2
+    程序段2
+#elif 整型常量表达式3
+    程序段3
+#else
+    程序段4
+#endif
+它的意思是：如常“表达式1”的值为真（非0），就对“程序段1”进行编译，否则就计算“表达式2”，结果为真的话就对“程序段2”进行编译，为假的话就继续往下匹配，直到遇到值为真的表达式，或者遇到 #else。这一点和 if else 非常类似。
+
+需要注意的是，#if 命令要求判断条件为“整型常量表达式”，也就是说，表达式中不能包含变量，而且结果必须是整数；而 if 后面的表达式没有限制，只要符合语法就行。这是 #if 和 if 的一个重要区别。
+
+#elif 和 #else 也可以省略，如下所示：
+#include <stdio.h>
+int main(){
+    #if _WIN32
+        printf("This is Windows!\n");
+    #else
+        printf("Unknown platform!\n");
+    #endif
+   
+    #if __linux__
+        printf("This is Linux!\n");
+    #endif
+    return 0;
+}
+#ifdef 命令
+
+#ifdef 命令的格式为：
+#ifdef  宏名
+    程序段1
+#else
+    程序段2
+#endif
+它的意思是，如果当前的宏已被定义过，则对“程序段1”进行编译，否则对“程序段2”进行编译。
+
+也可以省略 #else：
+#ifdef  宏名
+    程序段
+#endif
+
+VS/VC 有两种编译模式，Debug 和 Release。在学习过程中，我们通常使用 Debug 模式，这样便于程序的调试；而最终发布的程序，要使用 Release 模式，这样编译器会进行很多优化，提高程序运行效率，删除冗余信息。
+
+为了能够清楚地看到当前程序的编译模式，我们不妨在程序中增加提示，请看下面的代码：
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+    #ifdef _DEBUG
+        printf("正在使用 Debug 模式编译程序...\n");
+    #else
+        printf("正在使用 Release 模式编译程序...\n");
+    #endif
+    system("pause");
+    return 0;
+}
+当以 Debug 模式编译程序时，宏 _DEBUG 会被定义，预处器会保留第 5 行代码，删除第 7 行代码。反之会删除第 5 行，保留第 7 行。
+#ifndef 命令
+
+#ifndef 命令的格式为：
+#ifndef 宏名
+    程序段1 
+#else 
+    程序段2 
+#endif
+与 #ifdef 相比，仅仅是将 #ifdef 改为了 #ifndef。它的意思是，如果当前的宏未被定义，则对“程序段1”进行编译，否则对“程序段2”进行编译，这与 #ifdef 的功能正好相反。
+区别
+
+最后需要注意的是，#if 后面跟的是“整型常量表达式”，而 #ifdef 和 #ifndef 后面跟的只能是一个宏名，不能是其他的。
+
+例如，下面的形式只能用于 #if：
+#include <stdio.h>
+#define NUM 10
+int main(){
+    #if NUM == 10 || NUM == 20
+        printf("NUM: %d\n", NUM);
+    #else
+        printf("NUM Error\n");
+    #endif
+    return 0;
+}
+运行结果：
+NUM: 10
+
+再如，两个宏都存在时编译代码A，否则编译代码B：
+#include <stdio.h>
+#define NUM1 10
+#define NUM2 20
+int main(){
+    #if (defined NUM1 && defined NUM2)
+        //代码A
+        printf("NUM1: %d, NUM2: %d\n", NUM1, NUM2);
+    #else
+        //代码B
+        printf("Error\n");
+    #endif
+    return 0;
+}
+运行结果：
+NUM1: 10, NUM2: 20
+
+#ifdef 可以认为是 #if defined 的缩写。

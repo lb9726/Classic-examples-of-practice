@@ -1,0 +1,255 @@
+论文字数:8963,页数:33
+摘  要
+在XXXXXXXX学院现有的学生管理系统中，存在诸多的问题，根据前期分析，笔者构建了“浙科院学生信息管理系统”。
+本设计采用ASP作为开发工具，采用Access作为后台数据库工具，利用ADO数据库访问技术实现对数据库的各种管理操作。按照软件工程原理，进行了学生信息管理系统的需求分析、功能模块划分、数据库模式分析，并由此设计了数据库结构和应用程序。最终实现六大功能：用户登录功能；学生信息的添加和保存功能；学生信息的读取与显示功能；对学生成长档案的回复留言功能；查询检索功能；用户管理功能。并对实现这六块功能的模块进行了调试。 
+ 
+ 
+关键词：管理系统， 信息系统， ASP， Access
+ABSTRACT
+ In the existing student management system of Zhejiang University of Science and Technology，there are some shortcomings. After particular， "ZUST Management of Student Information System" has been built.
+ This design used ASP as development tool, used Access as database design and used ADO data database technology to achieve all kinds of database management operation. Following the principles of software project, a theoretical elaboration is also provided. With software project methods, the paper has conducted student management demand analysis, function module division, databases pattern analysis, and has designed database structure and application programming. At last, six functions have been realized by the system as followings: the function of login, the function of adding and preservation students’ information, the function for students to read and display information, the function of the reply message for the growth of students file, the function of search, and the function of user management capabilities. And the design had debugged the six functions of modules.
+
+ 
+Keywords: Management System, Information System, ASP, Access
+目  录
+摘  要 I
+ABSTRACT II
+目  录 III
+第1章 引  言 1
+1.1 背景 1
+1.2 研究内容 1
+第2章 可行性分析 3
+2.1经济可行性分析 3
+2.2 现有系统分析 3
+2.3 系统实现目标 3
+第3章 系统总体设计 5
+3.1 系统功能 5
+3.1.1 学生模块 6
+3.1.2 系统管理模块 6
+3.1.3 统计模块 6
+3.2 系统数据流程图 6
+3.3系统数据库设计要求 7
+3.4 数据库概念结构设计 8
+3.5 数据库逻辑结构设计 8
+第4章 系统功能实现 11
+4.1 开发技术与工具 11
+4.1.1 ASP 11
+4.1.2 Dreamweaver 12
+4.1.3 ACCESS 12
+4.2 系统功能模块流程图 12
+4.3 系统实现 14
+4.3.1 管理员管理模块实现 14
+4.3.2 管理员操作模块实现 15
+4.3.3 系统查询模块的实现 17
+4.3.4 学生操作模块实现 17
+第5章 结束语 18
+致  谢 19
+参考文献 20
+附录 源代码 21
+
+
+
+
+
+
+论文字数:12999,页数:32
+第1章 绪论
+ 当今社会，随着计算机的发展及网络技术的应用，Internet应用在全球范围内的普及。当今社会正快速向信息化社会前进，信息自动化的作用也越来越大。信息技术不断融入人们的日常生活。在科学技术越来越先进的信息时代，人们应该从以前繁琐的事务中解放出来，提高工作效率。
+ 为了提高人们的办事效率，开发实现一款能减少人们重复劳动力，节省不必要的时间开销的软件显的十分必要。个人通讯备忘录在人们日常生活中起着重要的角色，它协助完成一些日常琐事，它保存用户的一些好友的通讯资料，方便人与人的沟通。从以前的纸上记录通讯资料进化到用电子记事本记录这些资料，大大提高了保存的可靠性，并且方便了用户的使用。如记事本可以把近期需要完成的一些事件保存到数据库中，不会再因为找不到记录本而耽误了安排，这样就减少了不必要的时间开销，提高人们的办事效率；对一些容易忘记的事件，还可以在闹钟设置项中设置响铃时间来提醒用户，为用户提供了便利。因此，个人工作备忘录软件在日常通讯录管理，以及日常事务安排上起着重要作用。
+ 目前，电子备忘录在实现语音名片，记事录音和声控回放等功能已有成功案例，比一般的记事本有先进之处。通过专家分析，电子备忘录设计中最有研究价值的是如何把烦琐地从键盘输入信息转化为语音录入信息，以及解决存储语音信息所需的高容量问题。这两大问题的解决将会对电子备忘录中信息的录入以及对信息保存空间进行改进。同时，为用户的操作使用提供了更多方便。
+ 目录
+目录 - 1 -
+第1章 绪论 - 1 -
+第2章 系统开发工具及配置概述 - 2 -
+2.1 C#概述 - 3 -
+2.2 SQL2005概述 - 3 -
+2.3 Visual C++ .Net概述 - 4 -
+2.4 SQL2005数据库配置 - 5 -
+2.5 本章小结 - 6 -
+第3章 备忘录系统模型 - 7 -
+3.1模型分析 - 8 -
+3.2 本章小结 - 8 -
+第4章 系统设计分析 - 9 -
+4.1 通讯录模块需求 - 9 -
+4.1.1 通讯录表设计 - 9 -
+4.2 记事本模块需求 - 10 -
+4.2.1 记事本表设计 - 10 -
+4.3数字闹铃模块需求 - 11 -
+4.4 本章小结 - 12 -
+第5章 系统实现与分析 - 13 -
+5.1主界面设计与分析 - 13 -
+5.2 通讯录界面设计与分析 - 16 -
+5.3 记事本界面设计与分析 - 18 -
+5.4 管理记事本界面设计与分析 - 20 -
+5.5 管理通讯录界面设计与分析 - 23 -
+5.6 闹铃界面设计与分析 - 26 -
+5.7 本章小结 - 29 -
+第6章  结论 - 30 -
+致 谢 - 31 -
+参考文献 - 32 -
+
+
+
+
+论文字数:13265,页数:41
+摘要
+ 本系统管理内容广泛，全面涉及了教务教学上的各项服务，包括学生成绩管理，其中有学生成绩管理；学生管理等等。在开发过程中，注意使其符合操作的业务流程，并力求系统的全面性、通用性。本系统是一个典型的信息管理系统(MIS),其开发主要包括后台数据库的建立和维护以及前端应用程序的开发两个方面。对于前者要求建立起数据一致性和完整性强、数据安全性好的库。而对于后者则要求应用程序功能完备,易使用等特点。在开发工具的选择上，主要利用Jsp语言进行开发，使用系统自带的Access2003数据库。运行环境为Windows XP。本论文主要从系统分析、系统设计、系统实施与使用等几个方面进行介绍。
+关键词：成绩管理，数据库，Js
+ABSTRACT
+ This system administration content is widespread, has involved in educational administration teaching each service comprehensively, including student achievement management, including the student achievement management; Student management and so on. In the performance history, the attention causes it to conform to the operation operation flow, and makes every effort system's integrity, the versatility. The system is typical MIS, which includes the development and the maintenance of background database as well as the top application program.As to the former, setting up a base with strong data coherence and integrality as well as security is demanded. As to the later, a program with complete function which is easy to use is demanded.In development kit's choice, mainly carries on the development using the Jsp language, the use system bringing Access2003 database. The movement environment is Windows XP. The present paper mainly from the system analysis, the system design, the system implementation and the use and so on several aspects carries on the introduction.
+Keywords: result management database Jsp
+
+目录
+摘要 I
+ABSTRACT II
+第1章 引言 1
+1.1 背景 1
+1.2 研究内容 1
+第2章 成绩管理系统概述 3
+2.1 成绩管理系统发展与现状 3
+2.2 成绩管理系统的目标 3
+2.3 成绩管理系统的特点 4
+2.4开发及运行环境配置 5
+2.4.1 JSP概述 5
+2.4.2服务器配置 6
+2.4.3配置Web站点 7
+第3章 学生成绩管理系统分析 9
+3.1需求分析 9
+3.2功能需求描述 10
+3.3 系统设计思想 10
+3.3.1页面模块化 10
+3.3.2三层结构架构 10
+3.3.3 系统结构设计 11
+3.4 数据库设计 12
+3.4.1 信息实体图 12
+3.4.2 成绩管理系统E-R图 15
+3.5 学生成绩管理系统数据库逻辑设计 16
+3.6数据库连接 19
+第4章 学生成绩管理系统设计 21
+4.1 系统登录模块设计 21
+4.1.1 界面设计 22
+4.1.2 登录功能 22
+4.2 用户管理模块设计 23
+4.2.1添加用户 23
+4.2.1查询用户 24
+4.3课程模块/班级模块设计 25
+4.3.1 添加班级 25
+4.3.2 查询班级 25
+4.3.3 修改班级信息 26
+4.4课程安排模块设计 26
+4.4.1 课程安排 27
+4.4.2 修改课程配置信息 27
+4.5 成绩模块设计 27
+4.5.1 成绩添加 27
+4.5.2 成绩查询/修改 28
+4.5.3 成绩分析 29
+4.6 基本信息模块设计 29
+4.6.1 实现效果 29
+4.6.2 具体实现 31
+4.7 删除功能设计 32
+第5章 系统测试 33
+5.1测试项目 33
+5.2测试方法 34
+第6章 结束语 35
+致谢 36
+参考文献 37
+
+
+
+论文字数:14100,页数:54
+摘要
+ 当今社会中，计算机的使用已经深入到日常工作和生活的方方面面。Windows系统的推出使电脑从高雅的学术殿堂走入了寻常百姓家，各行各业的人们无须经过特别的训练就能够使用电脑完成许许多多复杂的工作。然而，虽然现在世界上已经充满了多如牛毛的各种软件，但它们依然不能满足用户的各种特殊需要，人们还不得不开发适合自己特殊需求的软件。我们都知道，对于学生的学籍管理是一个教育单位不可缺少的部分,它的内容对学校的管理者来说至关重要,所以学生学籍管理系统应该能够为用户提供充足的信息和快捷的查询手段。但一直以来人们使用传统人工的方式管理文件档案，这种管理方式存在着许多缺点,如:效率低、保密性差,另外时间一长,将产生大量的文件和数据,这对于查找、更新和维护都带来了不少的困难。而使用以SQL Server 2000为数据库，PowerBuilder为开发工具对学生学籍信息进行管理,具有手工管理所无法比拟的优点.例如:检索迅速、查找方便、存储量大、保密性好等。这些优点能够极大地提高学生管理的效率,也是学校科学化、正规化管理的重要途径。
+ 
+关键词：PowerBuilder  SQL数据库  数据字典  模块  菜单
+Abstract
+ Nowadays in society, computer sigmatism already goes deep into the Fang Fang face arriving at daily work and life. Systematic debuting of Windows makes a computer run a family from elegant learning palace hall to have entered common common people , the all professions and trades people uses a computer to be completed unnecessarily by that special training can right away lots and lots of complicated job.But although having already been full of the countless various software in the world now, they can not satisfy consumer's various requiring that people has to develop the software being suitable to self peculiar need peculiarly as before. We all know the self's status as a student to the student manages the part being a indispensability educating an unit, its content is to the school director all-important, therefore student self's status as a student management system ought to be able to be that the consumer provides sufficient information and rapid inquiry means[13].But always in the past people is using the artificial tradition way administration document file , this there is existing a lot of shortcoming in supervisor mode, such as: Inefficient , keep secret nature is bad , time is besides once long, will produce large amount of document and data, with regard to, this seeks , renews and defends the difficulty having brought about quite a few. Use PowerBuilder to develop student to the student manages while built on the basis of SQL Server 2000 to carry out administration on student self's status as a student information but , have unable parallel handwork administration merit. For instance: The retrieva l is prompt , seek to store reserves conveniently, keeping secret greatly, nature is easy to wait. These merit is able to improve efficiency managed by student tremendously , is also school scientification , regularization administrative important approach.
+Keyword:  PowerBuilder  SQL server 2000  Data Dictionary   Module   Menu
+目         录
+摘要 I
+Abstract II
+第一章 引言 1
+1.1 选题的背景与意义： 1
+1.2 研究内容 2
+第二章  系统设计的开发环境 3
+2.1 系统环境 3
+2.1.1 系统设计环境 3
+2.1.2 系统运行环境 3
+2.2 语言环境 3
+第三章 系统分析 5
+3.1 系统的初步调查 5
+3.2 系统的可行性研究 6
+3.3 现行系统的详细调查 6
+3.4 新系统逻辑方案的提出 7
+第四章 系统设计 16
+4.1 系统总体功能设计 16
+4.2 数据库设计: 17
+4.2.1 数据库概念结构设计 17
+4.2.2 数据库逻辑结构设计 21
+第五章 系统的实现 26
+5.1 登录界面设计 26
+5.2 系统主界面设计 29
+5.3 学籍管理界面的设计 30
+5.4 学籍查询窗体设计 35
+5.5 学籍修改窗体的设计 37
+5.6学籍的异动录入窗体设计 38
+5.7 学生成绩的录入窗体设计 40
+5.8 学生补考窗体的设计 42
+5.9 成绩查询窗体的设计 42
+5.10 用户管理窗体的设计 44
+第六章  系统实施与维护 46
+6.1物理配置方案 46
+6.2代码设计中的困难 47
+6. 3系统的测试 47
+6.4系统的维护与管理 47
+第七章  结束语 48
+致谢 49
+参考文献 50
+
+
+
+论文字数:6644,页数:33
+摘  要
+通讯录管理系统是典型的管理信息系统(MIS)，其开发主要包括后台数据库的建立和维护以及前端应用程序的开发两个方面。对于前者要求建立起数据一致性和完整性强、数据安全性好的库。而对于后者则要求应用程序功能完备,易使用等特点。
+经过分析,我们使用 MICROSOFT公司的 VISUAL BASIC开发工具,利用其提供的各种面向对象的开发工具,尤其是数据窗口这一能方便而简洁操纵数据库的智能化对象,首先在短时间内建立系统应用原型,然后,对初始原型系统进行需求迭代,不断修正和改进,直到形成用户满意的可行系统。
+关键字：通讯录  管理信息系统  MIS  Visual Basic
+Summary
+Address book management the system is a system( MIS) of typical management information, its development to primarily include the establishing of backstage database to apply two aspects of the procedure's developments with maintenance and head.Request to establish to rise the data consistency with the that the complete is strong, the data safety like for the former.But then request for the latter applied the procedure function is complete, easy usage etc. characteristics.
+Pass by analysis, and we use the MICROSOFT company VISUAL BASIC to develop the tool, and make use of its provide every kind of to face to the object's development tool, and particularly is a data window way this a can convenience but the Chien's manipulate the database's intelligence the object, and establish the system in the in a short time first applied prototype, then, to early prototype the system proceeds need  on behalf, continuously revise with improve, until formation the customer be satisfied with of can line system.
+Key word:Address book management information system MIS Visual Basic
+目  录
+第一章  绪  论 2
+1．1课题简介 2
+1．2开发的意义 2
+1．3团队构成 3
+第二章  开发环境及实现技术 4
+2．1开发环境 4
+2．2开发工具简介 4
+第三章  系统设计 5
+3．1概要设计 5
+3．2详细设计 6
+第四章  数据库设计 8
+4．1数据库Access简介 8
+4．2数据库需求分析 9
+4．3数据库需求分析 9
+第五章  详细设计 11
+5．1系统登录模块的设计与实现 11
+5．2主界面的设计与实现 15
+5．3单人资料模块的设计与实现 18
+5．4模糊查询模块的设计与实现 21
+5．5全体资料模块的设计与实现 24
+5．6用户注册模块的设计与实现 25
+5．7用户维护模块的设计与实现 26
+5．8备忘提醒模块的设计与实现 28
+第六章  系统使用说明 31
+6．1使用说明 31
+6．2运行环境 31
+第七章  设计心得 32
+参考文献 33
+
+
+
+
+
+
+
+

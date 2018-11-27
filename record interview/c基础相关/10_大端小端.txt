@@ -1,0 +1,61 @@
+现有一32位int型数0x12345678,大端和小端在内存中各怎么存放
+【参考答案】
+在嵌入式开发中,大端(Big-endian)和小端(Little-endian)是一个很重要的概念。
+假如现有一32位int型数0x12345678,那么其MSB(MostSignificant Byte,最高有效字节)为0x12,其LSB (Least Significant Byte,最低有效字节)为0x78,在CPU内存中有两种存放方式:(假设从地址0x4000开始存放)
+方式1的存放形似称为大端模式(Big-endian)0x12 0x34 0x56 0x78
+方式2的存放形似称为小端模式(Little-endian)。即,在大端模式下,数据的MSB存放在低地址;在小端模式下,数据的LSB 存放在低地址。0x78 0x56 0x34 0x12
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+    int a = 0x12345678;
+    char *p;
+    p = (char *)(&a);  //&取地址取到的是栈底的地址
+    printf("&a = %p\n", &a);
+    
+    if (0x78 == (*p))
+    {
+        printf("小端\n");
+    }
+    else
+    {
+        printf("大端\n");
+    }
+    p++;
+    printf("*p = %X\n",*p);
+    printf("p = %p\n", p);
+    p++;
+    printf("*p = %X\n",*p);
+    printf("p = %p\n", p);
+    p++;
+    printf("*p = %X\n",*p);
+    printf("p = %p\n", p);
+    return 0;
+}
+
+
+#include <stdio.h>  
+  
+int check()  
+{  
+    union UN  
+    {  
+        char c;  
+        int i;  
+    }un;  
+    un.i = 1;  
+    return un.c;  
+}  
+  
+int main(void)  
+{  
+    if(check()==1)  
+        printf("小端模式存储！\n");  
+    else  
+        printf("大端模式存储！\n");  
+    return 0;  
+}

@@ -1,0 +1,46 @@
+
+#####################################################
+
+安装：#sudo apt-get install nfs-kernel-server
+配置：sudo vim /etc/exports
+	/nfsroot *(rw,sync,no_root_squash)
+
+重启服务：
+#sudo /etc/init.d/portmap restart                  <---重启portmap，
+#sudo /etc/init.d/nfs-kernel-server restart      <---重启nfs服务
+#showmount -e                                          <---显示共享出的目录
+
+######################################################
+安装TFTP服务
+
+1.sudo apt-get install tftpd tftp xinetd
+2.sudo vim /etc/xinetd.d/tftp
+	service tftp  
+	{  
+    		socket_type = dgram  
+    		protocol = udp  
+    		wait = yes  
+    		user = root  
+    		server = /usr/sbin/in.tftpd  
+    		server_args = -s /tftpboot  
+    		disable = no  
+    		per_source = 11  
+    		cps = 100 2  
+    		flags = IPv4  
+	}  
+3. sudo mkdir /tftpboot  
+4. sudo chmod 777 /tftpboot -R  
+5. sudo /etc/init.d/xinetd restart  --重启tftp服务器
+6. sudo netstat -a | grep tftp      
+
+
+
+
+
+
+	
+
+
+
+
+

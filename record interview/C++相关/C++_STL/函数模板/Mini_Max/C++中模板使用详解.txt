@@ -1,0 +1,125 @@
+C++中模板使用详解
+转自：http://www.360doc.com/content/09/0403/17/799_3011262.shtml
+
+1. 模板的概念。
+
+我们已经学过重载(Overloading)，对重载函数而言,C++的检查机制能通过函数参数的不同及所属类的不同。正确的调用重载函数。例如，为求两个数的最大值，我们定义MAX()函数需要对不同的数据类型分别定义不同重载(Overload)版本。
+//函数1.
+
+int max(int x,int y);
+{return(x>y)?x:y ;}
+
+//函数2.
+float max( float x,float y)
+{return (x>y)? x:y ;}
+
+//函数3.
+double max(double x,double y)
+{return (c>y)? x:y ;}
+
+
+但如果在主函数中，我们分别定义了 char a,b; 那么在执行max(a,b);时 程序就会出错，因为我们没有定义char类型的重载版本。
+
+现在，我们再重新审视上述的max()函数，它们都具有同样的功能，即求两个数的最大值，能否只写一套代码解决这个问题呢？这样就会避免因重载函数定义不 全面而带来的调用错误。为解决上述问题C++引入模板机制，
+
+模板定义：模板就是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数， 从而实现了真正的代码可重用性。模版可以分为两类，一个是函数模版，另外一个是类模版。
+
+2.   函数模板的写法
+
+函数模板的一般形式如下：
+
+Template <class或者也可以用typename T>
+
+返回类型 函数名（形参表）
+{//函数定义体 }
+
+说明： template是一个声明模板的关键字，表示声明一个模板关键字class不能省略，如果类型形参多余一个 ，每个形参前都要加class <类型 形参表>可以包含基本数据类型可以包含类类型.
+
+请看以下程序:
+
+
+
+#include<iostream>
+using namespace std; // 使用这个时要定义成T min(T &x, T &y) 引用的才行
+
+template <class T>  //template <typename T> typename 和class 等价
+T min(T x, T y)
+{
+    return (x<y) ? x : y;
+}
+
+int main()
+{
+    int n1 = 2, n2 = 10;
+    double d1 = 1.5, d2 = 5.6;
+    cout << "较小整数:"<< min(n1, n2) << endl;
+    cout << "较小实数:"<< min(d1, d2) << endl;
+    return 0;
+}
+
+/*
+Mini_Max.cpp: In function ‘int main()’:
+Mini_Max.cpp:14:41: error: call of overloaded ‘min(int&, int&)’ is ambiguous
+Mini_Max.cpp:14:41: note: candidates are:
+Mini_Max.cpp:5:3: note: T min(T, T) [with T = int]
+/usr/include/c++/4.6/bits/stl_algobase.h:187:5: note: const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = int]
+Mini_Max.cpp:15:41: error: call of overloaded ‘min(double&, double&)’ is ambiguous
+Mini_Max.cpp:15:41: note: candidates are:
+Mini_Max.cpp:5:3: note: T min(T, T) [with T = double]
+/usr/include/c++/4.6/bits/stl_algobase.h:187:5: note: const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = double]
+*/
+
+
+#include<iostream>
+//using namespace std; // 使用这个时要定义成T min(T &x, T &y) 引用的才行
+using std::cout;
+using std::endl;
+template <typename T>
+T min(T x, T y)
+{
+    return (x<y) ? x : y;
+}
+
+int main()
+{
+    int n1 = 2, n2 = 10;
+    double d1 = 1.5, d2 = 5.6;
+    char a = 'a', b = 'b';
+    cout << "较小整数:"<< min(n1, n2) << endl;
+    cout << "较小实数:"<< min(d1, d2) << endl;
+    cout << "较小字符:"<< min(a, b) << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
