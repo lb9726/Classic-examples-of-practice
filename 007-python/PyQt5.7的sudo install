@@ -1,0 +1,913 @@
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ sudo make install
+[sudo] password for libo: 
+cd QtCore/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtCore/QtCore.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtCore'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtCore/QtCore.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qpair.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstractproxymodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpropertyanimation.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qline.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qelapsedtimer.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfinalstate.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstorageinfo.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qdatastream.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpluginloader.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qjsonarray.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qlibrary.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qbytearraymatcher.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qthreadpool.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtranslator.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtemporaryfile.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsettings.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qobjectcleanuphandler.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/quuid.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qhistorystate.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstractnativeeventfilter.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qlockfile.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmimetype.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmetatype.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qobject.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsignaltransition.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qresource.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qnamespace.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qprocess.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstracteventdispatcher.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qanimationgroup.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qrunnable.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfiledevice.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsavefile.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsystemsemaphore.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcoreevent.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtextstream.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmetaobject.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qregularexpression.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfile.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qobjectdefs.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstring.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmutex.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qurlquery.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qiodevice.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstractanimation.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qversionnumber.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsequentialanimationgroup.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qxmlstream.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsharedmemory.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qvector.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtextboundaryfinder.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qglobal.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpauseanimation.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfilesystemwatcher.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qjsondocument.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtextcodec.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstringlistmodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfileselector.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcommandlineoption.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qlibraryinfo.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qlist.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qitemselectionmodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcoreapplication.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstringlist.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/QtCoremod.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmargins.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qeventloop.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsemaphore.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsortfilterproxymodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstractitemmodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qjsonobject.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qdiriterator.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qhash.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstate.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qdir.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstractstate.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qwaitcondition.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstatemachine.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qvariantanimation.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_virtual_error_handler.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcollator.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qreadwritelock.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qwineventnotifier.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qurl.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qlocale.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtimezone.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qmap.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qstandardpaths.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qparallelanimationgroup.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qeasingcurve.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsignalmapper.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qeventtransition.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmimedatabase.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qidentityproxymodel.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qfileinfo.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtimer.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmimedata.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qabstracttransition.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qvariant.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtimeline.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qbitarray.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qbasictimer.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qtemporarydir.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsysinfo.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcommandlineparser.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qcryptographichash.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qbytearray.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qnumeric.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qmessageauthenticationcode.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qdatetime.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qregexp.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpycore_qset.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qbuffer.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qthread.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qrect.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qlogging.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qpoint.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qjsonvalue.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsocketnotifier.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qchar.sip /usr/share/sip/PyQt5/QtCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtCore/qsize.sip /usr/share/sip/PyQt5/QtCore/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtCore'
+cd QtGui/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtGui/QtGui.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtGui'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtGui/QtGui.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qsessionmanager.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglpixeltransferoptions.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qkeysequence.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextoption.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qguiapplication.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpixelformat.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qcolor.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpygui_qvector.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qscreen.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qrgb.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qmatrix4x4.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglvertexarrayobject.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpagesize.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qimage.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qwindowdefs.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextformat.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qimagewriter.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qmovie.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglcontext.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qbitmap.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglversionfunctions.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglshaderprogram.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qstatictext.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpalette.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpagedpaintdevice.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglbuffer.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpygui_qlist.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpainterpath.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qvector4d.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qvector3d.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglframebufferobject.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qimagereader.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qfontdatabase.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtouchdevice.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpainter.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qbackingstore.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpaintdevice.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextlayout.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopengldebug.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qvalidator.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextobject.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/opengl_types.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qrasterwindow.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qiconengine.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qicon.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpaintdevicewindow.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qsyntaxhighlighter.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qstylehints.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextdocument.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qgenericmatrix.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpdfwriter.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpygui_qpair.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglwindow.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qfontinfo.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qstandarditemmodel.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qclipboard.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qimageiohandler.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpen.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/QtGuimod.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtransform.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qwindow.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpixmapcache.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextcursor.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qbrush.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qsurfaceformat.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpaintengine.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qcursor.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qabstracttextdocumentlayout.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qinputmethod.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpolygon.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qfont.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextlist.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextdocumentwriter.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qdesktopservices.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpicture.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopengltexture.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpixmap.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qfontmetrics.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qregion.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qpagelayout.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qrawfont.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qvector2d.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopengltimerquery.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qopenglpaintdevice.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qrgba64.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qoffscreensurface.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qsurface.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qglyphrun.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtexttable.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qtextdocumentfragment.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qquaternion.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qdrag.sip /usr/share/sip/PyQt5/QtGui/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtGui/qevent.sip /usr/share/sip/PyQt5/QtGui/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtGui'
+cd QtHelp/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtHelp/QtHelp.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtHelp'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtHelp/QtHelp.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpsearchquerywidget.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpindexwidget.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpenginecore.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpsearchresultwidget.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpengine.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpsearchengine.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/QtHelpmod.sip /usr/share/sip/PyQt5/QtHelp/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtHelp/qhelpcontentwidget.sip /usr/share/sip/PyQt5/QtHelp/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtHelp'
+cd QtMultimedia/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimedia/QtMultimedia.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimedia'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimedia/QtMultimedia.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qvideoprobe.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qradiodata.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediabindableinterface.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qabstractvideobuffer.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudiooutput.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcameraimageprocessing.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaplayer.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediacontrol.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudiodecoder.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediarecorder.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaobject.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcameraimagecapture.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qpymultimedia_qlist.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qsound.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaservice.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcameraviewfindersettings.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediametadata.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmultimedia.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudiobuffer.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qradiotuner.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qvideoframe.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudioprobe.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcamera.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qabstractvideosurface.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudiodeviceinfo.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaencodersettings.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qabstractvideofilter.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudioformat.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediacontent.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudioinput.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudio.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaplaylist.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qvideosurfaceformat.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qaudiorecorder.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qsoundeffect.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediaresource.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcamerafocus.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcamerainfo.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qmediatimerange.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/qcameraexposure.sip /usr/share/sip/PyQt5/QtMultimedia/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimedia/QtMultimediamod.sip /usr/share/sip/PyQt5/QtMultimedia/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimedia'
+cd QtMultimediaWidgets/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimediaWidgets/QtMultimediaWidgets.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimediaWidgets'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimediaWidgets/QtMultimediaWidgets.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimediaWidgets/qvideowidget.sip /usr/share/sip/PyQt5/QtMultimediaWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimediaWidgets/QtMultimediaWidgetsmod.sip /usr/share/sip/PyQt5/QtMultimediaWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimediaWidgets/qcameraviewfinder.sip /usr/share/sip/PyQt5/QtMultimediaWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtMultimediaWidgets/qgraphicsvideoitem.sip /usr/share/sip/PyQt5/QtMultimediaWidgets/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtMultimediaWidgets'
+cd QtNetwork/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtNetwork/QtNetwork.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtNetwork'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtNetwork/QtNetwork.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qtcpserver.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkcookie.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkcookiejar.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslcertificateextension.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslsocket.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qdnslookup.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qtcpsocket.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworksession.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qudpsocket.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qauthenticator.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qpynetwork_qhash.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslconfiguration.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslellipticcurve.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkaccessmanager.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkrequest.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkreply.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslcertificate.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/QtNetworkmod.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslcipher.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkinterface.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkproxy.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qlocalserver.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslkey.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qssl.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslerror.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qhostinfo.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkdiskcache.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkconfigmanager.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qsslpresharedkeyauthenticator.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qhostaddress.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qnetworkconfiguration.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qlocalsocket.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qhttpmultipart.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qabstractnetworkcache.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qabstractsocket.sip /usr/share/sip/PyQt5/QtNetwork/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNetwork/qpynetwork_qmap.sip /usr/share/sip/PyQt5/QtNetwork/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtNetwork'
+cd QtOpenGL/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtOpenGL/QtOpenGL.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtOpenGL'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtOpenGL/QtOpenGL.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtOpenGL/QtOpenGLmod.sip /usr/share/sip/PyQt5/QtOpenGL/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtOpenGL/qgl.sip /usr/share/sip/PyQt5/QtOpenGL/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtOpenGL'
+cd QtPrintSupport/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtPrintSupport/QtPrintSupport.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtPrintSupport'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtPrintSupport/QtPrintSupport.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/QtPrintSupportmod.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qpagesetupdialog.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprintpreviewdialog.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprinterinfo.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprintpreviewwidget.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qpyprintsupport_qlist.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprintengine.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprintdialog.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qabstractprintdialog.sip /usr/share/sip/PyQt5/QtPrintSupport/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPrintSupport/qprinter.sip /usr/share/sip/PyQt5/QtPrintSupport/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtPrintSupport'
+cd QtQml/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQml/QtQml.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQml'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQml/QtQml.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlincubator.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlextensionplugin.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlfileselector.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qpyqmllistproperty.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qmlregistertype.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlabstracturlinterceptor.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qjsengine.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qjsvalue.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/QtQmlmod.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlerror.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlproperty.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlexpression.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qmlattachedpropertiesobject.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlpropertyvaluesource.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmllist.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlengine.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlcontext.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlscriptstring.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlcomponent.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlapplicationengine.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlparserstatus.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlpropertymap.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qqmlnetworkaccessmanagerfactory.sip /usr/share/sip/PyQt5/QtQml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQml/qjsvalueiterator.sip /usr/share/sip/PyQt5/QtQml/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQml'
+cd QtQuick/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuick/QtQuick.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuick'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuick/QtQuick.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgengine.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgmaterial.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgvertexcolormaterial.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickitem.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgtexture.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgabstractrenderer.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickframebufferobject.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgtexturematerial.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgsimpletexturenode.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickrendercontrol.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickitemgrabresult.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickview.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickimageprovider.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgtextureprovider.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/QtQuickmod.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquicktextdocument.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgnode.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgflatcolormaterial.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickwindow.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsgsimplerectnode.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qsggeometry.sip /usr/share/sip/PyQt5/QtQuick/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuick/qquickpainteditem.sip /usr/share/sip/PyQt5/QtQuick/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuick'
+cd QtSql/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSql/QtSql.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSql'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSql/QtSql.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlrelationaldelegate.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlerror.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsql.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqltablemodel.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqldriver.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlquerymodel.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqldatabase.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlquery.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlindex.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlrecord.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlfield.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/QtSqlmod.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlrelationaltablemodel.sip /usr/share/sip/PyQt5/QtSql/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSql/qsqlresult.sip /usr/share/sip/PyQt5/QtSql/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSql'
+cd QtSvg/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSvg/QtSvg.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSvg'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSvg/QtSvg.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSvg/qgraphicssvgitem.sip /usr/share/sip/PyQt5/QtSvg/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSvg/qsvgwidget.sip /usr/share/sip/PyQt5/QtSvg/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSvg/QtSvgmod.sip /usr/share/sip/PyQt5/QtSvg/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSvg/qsvggenerator.sip /usr/share/sip/PyQt5/QtSvg/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSvg/qsvgrenderer.sip /usr/share/sip/PyQt5/QtSvg/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSvg'
+cd QtTest/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtTest/QtTest.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtTest'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtTest/QtTest.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qtestcase.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/QtTestmod.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qtestmouse.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qtestkeyboard.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qtestsystem.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qtesttouch.sip /usr/share/sip/PyQt5/QtTest/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtTest/qsignalspy.sip /usr/share/sip/PyQt5/QtTest/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtTest'
+cd QtWidgets/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWidgets/QtWidgets.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWidgets'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWidgets/QtWidgets.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtextbrowser.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtoolbar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtoolbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgroupbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qboxlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qrubberband.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdirmodel.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcommandlinkbutton.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdockwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcalendarwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdialogbuttonbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qscrollerproperties.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qundoview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qsplitter.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstatusbar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qradiobutton.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfiledialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qspinbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlayoutitem.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicswidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfontcombobox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qwhatsthis.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsanchorlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmessagebox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qformlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qprogressbar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicslinearlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicssceneevent.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicseffect.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qpywidgets_qlist.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractslider.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtoolbutton.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmdisubwindow.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qactiongroup.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qsplashscreen.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgridlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractitemdelegate.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicstransform.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractspinbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qscrollbar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlcdnumber.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractscrollarea.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgesture.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qsystemtrayicon.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgesturerecognizer.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qpushbutton.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtabwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qundostack.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdatawidgetmapper.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdesktopwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qscroller.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qshortcut.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtablewidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qitemeditorfactory.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qsizegrip.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtableview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstyleoption.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsscene.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicslayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlistview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractitemview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qwidgetaction.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qbuttongroup.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qplaintextedit.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsproxywidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmdiarea.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicslayoutitem.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtooltip.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmaccocoaviewcontainer.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcompleter.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qopenglwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qabstractbutton.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmainwindow.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qheaderview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qproxystyle.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtextedit.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qerrormessage.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfocusframe.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcommonstyle.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qkeysequenceedit.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfontdialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qslider.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmenubar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcolordialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlabel.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qaction.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qprogressdialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmouseeventtransition.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qsizepolicy.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfileiconprovider.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcheckbox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsitem.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qmenu.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/QtWidgetsmod.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcombobox.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstackedlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdrawutil.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtreeview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstyle.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qgraphicsgridlayout.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtreewidgetitemiterator.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qinputdialog.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdial.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlineedit.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qapplication.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtreewidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qlistwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qdatetimeedit.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qitemdelegate.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstylefactory.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstyleditemdelegate.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qscrollarea.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qundogroup.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qwizard.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qcolumnview.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstylepainter.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qframe.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qtabbar.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qstackedwidget.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qfilesystemmodel.sip /usr/share/sip/PyQt5/QtWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWidgets/qkeyeventtransition.sip /usr/share/sip/PyQt5/QtWidgets/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWidgets'
+cd QtXml/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtXml/QtXml.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtXml'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtXml/QtXml.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXml/QtXmlmod.sip /usr/share/sip/PyQt5/QtXml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXml/qdom.sip /usr/share/sip/PyQt5/QtXml/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXml/qxml.sip /usr/share/sip/PyQt5/QtXml/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtXml'
+cd QtXmlPatterns/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtXmlPatterns/QtXmlPatterns.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtXmlPatterns'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtXmlPatterns/QtXmlPatterns.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlnamepool.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlresultitems.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlschemavalidator.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlquery.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qabstractmessagehandler.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlschema.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qsourcelocation.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qabstracturiresolver.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qsimplexmlnodemodel.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qabstractxmlnodemodel.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qabstractxmlreceiver.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlformatter.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlserializer.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/QtXmlPatternsmod.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtXmlPatterns/qxmlname.sip /usr/share/sip/PyQt5/QtXmlPatterns/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtXmlPatterns'
+cd QtDesigner/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtDesigner/QtDesigner.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtDesigner'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtDesigner/QtDesigner.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/QtDesignermod.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/taskmenu.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractpropertyeditor.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractformwindowmanager.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/formbuilder.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractwidgetbox.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignercustomwidgetplugin.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qextensionmanager.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractformwindowcursor.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/membersheet.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/extension.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractactioneditor.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/container.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignercontainerextension.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignercustomwidgetcollectionplugin.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractobjectinspector.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignertaskmenuextension.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignerpropertysheetextension.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractformeditor.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/customwidget.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/propertysheet.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractformwindow.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/abstractformbuilder.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/default_extensionfactory.sip /usr/share/sip/PyQt5/QtDesigner/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDesigner/qpydesignermembersheetextension.sip /usr/share/sip/PyQt5/QtDesigner/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtDesigner'
+cd QtDBus/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtDBus/QtDBus.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtDBus'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtDBus/QtDBus.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusextratypes.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbuserror.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusservicewatcher.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusconnection.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusabstractadaptor.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusmessage.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbuspendingcall.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusunixfiledescriptor.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusabstractinterface.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/QtDBusmod.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qpydbusreply.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qpydbuspendingreply.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusinterface.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusargument.sip /usr/share/sip/PyQt5/QtDBus/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtDBus/qdbusconnectioninterface.sip /usr/share/sip/PyQt5/QtDBus/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtDBus'
+cd _QOpenGLFunctions_2_0/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_0/_QOpenGLFunctions_2_0.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_0'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_0/_QOpenGLFunctions_2_0.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_2_0/_QOpenGLFunctions_2_0mod.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_2_0/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_2_0/qopenglfunctions_2_0.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_2_0/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_0'
+cd _QOpenGLFunctions_2_1/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_1/_QOpenGLFunctions_2_1.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_1'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_1/_QOpenGLFunctions_2_1.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_2_1/qopenglfunctions_2_1.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_2_1/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_2_1/_QOpenGLFunctions_2_1mod.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_2_1/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_2_1'
+cd _QOpenGLFunctions_4_1_Core/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_4_1_Core/_QOpenGLFunctions_4_1_Core.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_4_1_Core'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_4_1_Core/_QOpenGLFunctions_4_1_Core.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_4_1_Core/qopenglfunctions_4_1_core.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_4_1_Core/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/_QOpenGLFunctions_4_1_Core/_QOpenGLFunctions_4_1_Coremod.sip /usr/share/sip/PyQt5/_QOpenGLFunctions_4_1_Core/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/_QOpenGLFunctions_4_1_Core'
+cd QtSensors/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSensors/QtSensors.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSensors'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSensors/QtSensors.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qlightsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qpressuresensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qaccelerometer.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qcompass.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qorientationsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qproximitysensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qirproximitysensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qambienttemperaturesensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qtapsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qaltimeter.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qdistancesensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qholstersensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qgyroscope.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qrotationsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qtiltsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qmagnetometer.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/QtSensorsmod.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qambientlightsensor.sip /usr/share/sip/PyQt5/QtSensors/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSensors/qsensor.sip /usr/share/sip/PyQt5/QtSensors/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSensors'
+cd QtSerialPort/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSerialPort/QtSerialPort.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSerialPort'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtSerialPort/QtSerialPort.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSerialPort/qserialportinfo.sip /usr/share/sip/PyQt5/QtSerialPort/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSerialPort/QtSerialPortmod.sip /usr/share/sip/PyQt5/QtSerialPort/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtSerialPort/qserialport.sip /usr/share/sip/PyQt5/QtSerialPort/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtSerialPort'
+cd QtX11Extras/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtX11Extras/QtX11Extras.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtX11Extras'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtX11Extras/QtX11Extras.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtX11Extras/QtX11Extrasmod.sip /usr/share/sip/PyQt5/QtX11Extras/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtX11Extras/qx11info_x11.sip /usr/share/sip/PyQt5/QtX11Extras/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtX11Extras'
+cd QtBluetooth/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtBluetooth/QtBluetooth.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtBluetooth'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtBluetooth/QtBluetooth.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothtransferrequest.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergydescriptordata.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergycharacteristic.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergycontroller.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothdeviceinfo.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qpybluetooth_quint128.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergyadvertisingparameters.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothservicediscoveryagent.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothtransfermanager.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergycharacteristicdata.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/QtBluetoothmod.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergydescriptor.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothserviceinfo.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothhostinfo.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothsocket.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetooth.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothlocaldevice.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergyservicedata.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothserver.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergyconnectionparameters.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothaddress.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothtransferreply.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergyadvertisingdata.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothdevicediscoveryagent.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qpybluetooth_qlist.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qbluetoothuuid.sip /usr/share/sip/PyQt5/QtBluetooth/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtBluetooth/qlowenergyservice.sip /usr/share/sip/PyQt5/QtBluetooth/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtBluetooth'
+cd QtPositioning/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtPositioning/QtPositioning.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtPositioning'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtPositioning/QtPositioning.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeosatelliteinfosource.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeosatelliteinfo.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeopositioninfo.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/QtPositioningmod.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeocircle.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeorectangle.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeolocation.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qnmeapositioninfosource.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeoareamonitorinfo.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeoareamonitorsource.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeocoordinate.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeoaddress.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeoshape.sip /usr/share/sip/PyQt5/QtPositioning/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtPositioning/qgeopositioninfosource.sip /usr/share/sip/PyQt5/QtPositioning/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtPositioning'
+cd QtQuickWidgets/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuickWidgets/QtQuickWidgets.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuickWidgets'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuickWidgets/QtQuickWidgets.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuickWidgets/qquickwidget.sip /usr/share/sip/PyQt5/QtQuickWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtQuickWidgets/QtQuickWidgetsmod.sip /usr/share/sip/PyQt5/QtQuickWidgets/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtQuickWidgets'
+cd QtWebSockets/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebSockets/QtWebSockets.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebSockets'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebSockets/QtWebSockets.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/qmaskgenerator.sip /usr/share/sip/PyQt5/QtWebSockets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/QtWebSocketsmod.sip /usr/share/sip/PyQt5/QtWebSockets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/qwebsocket.sip /usr/share/sip/PyQt5/QtWebSockets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/qwebsocketprotocol.sip /usr/share/sip/PyQt5/QtWebSockets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/qwebsocketserver.sip /usr/share/sip/PyQt5/QtWebSockets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebSockets/qwebsocketcorsauthenticator.sip /usr/share/sip/PyQt5/QtWebSockets/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebSockets'
+cd QtWebChannel/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebChannel/QtWebChannel.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebChannel'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebChannel/QtWebChannel.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebChannel/QtWebChannelmod.sip /usr/share/sip/PyQt5/QtWebChannel/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebChannel/qwebchannelabstracttransport.sip /usr/share/sip/PyQt5/QtWebChannel/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebChannel/qwebchannel.sip /usr/share/sip/PyQt5/QtWebChannel/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebChannel'
+cd QtWebEngineWidgets/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineWidgets/QtWebEngineWidgets.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineWidgets'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineWidgets/QtWebEngineWidgets.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginecertificateerror.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/QtWebEngineWidgetsmod.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginefullscreenrequest.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginecontextmenudata.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebengineview.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginedownloaditem.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginepage.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginehistory.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginescript.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginesettings.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebenginescriptcollection.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineWidgets/qwebengineprofile.sip /usr/share/sip/PyQt5/QtWebEngineWidgets/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineWidgets'
+cd QtLocation/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtLocation/QtLocation.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtLocation'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtLocation/QtLocation.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceicon.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoserviceprovider.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeomaneuver.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacecontentreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoroute.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qlocation.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeocodingmanagerengine.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacesearchreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeorouterequest.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacesearchrequest.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacematchrequest.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacecontactdetail.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacecategory.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceattribute.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoroutingmanager.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacemanager.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeocodereply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplace.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceresult.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoroutesegment.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/QtLocationmod.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceimage.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacesearchsuggestionreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoroutingmanagerengine.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeoroutereply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceratings.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qgeocodingmanager.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceeditorial.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacemanagerengine.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceidreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacedetailsreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacereply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacereview.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacematchreply.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceuser.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplaceproposedsearchresult.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacecontentrequest.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacecontent.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacesupplier.sip /usr/share/sip/PyQt5/QtLocation/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtLocation/qplacesearchresult.sip /usr/share/sip/PyQt5/QtLocation/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtLocation'
+cd QtNfc/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtNfc/QtNfc.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtNfc'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtNfc/QtNfc.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndefmessage.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndefnfcsmartposterrecord.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qnearfieldtarget.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/QtNfcmod.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qnearfieldsharetarget.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndefnfctextrecord.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qqmlndefrecord.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndefnfcurirecord.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndeffilter.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qnearfieldsharemanager.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qndefrecord.sip /usr/share/sip/PyQt5/QtNfc/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtNfc/qnearfieldmanager.sip /usr/share/sip/PyQt5/QtNfc/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtNfc'
+cd QtWebEngineCore/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineCore/QtWebEngineCore.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineCore'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineCore/QtWebEngineCore.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/qwebenginecookiestore.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/qwebengineurlrequestjob.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/qwebengineurlrequestinterceptor.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/qwebengineurlschemehandler.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/QtWebEngineCoremod.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngineCore/qwebengineurlrequestinfo.sip /usr/share/sip/PyQt5/QtWebEngineCore/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngineCore'
+cd QtWebEngine/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngine/QtWebEngine.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngine'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngine/QtWebEngine.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngine/qtwebengineglobal.sip /usr/share/sip/PyQt5/QtWebEngine/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngine/QtWebEnginemod.sip /usr/share/sip/PyQt5/QtWebEngine/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/QtWebEngine/qquickwebengineprofile.sip /usr/share/sip/PyQt5/QtWebEngine/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/QtWebEngine'
+cd pylupdate/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/pylupdate/pylupdate.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/pylupdate'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/pylupdate/pylupdate.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/pylupdate/pylupdatemod.sip /usr/share/sip/PyQt5/pylupdate/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/pylupdate'
+cd pyrcc/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/pyrcc/pyrcc.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/pyrcc'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/pyrcc/pyrcc.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/pyrcc/pyrccmod.sip /usr/share/sip/PyQt5/pyrcc/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/pyrcc'
+cd Qt/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/Qt/Qt.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/Qt'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/Qt/Qt.so /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/Qt/Qtmod.sip /usr/share/sip/PyQt5/Qt/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/Qt'
+cd designer/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/designer/designer.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/designer'
+install -m 755 -p libpyqt5.so /home/libo/Qt5.7.1/5.7/gcc_64/plugins/designer/libpyqt5.so
+strip --strip-unneeded /home/libo/Qt5.7.1/5.7/gcc_64/plugins/designer/libpyqt5.so
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/designer'
+cd qmlscene/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/qmlscene/qmlscene.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/qmlscene'
+install -m 755 -p libpyqt5qmlplugin.so /home/libo/Qt5.7.1/5.7/gcc_64/plugins/PyQt5/libpyqt5qmlplugin.so
+strip --strip-unneeded /home/libo/Qt5.7.1/5.7/gcc_64/plugins/PyQt5/libpyqt5qmlplugin.so
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/qmlscene'
+cd dbus/ && ( test -e Makefile || /usr/bin/qmake /home/libo/Downloads/PyQt5_gpl-5.7.1/dbus/dbus.pro -o Makefile ) && make -f Makefile install
+make[1]: Entering directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/dbus'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/dbus/pyqt5.so /usr/lib/python3/dist-packages/dbus/mainloop/
+make[1]: Leaving directory `/home/libo/Downloads/PyQt5_gpl-5.7.1/dbus'
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/__init__.py /usr/lib/python3/dist-packages/PyQt5/
+cp -f -R /home/libo/Downloads/PyQt5_gpl-5.7.1/pyuic/uic /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/pylupdate/pylupdate_main.py /usr/lib/python3/dist-packages/PyQt5/
+install -m 644 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/sip/pyrcc/pyrcc_main.py /usr/lib/python3/dist-packages/PyQt5/
+install -m 755 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/pylupdate5 /usr/bin/
+install -m 755 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/pyrcc5 /usr/bin/
+install -m 755 -p /home/libo/Downloads/PyQt5_gpl-5.7.1/pyuic5 /usr/bin/
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ 
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ 
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ 
+
+pyQt5
+sip -V 4.19.2
+python -V python 3.5.2
+库文件在 /usr/lib/python3.5/site-packages/PyQt5/中，基本上都是.so
+/usr/share/sip/PyQt5
+
+下载python3.5.2的版本
+
+
+

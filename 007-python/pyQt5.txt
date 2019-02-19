@@ -21,3 +21,204 @@ https://github.com/Qthreads/qthreads
 https://github.com/qt/qtserialport
 
 https://github.com/seahime/ImageQt
+
+
+
+
+
+
+
+
+
+
+
+https://www.linuxidc.com/Linux/2016-07/133666.htm
+
+sudo apt-get install python3-pyqt5
+
+
+Ubuntu 14.04下搭建Python3.4 + PyQt5.3.2 + Eric6.0开发平台
+https://www.linuxidc.com/Linux/2015-12/126176.htm
+
+引言
+找了很多Python GUI工具集，还是觉得PyQt比较理想，功能强大跨平台，还支持界面设计器。花一天时间折腾了Ubuntu 14.04（32位）+ Python3.4 + Qt5.3.2 + PyQt5.3.2 + Eric6.0 的完整开发平台的搭建，各种出错差点放弃了，好在终于一一解决了，记录下来以后搭建起来方便点。  
+
+安装Python3.4
+Ubuntu14.04貌似默认安装了Python2.7 和Python3.4。故Python3.4的安装可略去。
+
+安装Qt5
+Ubuntu14.04自带Qt4的部分库文件，但是我们的平台要求Qt5，所以首先安装Qt5.
+
+Qt5.3.2下载：http://qt-project.org/downloads
+安装过程：
+下载到的是Qt5的在线安装程序，为其赋予可执行权限即可单击启动。由于我之前文件都安装在/opt目录下，故这里以root身份安装：
+
+sudo chmod a+x qt-opensource-linux-x86-1.6.0-5-online.run   
+sudo ./qt-opensource-linux-x86-1.6.0-5-online.run 
+ 启动界面后默认安装即可。
+export QTDIR=/home/libo/Qt5.7.1/5.7/gcc_64
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${QTDIR}/lib
+export PATH=${QTDIR}/bin:${PATH} 
+
+sudo ln -s /home/libo/Qt5.7.1/5.7/gcc_64/bin/qmake /usr/bin/qmake 
+ 
+ 
+SIP 4.16.3下载：http://www.riverbankcomputing.com/software/sip/download
+https://sourceforge.net/projects/pyqt/files/sip/
+
+在python3环境输入：
+
+>>>import sip 
+>>>print(sip.SIP_VERSION_STR) 
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sip
+>>> print(sip.SIP_VERSION_STR) 
+4.15.5
+
+所以下载了 sip-4.15.5.tar.gz 软件
+SIP 4.16.3下载：http://www.riverbankcomputing.com/software/sip/download
+安装过程：
+tar -zxvf sip-4.15.5.tar.gz  
+cd sip-4.15.5
+python3 configure.py  === ok
+sudo make -------------> 报错了 
+siplib.c:20:20: fatal error: Python.h: No such file or directory
+ #include <Python.h>
+ 
+出现No such file or directory的错误，有两种情况，一种是没有Python.h这个文件，一种是Python的版本不对，可以进入/usr/include/文件夹下的Pythonx.x文件夹里查找是否有Python.h这个文件。
+如果是第一种情况，那么需要安装python-dev这个包，(sudo apt-get install python-dev)。 
+ 
+ sudo apt-get install python3-dev -- 
+ 使用这个 sudo make 之后结束
+ 
+sudo make install ---ok 
+换个终端查看sip -V 显示
+libo@ubuntu:~$ sip -V
+4.15.5
+libo@ubuntu:~$ 
+
+PyQt5.3.2下载：http://www.riverbankcomputing.com/software/pyqt/download5
+https://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.7/PyQt5_gpl-5.7.tar.gz/download
+
+
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ python3 configure.py 
+Querying qmake about your Qt installation...
+qmake: could not exec '/usr/lib/x86_64-linux-gnu/qt4/bin/qmake': No such file or directory
+Error: PyQt5 requires Qt v5.0 or later. You seem to be using v3. Use the
+--qmake flag to specify the correct version of qmake.
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ 
+
+需要设置qmake的  sudo ln -s /home/libo/Qt5.7.1/5.7/gcc_64/bin/qmake /usr/bin/qmake 
+ 
+ 
+libo@ubuntu:~/Downloads/PyQt5_gpl-5.7.1$ python3 configure.py Querying qmake about your Qt installation...
+Determining the details of your Qt installation...
+This is the GPL version of PyQt 5.7.1 (licensed under the GNU General Public
+License) for Python 3.4.3 on linux.
+
+Type 'L' to view the license.
+Type 'yes' to accept the terms of the license.
+Type 'no' to decline the terms of the license.
+
+Do you accept the terms of the license? yes
+Found the license file pyqt-gpl.sip.
+Error: This version of PyQt5 requires sip 4.19 or later.
+ 
+更换最新版本的 sip的东西 换成4.19以后的 
+ 
+但是在python3的终端中输入
+>>> import sip
+>>> print(sip.SIP_VERSION_STR) 
+4.15.5
+仍然是4.15.5的版本，按照Qt5.7.1的，sip 4.15 的肯定是无法使用的，
+下面查找怎么修改python3的sip
+百度搜索关键字 print(sip.SIP_VERSION_STR)
+https://www.cnblogs.com/unicode/p/6063442.html的链接，找到如下方法
+>>> import sip
+>>> print(sip, sip.SIP_VERSION_STR)
+<module 'sip' from '/usr/lib/python3/dist-packages/sip.cpython-34m-x86_64-linux-gnu.so'> 4.15.5
+>>>
+将/usr/lib/python3/dist-packages/ 下的sip开头的所有的东西都删掉
+sudo rm -rf sip*
+ 
+再次进入 /home/libo/Desktop/sip-4.19.13 文件夹中
+ python3 configure.py  === ok 一定要是python3,它会自动生成install.txt 文件，路径就写在那个里面
+ sudo make
+ sudo make install
+ 再次执行
+ >>> import sip
+>>> print(sip.SIP_VERSION_STR) 
+4.19.13
+sip终于更换成了4.19.13的版本了
+
+既然如此，来看看到底能不能使用pyQt5来开发图形用户界面了
+运行第一个程序，python3 FirstWin.py
+出现段错误，我靠.....
+手动在python3的交互终端输入 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+也是段错误，后面发现，应该是找不到PyQt5的问题
+仔细看了一下之前配置环境的文档 https://www.linuxidc.com/Linux/2015-12/126176.htm
+
+接下来执行编译安装：
+
+sudo make
+很久之后，终于编译完成了
+sudo make install 
+完成之后 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+还是出现段错误
+接着看下面的文档
+QScintilla2.8.4下载：http://www.riverbankcomputing.com/software/qscintilla/download
+
+A.安装本体：
+
+cd Qt4Qt5 
+qmake qscintilla.pro 
+sudo make 
+make install 
+B.安装Designer：
+
+cd ../designer-Qt4Qt5 
+qmake designer.pro   
+sudo make 
+sudo make install 
+ 
+
+C.安装Python bingdings:
+
+cd ../Python 
+python3 configure.py --pyqt=PyQt5 
+sudo make 
+sudo make install 
+以上步骤即可正确安装QScintilla2。需要注意的是Python bingdings安装时需要指定 --pyqt=PyQt5参数，否则默认是为PyQt4安装。或者直接修改其configure.py，将pyqt5_is_default = False改为pyqt5_is_default = True也可。
+
+最终在C的时候  python3 configure.py --pyqt=PyQt5 出现段错误
+没有办法更换版本，还是段错误
+https://riverbankcomputing.com/software/qscintilla/download
+根据这里面的提示使用pip3
+
+Binary Packages
+Wheels are provided for Python v3.5 and later for 64-bit Linux, macOS and 32-bit and 64-bit Windows. The Python extension module contains a statically linked copy of the C++ library.
+
+So long as you are using a supported version of Python you can install QScintilla from PyPi by running: 
+    pip3 install QScintilla
+
+最终sudo apt-get install python3-pip
+pip3 install QScintilla
+Downloading/unpacking QScintilla
+  Could not find any downloads that satisfy the requirement QScintilla
+Cleaning up...
+No distributions at all found for QScintilla
+Storing debug log for failure in /home/libo/.pip/pip.log
+libo@ubuntu:/usr/lib/python3/dist-packages/PyQt5$ gedit /home/libo/.pip/pip.log 
+
+还是出现上述问题，打开那份日志看了一下，似乎还是版本不对
+Skipping https://files.pythonhosted.org/packages/3d/f1/1364d23a29477e5130b499707bdd81ffa78489f75a91781433b7150013ff/QScintilla-2.9.4-5.7.1-cp34.cp35.cp36-none-win32.whl#sha256=aade6cc986d215017cd1ed4133fad99b46afbde267b28b957fc2be67574f8f42 (from https://pypi.org/simple/qscintilla/) because it is not compatible with this Python
+
+使用QScintilla-2.9.4的试一试，最终还是段错误 Segmentation fault (core dumped)
+ https://pypi.org/simple/qscintilla/
+ 
+ 
+https://blog.csdn.net/u013477200/article/details/50607281?locationNum=9&fps=1 
+ python3 configure.py --destdir=/usr/lib/python3/dist-packages/PyQt5 --pyqt=PyQt5 --pyqt-sipdir=/usr/share/sip/PyQt5 --qsci-incdir=/home/libo/Qt5.7.1/5.7/gcc_64/include --qsci-libdir=/home/libo/Qt5.7.1/5.7/gcc_64/lib --qsci-sipdir=/usr/share/sip/PyQt5
+make
+make install
+
