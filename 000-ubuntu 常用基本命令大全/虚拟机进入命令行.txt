@@ -1,0 +1,11 @@
+https://www.cnblogs.com/hf19950918/p/8505151.html
+1）.按Alt+F2进入命令行
+df -h
+
+umount /dev/sdd4   　　　　#直接挂载可能会有问题
+mount /dev/sdd4 /mnt
+　　4）.挂载iso文件到/cdrom目录
+
+　　mount -o loop /mnt/ubuntu-16.04.4-server-amd64.iso /cdrom
+
+Alt+F1回到安装界面，继续安装

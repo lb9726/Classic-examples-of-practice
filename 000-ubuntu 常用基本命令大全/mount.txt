@@ -1,1 +1,5 @@
 mount -o remount -rw /pdata
+
+挂载usb
+在root权限下
+mount /dev/sdd4 /mnt 将/dev/sdd4 挂载到/mnt上，在/mnt的目录下就能看到u盘中的内容了

@@ -21,6 +21,6 @@
 		4)替换内容
 			:s/old/new		替换匹配行第一个old为new
 			:s/old/new/g	替换匹配行所有old为new
-			:#,#s/old/new/g	修改对应行号的old为new
-			:%s/old/new/g	全文匹配替换
+			:#,#s/old/new/g	修改对应行号的old为new  例如:1,3s/vim/libo/g 将1到3行的vim替换成libo
+			:%s/old/new/g	全文匹配替换  例如:  :%s/vim/vi 不要/g也可以替换，要也可以
 		5)w:保存	q:退出		!:强制

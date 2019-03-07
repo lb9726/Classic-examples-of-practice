@@ -20,7 +20,16 @@ public:
 
     static string doubleToString(double inValue);
     static double stringToDouble(const string& inString);
+/*  这个友元函数他不属于该类的成员函数，他是定义在类外的普通函数，
+    只是在类中声明该函数可以直接访问类中的private或者protected成员。
 
+使用友元函数注意的要点：
+    类中通过使用关键字friend 来修饰友元函数，但该函数并不是类的成员函数，
+    其声明可以放在类的私有部分，也可放在共有部分。友元函数的定义在类体外实现，不需要加类限定。
+    一个类中的成员函数可以是另外一个类的友元函数，而且一个函数可以是多个类友元函数。
+    友元函数可以访问类中的私有成员和其他数据，但是访问不可直接使用数据成员，需要通过对对象进行引用。
+    友元函数在调用上同一般函数一样，不必通过对对象进行引用。
+*/
     friend const SpreadsheetCell operator+(const SpreadsheetCell& lhs,
                                            const SpreadsheetCell& rhs);
     friend const SpreadsheetCell operator-(const SpreadsheetCell& lhs,

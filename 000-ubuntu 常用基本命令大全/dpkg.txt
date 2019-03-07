@@ -1,0 +1,9 @@
+dpkg -l gcc 查看gcc的版本
+libo@ubuntu:~/Desktop/freeswitch$ dpkg -l gcc
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                                    Version                  Architecture             Description
++++-=======================================-========================-========================-===================================================================================
+ii  gcc                                     4:4.8.2-1ubuntu6         amd64                    GNU C compiler
+libo@ubuntu:~/Desktop/freeswitch$ 

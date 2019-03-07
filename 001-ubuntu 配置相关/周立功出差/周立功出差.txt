@@ -1,0 +1,55 @@
+﻿在uboot模式下检测是否有坏块的命令 nand bad
+
+Device 0 bad blocks:
+00140000
+08240000
+上面表明有2个地址上有坏块
+
+Device 0 bad blocks:只有这个表明不存在坏块的地方
+
+
+1、nandflash大容量存储，报错(nand_erase/Buffer I/O error)
+	利用ubi文件系统管理大容量存储。(这样就有坏块管理了)
+	1、替换/ete/init.d/S80mount-opt
+	2、烧录设备树：
+		flash_erase /dev/mtd1 0 0		//擦除设备树分区
+		nandwrite -p /dev/mtd1 /media/xx.dtb	//写进去
+	3、重启设备
+	
+	4、目前进行拷贝测试和u盘更新测试ok。
+	
+2、windows下大容量存储，速度慢(355kbs)
+	速度1M+
+	
+3、AD引脚换到了GPIO1_9
+	num-channels改为9,这样就有对应的文件生成，可以进行读取。
+	
+4、GPIO操作问题：非GPIO如何配置生成对应的文件，可以读高低点平?
+	不配置成GPIO功能，数据不可保证。芯片内有主控寄存器会进行操作。
+	引脚为什么不配置成GPIO,是否有其他功能在占用。
+	
+	该引脚:CSI_DATA04 有GPIO4_25功能，即可以设置，并利用export导出相应的文件进行操作
+	
+5、BOA服务器，上传文件很慢。40多M的压缩包要用十几分钟
+	BOA速率问题：
+	 1、网口吞吐量
+	 2、无线速率问题
+	 3、可以使用iperf命令测试
+	 4、测试usb-wifi在ubuntu下速度(自己移植)
+ 
+6、不能够通过export配置gpio
+	测试能够导出，首先系统要支持该引脚配置GPIO功能
+
+7、CSI_DATA04 能不能配置成GPIO?
+	查找datasheet和管教分配表可以配置。
+	IMX6UL_PAD_CSI_DATA04__GPIO4_IO25.
+
+8、出现文件系统read-only 
+	文件信息列表存在坏块。系统关键信息异常，文件系统会被挂成只读。
+
+9、umount不掉的时候
+	fuser -mk /usr/bst
+	umount /usr/bst
+
+10、关于windows下和linux下双重挂载问题，两边文件同步问题
+	待分析...

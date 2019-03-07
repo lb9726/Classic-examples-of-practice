@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# mount /dev/mtdblock6 of nandflash in /opt directory
+# 
+gadget_insmod() {
+	insmod /usr/module/libcomposite.ko
+	if [ $? != 0 ]; then
+		echo "gadget libcomposite driver insmod error!"
+	fi
+	insmod /usr/module/usb_f_mass_storage.ko
+	if [ $? != 0 ]; then
+		echo "gadget usb_f_mass_storage driver insmod error!"
+	fi
+	insmod /usr/module/g_mass_storage.ko file=/opt/bst.bin removable=1 stall=0
+	if [ $? != 0 ]; then
+		echo "gadget g_mass_storage driver insmod error!"
+	fi
+}
+gadget_rmmod() {
+	echo "Remove gadget drivers"
+	rmmod g_mass_storage.ko
+	rmmod usb_f_mass_storage.ko
+	rmmod libcomposite.ko
+	echo "Remove finshed"
+}
+
+start() {
+     ubiattach /dev/ubi_ctrl -m 6 -d 1 &&
+     mount -t ubifs ubi1_0 /opt
+     if [ $? == 0 ]; then
+         echo "Mount /opt ok"
+     else
+         echo "flash_erase /dev/mtd6"
+         ubidetach -p /dev/mtd6 
+         flash_erase /dev/mtd6 0 0
+         ubiformat /dev/mtd6
+         ubiattach /dev/ubi_ctrl -m 6 -d 1 
+         ubimkvol /dev/ubi1 -N opt -m
+         mount -t ubifs ubi1_0 /opt
+     fi
+	 if [ ! -f /opt/bst.bin ];then
+		dd if=/dev/zero of=/opt/bst.bin bs=1k count=150k
+	 fi
+     gadget_insmod
+     echo -n "Start mount /user/bst: "
+     mount /opt/bst.bin /usr/bst
+	 if [ $? != 0 ];then
+		echo "Mount error......."
+	 fi
+}
+stop() {
+	umount /usr/bst
+	echo "Unmount /usr/bst OK"
+	gadget_rmmod
+	echo -n "Unmount /opt: "
+	umount /opt
+	ubidetach -p /dev/mtd6
+}
+restart() {
+     stop
+     start
+}
+
+case "$1" in
+  start)
+     start
+     ;;
+  stop)
+     stop
+     ;;
+  restart|reload)
+     restart
+     ;;
+  *)
+     echo "Usage: $0 {start|stop|restart}"
+     exit 1
+esac
+
+exit $?
