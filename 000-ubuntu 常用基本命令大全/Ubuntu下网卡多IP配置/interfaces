@@ -1,0 +1,32 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+#auto eno1
+#iface eno1 inet static
+#address 192.168.168.166
+#netmask 255.255.255.0
+
+#will config dynamic allocation IP 
+auto eno1
+auto eno1:0
+auto eno1:1
+
+iface eno1:0 inet static
+address 192.168.168.166
+netmask 255.255.255.0
+
+iface eno1:1 inet dhcp
+
+
+
+
+
+
+

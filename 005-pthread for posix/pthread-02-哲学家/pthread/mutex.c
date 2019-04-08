@@ -16,10 +16,8 @@ void* doSomeThing(void *arg)
     counter += 1;
     printf("\n Job %d started\n", counter);
 
-    for(i=0; i<(0xFFFFFF);i++);
-
+    for (i = 0; i < (0xFFFFFF); ++i);
     printf("\n Job %d finished\n", counter);
-
     pthread_mutex_unlock(&lock);
 
     return NULL;
@@ -36,13 +34,9 @@ int main(void)
         return 1;
     }
 
-       pthread_create(&(tid[0]), NULL, &doSomeThing, NULL);
-       
-       pthread_create(&(tid[1]), NULL, &doSomeThing, NULL);
-       
-       pthread_create(&(tid[2]), NULL, &doSomeThing, NULL); 
-    
-    
+    pthread_create(&(tid[0]), NULL, &doSomeThing, NULL);
+    pthread_create(&(tid[1]), NULL, &doSomeThing, NULL);
+    pthread_create(&(tid[2]), NULL, &doSomeThing, NULL);
 
     pthread_join(tid[0], NULL);
     pthread_join(tid[1], NULL);

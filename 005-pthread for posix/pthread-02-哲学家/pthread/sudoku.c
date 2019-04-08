@@ -16,7 +16,7 @@ void* doSomeThing(void *arg)
     counter += 1;
     printf("\n Job %d started\n", counter);
 
-    for(i=0; i<(0xFFFFFFFF);i++);
+    for(i = 0; i < (0xFFFFFFFF); i++);
 
     printf("\n Job %d finished\n", counter);
 
@@ -36,7 +36,7 @@ int main(void)
         return 1;
     }
 
-    while(i < 2)
+    while (i < 2)
     {
         err = pthread_create(&(tid[i]), NULL, &doSomeThing, NULL);
         if (err != 0)
